@@ -22,7 +22,7 @@ public class HomePage extends TestBase{
 		PageFactory.initElements(driver, this);
 	}
 	
-	public String verifyHomePageTitle() {
+	public String getHomePageTitle() {
 		return driver.getTitle();
 	}
 	
