@@ -9,8 +9,8 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-features = "D:\\ThuyNT\\Automation\\test\\CucumberWithPOM\\sources\\CucumberMaven\\src\\main\\java\\com\\qa\\features"
-,glue= {"D:\\ThuyNT\\Automation\\test\\CucumberWithPOM\\sources\\CucumberMaven\\src\\main\\java\\com\\qa\\stepDefinitions"}
+features = "src/main/java/com/qa/features"
+,glue= {"stepDefinitions"}
 )
 
 public class TestRunner {
