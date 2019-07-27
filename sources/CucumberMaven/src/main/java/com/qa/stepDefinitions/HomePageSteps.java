@@ -1,13 +1,19 @@
 package com.qa.stepDefinitions;
 
-import cucumber.api.PendingException;
+import com.qa.util.TestBase;
+
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class HomePageSteps {
+public class HomePageSteps extends TestBase{
 	
-	@Given("^open the url login page$")
+	@Given("^open the browser$")
+	public void open_the_browser() throws Throwable {
+		TestBase.initialization();
+	}
+
+	@When("^open the url login page$")
 	public void open_the_url_login_page() throws Throwable {
 
 	}
@@ -29,12 +35,13 @@ public class HomePageSteps {
 
 	@Then("^validate home page title$")
 	public void validate_home_page_title() throws Throwable {
-	
+
 	}
 
 	@Then("^validate logged in username$")
 	public void validate_logged_in_username() throws Throwable {
-
+	
 	}
+
 
 }
