@@ -1,37 +1,35 @@
 package com.qa.stepDefinitions;
 
+import com.qa.pages.HomePage;
+import com.qa.pages.LoginPage;
 import com.qa.util.TestBase;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.testng.Assert;
 
 public class HomePageSteps extends TestBase{
+	LoginPage loginPage;
+	HomePage homePage;
 	
 	@Given("^open the browser$")
 	public void open_the_browser() throws Throwable {
 		TestBase.initialization();
 	}
 
-	@When("^open the url login page$")
-	public void open_the_url_login_page() throws Throwable {
-
+	@When("^user in the login page$")
+	public void user_in_the_login_page() throws Throwable {
+		loginPage = new LoginPage();
+		String title = loginPage.getLoginPageTitle();
+		Assert.assertEquals("Login", title);
 	}
 
-	@When("^enter the username$")
-	public void enter_the_username() throws Throwable {
-
+	@When("^user logs into the page$")
+	public void user_logs_into_the_page() throws Throwable {
+		homePage = loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
 	}
 
-	@When("^enter the password$")
-	public void enter_the_password() throws Throwable {
-
-	}
-
-	@When("^click to login button$")
-	public void click_to_login_button() throws Throwable {
-
-	}
 
 	@Then("^validate home page title$")
 	public void validate_home_page_title() throws Throwable {

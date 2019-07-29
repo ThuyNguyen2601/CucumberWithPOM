@@ -8,9 +8,9 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
 features = "src/main/java/com/qa/features",
 glue= {"com.qa.stepDefinitions"}
-//,monochrome = true
-//,strict = true
-//,dryRun = false 
+,monochrome = true
+,strict = true
+,dryRun = false 
 )
 
 public class TestRunner {

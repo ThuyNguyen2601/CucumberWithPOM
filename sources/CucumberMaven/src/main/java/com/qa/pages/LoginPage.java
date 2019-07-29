@@ -8,16 +8,16 @@ import com.qa.util.TestBase;
 
 public class LoginPage  extends TestBase{
 	//Page Factory - OR
-	@FindBy(id = "loginform-username")
+	@FindBy(id="loginform-username")
 	WebElement username;
 	
-	@FindBy(id = "loginform-password")
+	@FindBy(id="loginform-password")
 	WebElement password;
 	
-	@FindBy(name = "login-button")
+	@FindBy(name="login-button")
 	WebElement loginButton;
 	
-	@FindBy(xpath = "//p[@class='lead']")
+	@FindBy(xpath="//p[@class='lead']")
 	WebElement successMessage;
 	
 	//Initializing the Page Objects:
