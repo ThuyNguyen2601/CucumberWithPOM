@@ -33,12 +33,15 @@ public class HomePageSteps extends TestBase{
 
 	@Then("^validate home page title$")
 	public void validate_home_page_title() throws Throwable {
-
+		Thread.sleep(3000);
+		String homePageTitle = homePage.getHomePageTitle();
+		Assert.assertEquals("TVOD-Backend", homePageTitle);
 	}
 
 	@Then("^validate logged in username$")
 	public void validate_logged_in_username() throws Throwable {
-	
+		boolean flag = homePage.verifyCorrectUserName();
+		Assert.assertTrue(flag);
 	}
 
 
