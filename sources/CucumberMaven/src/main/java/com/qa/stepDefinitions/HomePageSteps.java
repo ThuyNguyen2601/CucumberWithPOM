@@ -21,11 +21,12 @@ public class HomePageSteps extends TestBase{
 	@When("^user in the login page$")
 	public void user_in_the_login_page() throws Throwable {
 		loginPage = new LoginPage();
+		Thread.sleep(5000);
 		String title = loginPage.getLoginPageTitle();
-		Assert.assertEquals("Login", title);
+		Assert.assertEquals(title, "Login");
 	}
 
-	@When("^user logs into the page$")
+	@Then("^user logs into the page$")
 	public void user_logs_into_the_page() throws Throwable {
 		homePage = loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
 	}
@@ -41,6 +42,18 @@ public class HomePageSteps extends TestBase{
 	@Then("^validate logged in username$")
 	public void validate_logged_in_username() throws Throwable {
 		boolean flag = homePage.verifyCorrectUserName();
+		Assert.assertTrue(flag);
+	}
+	
+	
+	@Then("^user logs into the page with username blank$")
+	public void user_logs_into_the_page_with_username_blank() throws Throwable {
+		homePage = loginPage.login("", prop.getProperty("password"));
+	}
+
+	@Then("^validate the username blank message$")
+	public void validate_the_username_blank_message() throws Throwable {
+		boolean flag = loginPage.verifyUsernameBlankDisplayed();
 		Assert.assertTrue(flag);
 	}
 

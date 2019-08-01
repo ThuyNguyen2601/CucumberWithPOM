@@ -1,5 +1,6 @@
 package com.qa.pages;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -19,6 +20,12 @@ public class LoginPage  extends TestBase{
 	
 	@FindBy(xpath="//p[@class='lead']")
 	WebElement successMessage;
+	
+	@FindBy(xpath="//div[contains(text(),'Account name not allowed to be blank')]")
+	WebElement usernameBlankText;
+	
+	@FindBy(xpath="//div[contains(text(),'Password not allowed to be blank')]")
+	WebElement passwordBlankText;
 	
 	//Initializing the Page Objects:
 	public LoginPage() {
@@ -40,6 +47,22 @@ public class LoginPage  extends TestBase{
 		loginButton.click();
 		
 		return new HomePage();
+	}
+	
+	public boolean usernameBlankTextDisplayed() {
+		return usernameBlankText.isDisplayed();
+	}
+	
+	public boolean passwordBlankTextDisplayed() {
+		return passwordBlankText.isDisplayed();
+	}
+	
+	public boolean verifyUsernameBlankDisplayed() {
+		return usernameBlankText.isDisplayed();
+	}
+	
+	public boolean verifyPasswordBlankDisplayed() {
+		return passwordBlankText.isDisplayed();
 	}
 
 }

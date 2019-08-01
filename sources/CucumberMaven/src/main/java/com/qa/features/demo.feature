@@ -1,8 +1,14 @@
 Feature: Login to the system
 
-  Scenario: Login success to system
-  	Given open the browser
+Background:
+Given open the browser
     When user in the login page
-    And user logs into the page
+
+  Scenario: Login success to system
+    Then user logs into the page
     Then validate home page title
     And validate logged in username
+    
+  Scenario: Login to system when do not enter username
+  	Then user logs into the page with username blank
+  	Then validate the username blank message
