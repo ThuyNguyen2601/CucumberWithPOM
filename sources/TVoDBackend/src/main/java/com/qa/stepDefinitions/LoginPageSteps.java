@@ -56,6 +56,17 @@ public class LoginPageSteps extends TestBase{
 		boolean flag = loginPage.verifyUsernameBlankDisplayed();
 		Assert.assertTrue(flag);
 	}
-
+	
+	@Then("^user logs into the page with password blank$")
+	public void user_logs_into_the_page_with_password_blank() throws Throwable{
+		homePage = loginPage.login(prop.getProperty("username"), " ");
+	}
+	
+	@Then("^validate the password blank message$")
+	public void validate_the_password_blank_message() throws Throwable{
+		boolean flag = loginPage.verifyPasswordBlankDisplayed();
+		Assert.assertTrue(flag);
+	}
+	
 
 }
