@@ -4,6 +4,7 @@ import com.qa.pages.HomePage;
 import com.qa.pages.LoginPage;
 import com.qa.util.TestBase;
 
+import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -21,7 +22,7 @@ public class LoginPageSteps extends TestBase{
 	@When("^user in the login page$")
 	public void user_in_the_login_page() throws Throwable {
 		loginPage = new LoginPage();
-		Thread.sleep(5000);
+		Thread.sleep(3000);
 		String title = loginPage.getLoginPageTitle();
 		Assert.assertEquals(title, "Login");
 	}
@@ -45,6 +46,11 @@ public class LoginPageSteps extends TestBase{
 		Assert.assertTrue(flag);
 	}
 	
+	@After("@Test1")
+	public void closeBrowser1() {
+		TestBase.tearDown();
+	}
+	
 	
 	@Then("^user logs into the page with username blank$")
 	public void user_logs_into_the_page_with_username_blank() throws Throwable {
@@ -57,6 +63,11 @@ public class LoginPageSteps extends TestBase{
 		Assert.assertTrue(flag);
 	}
 	
+	@After("@Test2")
+	public void closeBrowser2() {
+		TestBase.tearDown();
+	}
+	
 	@Then("^user logs into the page with password blank$")
 	public void user_logs_into_the_page_with_password_blank() throws Throwable{
 		homePage = loginPage.login(prop.getProperty("username"), " ");
@@ -67,6 +78,29 @@ public class LoginPageSteps extends TestBase{
 		boolean flag = loginPage.verifyPasswordBlankDisplayed();
 		Assert.assertTrue(flag);
 	}
+	
+	@After("@Test3")
+	public void closeBrowser3() {
+		TestBase.tearDown();
+	}
+	
+	@Then("^user logs into the page with wrong account$")
+	public void user_logs_into_the_page_with_wrong_account() throws Throwable {
+		homePage = loginPage.login("admin1", "123456");
+	}
+
+	@Then("^validate the wrong account message$")
+	public void validate_the_wrong_account_message() throws Throwable {
+		boolean flag = loginPage.verifyIncorrectAccount();
+		Assert.assertTrue(flag);
+	}
+	
+	@After("@Test4")
+	public void closeBrowser4() {
+		TestBase.tearDown();
+	}
+	
+	
 	
 
 }

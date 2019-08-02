@@ -6,9 +6,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Properties;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,11 +18,15 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TestBase {
 	public static WebDriver driver;
 	public static Properties prop;
 	public static Actions action;
+	public static Select select;
 
 	public TestBase() {
 		try {
@@ -58,8 +64,12 @@ public class TestBase {
 		driver.get(prop.getProperty("url"));
 	}
 	
-	public void getPageTitle() {
-		driver.getTitle();
+	public static void tearDown() {
+		driver.close();
+	}
+	
+	public String getPageTitle() {
+		return driver.getTitle();
 	}
 	
 	public void back() {
@@ -126,11 +136,129 @@ public class TestBase {
 		action.contextClick(element).perform();
 	}
 	
+	public void dragAndDrop(WebElement sourceElement, WebElement destinationElement) {
+		action = new Actions(driver);
+		action.dragAndDrop(sourceElement, destinationElement).build().perform();
+	}
+	
+	
 	public void sendKeyboardToElement(WebElement element, Keys key) {
 		action = new Actions(driver);
 		action.sendKeys(element, key).perform();
 	}
 	
+	public void selectItemHtmlDropdown(WebElement element, String itemText) {
+		select = new Select(element);
+		select.selectByVisibleText(itemText);
+	}
+	
+	public String getSelectedItemInHtmlDropdown(WebElement element, String itemText) {
+		select = new Select(element);
+		select.selectByVisibleText(itemText);
+		WebElement option = select.getFirstSelectedOption();
+		return option.getText();
+	}
+	
+	public void checkTheCheckbox(WebElement element) {
+		element.click();
+	}
+	
+	//javascriptExecutor
+		public Object executeForBrowser(WebDriver driver, String javaScript) {
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			return js.executeScript(javaScript);
+		}
+		
+		public boolean verifyTextInInterText(String textExpected) {
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			String actualText = (String)js.executeScript("return document.documentElement.innerText.match('"+textExpected+"')[0]");
+			return actualText.equals(textExpected);
+		}
+		
+		public Object scrollToBottomPage(WebDriver driver) {
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			return js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
+		}
+		
+		public Object scrollToElement(WebElement element) {
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			return js.executeScript("argument[0].scrollIntoView(true);", element);
+		}
+		
+		public void highlighElemtn(WebElement element) {
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			String originalStyle = element.getAttribute("style");
+			js.executeScript("arguments[0].setAttribute(arguments[1],arguments[2])", element, "style", "border:5px solid red; border-style:dashed;");
+			try {
+				Thread.sleep(2000);
+			}catch(InterruptedException e) {
+				e.printStackTrace();
+			}
+			js.executeScript("arguments[0].setAttribute(arguments[1], arguments[2])", element, "style", originalStyle);
+		}
+		
+		public Object removeAtributeOfElement(WebElement element, String attributeRemove) {
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			return js.executeScript("arguments[0].removeAttribute('" + attributeRemove + "');", element);
+		}
+		
+		//window
+		public void switchToWindowByID(String parent) {
+			Set<String> allwindowns = driver.getWindowHandles();
+			for (String runWindown : allwindowns) {
+				if (!runWindown.equals(parent)) {
+					driver.switchTo().window(runWindown);
+					break;
+				}
+			}
+		}
+		
+		public void switchToWindownByTitle(String title) {
+			Set<String> allWindown = driver.getWindowHandles();
+			for (String runWindown : allWindown) {
+				driver.switchTo().window(runWindown);
+				String curentWin = driver.getTitle();
+				if (curentWin.equals(title)) {
+					break;
+				}
+			}
+		}
+		
+		public boolean closeAllWindownWithoutParent(String ParentID) {
+			Set<String> allWindown = driver.getWindowHandles();
+			for (String runWindown : allWindown) {
+				if (!runWindown.equals(ParentID)) {
+					driver.switchTo().window(runWindown);
+					driver.close();
+				}
+			}
+			driver.switchTo().window(ParentID);
+			if (driver.getWindowHandles().size() == 1) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+		
+		public void switchToIframe(WebElement element) {
+			driver.switchTo().frame(element);
+		}
+		
+		public void uploadFile(WebElement uploadElement) throws InterruptedException {
+			Path fileUpload = Paths.get("src", "tem/selenium/core", "DemoWebAlert.html");
+			String fileUploadPathString = fileUpload.toAbsolutePath().toString();
+			//enter file path onto the file-selection  input field
+			uploadElement.sendKeys(fileUploadPathString);
+			Thread.sleep(5000);
+			//check the "I accept the terms of service" checkbox
+			driver.findElement(By.id("terms")).click();
+			
+			//click the upload button
+			driver.findElement(By.name("send")).click();
+			Thread.sleep(10000);
+			
+		}
+		
 	
 
 }

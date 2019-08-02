@@ -28,7 +28,7 @@ public class LoginPage  extends TestBase{
 	WebElement passwordBlankText;
 	
 	@FindBy(xpath="//div[contains(text(),'Account name or password is incorrect. Please try')]")
-	WebElement incorrectUsernameORPasswordText;
+	WebElement incorrectAccountText;
 	
 	//Initializing the Page Objects:
 	public LoginPage() {
@@ -82,8 +82,8 @@ public class LoginPage  extends TestBase{
 		}
 	}
 	
-	public boolean verifyIncorrectUserNameAndPassword() {
-		return isControlDisplayed(incorrectUsernameORPasswordText);
+	public boolean verifyIncorrectAccount() {
+		return isControlDisplayed(incorrectAccountText);
 	}
 
 }

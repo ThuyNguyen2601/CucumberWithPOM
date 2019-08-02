@@ -11,7 +11,7 @@ public class HomePage extends TestBase{
 	@FindBy(xpath = "//span[@class='username username-hide-on-mobile']")
 	WebElement userNameLabel;
 	
-	@FindBy(xpath = "//a[@class='dropdown-toggle'][contains(text(),'Service Provider')]")
+	@FindBy(xpath = "//a[contains(text(),'Service Provider')]")
 	WebElement serviceProviderMenu;
 	
 	@FindBy(xpath = "//a[contains(text(),'Manage service provider')]")
@@ -34,6 +34,12 @@ public class HomePage extends TestBase{
 		Actions action = new Actions(driver);
 		action.moveToElement(serviceProviderMenu).build().perform();
 		managementServiceProviderLink.click();
+	}
+	
+	public ServiceProvider gotoServiceProviderPage() {
+		moveToElement(serviceProviderMenu);
+		clickToElement(managementServiceProviderLink);
+		return new ServiceProvider();
 	}
 
 }
