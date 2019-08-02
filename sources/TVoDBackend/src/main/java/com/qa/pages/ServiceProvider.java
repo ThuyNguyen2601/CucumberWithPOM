@@ -18,8 +18,8 @@ public class ServiceProvider extends TestBase{
 	@FindBy(xpath = ".//*[@id='w0-container']/table/thead/tr/th")
 	By collumnResult;
 	
-	@FindBy(xpath = ".//*[@id='w0-container']/table/tbody/tr")
-	By rowResult;
+	@FindBy(xpath = ".//*[@id='w0-container']/table/tbody/tr/td[1]")
+	List <WebElement> rowResults;
 	
 	@FindBy(xpath = "//input[@name='SiteSearch[description]']")
 	WebElement descriptionCriteria;
@@ -91,14 +91,18 @@ public class ServiceProvider extends TestBase{
 		return getPageTitle();
 	}
 	
-	public void searchServiceProviderByName(String value) {
+	public void searchServiceProviderByName(String value) throws Throwable {
 		sendKeyToElement(nameCriteria, value);
 		sendKeyboardToElement(nameCriteria, Keys.ENTER);
-		List <WebElement> rows = driver.findElements(rowResult);
-		for(int i = 1; i < rows.size(); i++) {
-			String resultText = driver.findElement(By.xpath("html/body/div[1]/div[13]/talbe/tbody/tr[\\\" + (i+1) + \\\"]/td[1]")).getText();
-			Assert.assertEquals(resultText, resultCompareText);
-			//Assert.assertSame(resultText, resultCompareText);
+		Thread.sleep(3000);
+		for(int i = 1; i < rowResults.size() + 1; i++) {
+			String resultText = driver.findElement(By.xpath("//tbody//tr["+ i +"]//td[1]")).getText();
+			if(compareContainText(resultText, value)) {
+				System.out.print("The result is true\n");
+			}
+			else {
+				System.out.print("No results found!");
+			}
 		}
 	}
 	

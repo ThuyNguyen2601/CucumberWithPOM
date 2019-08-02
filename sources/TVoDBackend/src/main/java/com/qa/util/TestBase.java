@@ -259,6 +259,10 @@ public class TestBase {
 			
 		}
 		
+		public boolean compareContainText(String text, String subText) {
+			return text.contains(subText);
+		}
+	
 	
 
 }
