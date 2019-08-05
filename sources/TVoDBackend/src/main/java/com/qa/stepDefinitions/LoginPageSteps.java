@@ -16,7 +16,7 @@ public class LoginPageSteps extends TestBase{
 	
 	@Given("^open the browser$")
 	public void open_the_browser() throws Throwable {
-		TestBase.initialization();
+		initialization();
 	}
 
 	@When("^user in the login page$")
@@ -48,7 +48,7 @@ public class LoginPageSteps extends TestBase{
 	
 	@After("@Test1")
 	public void closeBrowser1() {
-		TestBase.tearDown();
+		tearDown();
 	}
 	
 	
@@ -65,7 +65,7 @@ public class LoginPageSteps extends TestBase{
 	
 	@After("@Test2")
 	public void closeBrowser2() {
-		TestBase.tearDown();
+		tearDown();
 	}
 	
 	@Then("^user logs into the page with password blank$")
@@ -81,7 +81,7 @@ public class LoginPageSteps extends TestBase{
 	
 	@After("@Test3")
 	public void closeBrowser3() {
-		TestBase.tearDown();
+		tearDown();
 	}
 	
 	@Then("^user logs into the page with wrong account$")
@@ -97,10 +97,6 @@ public class LoginPageSteps extends TestBase{
 	
 	@After("@Test4")
 	public void closeBrowser4() {
-		TestBase.tearDown();
+		tearDown();
 	}
-	
-	
-	
-
 }
