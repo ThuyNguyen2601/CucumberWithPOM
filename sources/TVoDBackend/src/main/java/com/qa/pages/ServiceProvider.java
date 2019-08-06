@@ -179,7 +179,7 @@ public class ServiceProvider extends TestBase {
 			if (compareContainText(resultText, value)) {
 				System.out.print("The result is true\n");
 			} else {
-				System.out.print("No results found!");
+				System.out.print("No results found!\n");
 			}
 		}
 	}
@@ -235,12 +235,24 @@ public class ServiceProvider extends TestBase {
 	}
 
 	public void updateServiceProvider(String name, String description, String website, String dealer, String currencies, String status) {
+		clearToElement(nameUpdateTextbox);
 		sendKeyToElement(nameUpdateTextbox, name);
+		
+		clearToElement(descriptionUpdateTextbox);
 		sendKeyToElement(descriptionUpdateTextbox, description);
+		
+		clearToElement(websiteUpdateTextbox);
 		sendKeyToElement(websiteUpdateTextbox, website);
+		
+		clearToElement(dealerRevenueSharingUpdateTextbox);
 		sendKeyToElement(dealerRevenueSharingUpdateTextbox, dealer);
+		
+		clearToElement(currenciesUpdateDropdown);
 		sendKeyToElement(currenciesUpdateDropdown, currencies);
+		
+		clearToElement(statusUpdateDropdown);
 		sendKeyToElement(statusUpdateDropdown, status);
+		
 		clickToElement(updateButton);
 	}
 	

@@ -334,6 +334,11 @@ public class ServiceProviderSteps extends TestBase {
 		Assert.assertTrue(flag);
 		System.out.print("Check update Service Provider with name blank is: " + flag);
 	}
+	
+	@After("@SP16")
+	public void closeBrowser16() {
+		tearDown();
+	}
 
 
 }

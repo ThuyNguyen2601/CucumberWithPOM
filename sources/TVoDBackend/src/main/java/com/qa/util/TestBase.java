@@ -101,6 +101,10 @@ public class TestBase {
 	public void sendKeyToElement(WebElement element, String value) {
 		element.sendKeys(value);
 	}
+	
+	public void clearToElement(WebElement element) {
+		element.clear();
+	}
 
 	public int countElementNumber(String locator) {
 		List<WebElement> elements = driver.findElements(By.xpath(locator));
