@@ -1,2 +1,10 @@
-**/.metadata/*
-.settings/
+# Eclipse specific files/directories #
+######################################
+.classpath
+.project
+.settings
+.metadata
+
+# Logs and databases #
+######################
+*.log
