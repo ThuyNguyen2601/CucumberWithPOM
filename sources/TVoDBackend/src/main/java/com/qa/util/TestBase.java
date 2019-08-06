@@ -10,6 +10,7 @@ import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -28,6 +29,8 @@ public class TestBase {
 	public static Properties prop;
 	public static Actions action;
 	public static Select select;
+	public static WebElement element;
+	public static WebDriverWait wait;
 
 	public TestBase() {
 		try {
@@ -46,7 +49,7 @@ public class TestBase {
 	public void initialization() {
 		String browserName = prop.getProperty("browser");
 		if (browserName.equals("chrome")) {
-			Path chromeDriverPath = Paths.get("libs", "chromedriver", "chromedriver.exe");
+			Path chromeDriverPath = Paths.get("libs", "selenium-drivers", "chromedriver.74.0.3729.6.exe");
 			System.setProperty("webdriver.chrome.driver", chromeDriverPath.toAbsolutePath().toString());
 			driver = new ChromeDriver();
 		} else if (browserName.equals("FF")) {
@@ -92,6 +95,10 @@ public class TestBase {
 
 	public void cancelAlert() {
 		driver.switchTo().alert().dismiss();
+	}
+	
+	public void waitForAlertPresent() throws Throwable {
+		driver.switchTo().alert().wait();
 	}
 
 	public void sendKeyToAlert(String value) {
@@ -173,7 +180,7 @@ public class TestBase {
 	}
 
 	// javascriptExecutor
-	public Object executeForBrowser(WebDriver driver, String javaScript) {
+	public Object executeForBrowser(String javaScript) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		return js.executeScript(javaScript);
 	}
@@ -185,14 +192,14 @@ public class TestBase {
 		return actualText.equals(textExpected);
 	}
 
-	public Object scrollToBottomPage(WebDriver driver) {
+	public Object scrollToBottomPage() {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		return js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
 	}
 
 	public Object scrollToElement(WebElement element) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		return js.executeScript("argument[0].scrollIntoView(true);", element);
+		return js.executeScript("arguments[0].scrollIntoView(true);", element);
 	}
 
 	public void highlighElemtn(WebElement element) {
@@ -267,9 +274,13 @@ public class TestBase {
 		// click the upload button
 		driver.findElement(By.name("send")).click();
 		Thread.sleep(10000);
-
 	}
-
+	
+	public void clickToElementByJavaScript(WebElement element) {
+		JavascriptExecutor executor = (JavascriptExecutor)driver;
+		executor.executeScript("arguments[0].click();", element);
+	}
+	
 	public boolean compareContainText(String text, String subText) {
 		return text.contains(subText);
 	}

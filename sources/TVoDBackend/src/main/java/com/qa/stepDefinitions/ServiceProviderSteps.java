@@ -27,7 +27,7 @@ public class ServiceProviderSteps extends TestBase {
 	String website = "https://www.guru99.com/mysql-tutorial.html";
 	String dealer = "20";
 	String currencies = "Cambodia Riel";
-	String status = "Inactive";
+	String status = "Active";
 	
 	
 	
@@ -319,8 +319,13 @@ public class ServiceProviderSteps extends TestBase {
 	
 	@When("^user presses to Update icon$")
 	public void user_presses_to_Update_icon() throws Throwable {
+		Thread.sleep(5000);
 		serviceProvider = homePage.gotoServiceProviderPage();
-		clickToElement(serviceProvider.listUpdateIcon);
+		//Thread.sleep(10000);
+		//scrollToElement(serviceProvider.updateServiceProviderIcon);
+		Thread.sleep(5000);
+		//clickToElement(serviceProvider.updateServiceProviderIcon);
+		clickToElementByJavaScript(serviceProvider.updateServiceProviderIcon);
 	}
 
 	@Then("^user update Service Provider when do not enter name$")
@@ -337,6 +342,77 @@ public class ServiceProviderSteps extends TestBase {
 	
 	@After("@SP16")
 	public void closeBrowser16() {
+		tearDown();
+	}
+	
+	@Then("^user update Service Provider with values$")
+	public void user_update_Service_Provider_with_values() throws Throwable {
+		serviceProvider.updateServiceProvider(name, description, website, dealer, currencies, status);
+	}
+
+	@Then("^verify update Service Provider success$")
+	public void verify_update_Service_Provider_success() throws Throwable {
+		boolean flag = serviceProvider.verifyUpdateServiceProviderSuccessMessage();
+		Assert.assertTrue(flag);
+		System.out.print("Check update Service Provider success is: " + flag);
+	}
+	
+	@After("@SP17")
+	public void closeBrowser17() {
+		tearDown();
+	}
+	
+	@Then("^user update Service Provider but press Cancel button$")
+	public void user_update_Service_Provider_but_press_Cancel_button() throws Throwable {
+		serviceProvider.updateServiceProviderButCancel(name, description, website, dealer, currencies, status);
+	}
+
+	@Then("^verify title of Service Provider page$")
+	public void verify_title_of_Service_Provider_page() throws Throwable {
+		String serviceProviderTitle = serviceProvider.getServiceProviderTitle();
+		Assert.assertEquals(serviceProviderTitle, "Manage Service Provider");
+		System.out.println("The title of page after press Cancel is: " + serviceProviderTitle);
+	}
+	
+	@After("@SP18")
+	public void closeBrowser18() {
+		tearDown();
+	}
+	
+	@When("^user presses to Delete icon$")
+	public void user_presses_to_Delete_icon() throws Throwable {
+		serviceProvider = homePage.gotoServiceProviderPage();
+		Thread.sleep(5000);
+		clickToElementByJavaScript(serviceProvider.deleteServiceProviderIcon);
+		//clickToElement(serviceProvider.deleteServiceProviderIcon);
+	}
+
+	@Then("^user presses to Cancel button in the alert$")
+	public void user_presses_to_Cancel_button_in_the_alert() throws Throwable {
+		waitForAlertPresent();
+		cancelAlert();
+	}
+	
+	//@After("@SP19")
+	public void closeBrowser19() {
+		tearDown();
+	}
+
+	@Then("^user presses to OK button in the alert$")
+	public void user_presses_to_OK_button_in_the_alert() throws Throwable {
+		waitForAlertPresent();
+		acceptAlert();
+	}
+
+	@Then("^verify delete Service Provider success message$")
+	public void verify_delete_Service_Provider_success_message() throws Throwable {
+		boolean flag = serviceProvider.verifyDeleteSuccessMessage();
+		Assert.assertTrue(flag);
+		System.out.print("Delete the Service Provider is: " + flag);
+	}
+	
+	//@After("@SP20")
+	public void closeBrowser20() {
 		tearDown();
 	}
 

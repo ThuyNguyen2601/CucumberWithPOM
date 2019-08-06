@@ -119,10 +119,10 @@ public class ServiceProvider extends TestBase {
 	public WebElement serviceProviderExistedMessage;
 
 	@FindBy(xpath = "//tr[5]//td[6]//a[1]//span[1]")
-	public WebElement listUpdateIcon;
+	public WebElement updateServiceProviderIcon;
 
-	@FindBy(xpath = "//tr[5]//td[6]//a[2]//span[1]")
-	public WebElement listDeleteIcon;
+	@FindBy(xpath = "//tr[19]//td[6]//a[2]//span[1]")
+	public WebElement deleteServiceProviderIcon;
 
 	@FindBy(xpath = "//tr[5]//td[6]//a[3]//span[1]")
 	public WebElement listViewIcon;
@@ -159,6 +159,9 @@ public class ServiceProvider extends TestBase {
 	
 	@FindBy(xpath = "//div[contains(text(),'Name cannot be blank.')]")
 	public WebElement nameUpdateBlankMessage;
+	
+	@FindBy(xpath = "//div[@id='w16-success']")
+	public WebElement deleteSuccessMessage;
 
 	String resultCompareText = "chang10";
 
@@ -247,10 +250,8 @@ public class ServiceProvider extends TestBase {
 		clearToElement(dealerRevenueSharingUpdateTextbox);
 		sendKeyToElement(dealerRevenueSharingUpdateTextbox, dealer);
 		
-		clearToElement(currenciesUpdateDropdown);
 		sendKeyToElement(currenciesUpdateDropdown, currencies);
 		
-		clearToElement(statusUpdateDropdown);
 		sendKeyToElement(statusUpdateDropdown, status);
 		
 		clickToElement(updateButton);
@@ -325,5 +326,10 @@ public class ServiceProvider extends TestBase {
 	public boolean verifyNameUpdateBlankMessage() {
 		return isControlDisplayed(nameUpdateBlankMessage);
 	}
+	
+	public boolean verifyDeleteSuccessMessage() {
+		return isControlDisplayed(deleteSuccessMessage);
+	}
+	
 
 }
