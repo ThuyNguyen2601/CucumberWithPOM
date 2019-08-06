@@ -10,10 +10,11 @@ import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -31,6 +32,7 @@ public class TestBase {
 	public static Select select;
 	public static WebElement element;
 	public static WebDriverWait wait;
+	public static Alert alert;
 
 	public TestBase() {
 		try {
@@ -89,12 +91,23 @@ public class TestBase {
 		driver.navigate().forward();
 	}
 
-	public void acceptAlert() {
-		driver.switchTo().alert().accept();
+	public void acceptAlert() throws Throwable {
+		 try{
+			 //WebDriverWait wait = new WebDriverWait(driver, 60);
+			 //wait.ignoring(NoAlertPresentException.class).until(ExpectedConditions.alertIsPresent());
+             Alert alert = driver.switchTo().alert();
+             System.out.println("Alert box text" + alert.getText());
+             Thread.sleep(5000);
+             alert.accept();
+
+		 } catch (NoAlertPresentException noAlert) {
+			 noAlert.getMessage();
+		 }
 	}
 
 	public void cancelAlert() {
-		driver.switchTo().alert().dismiss();
+		alert = driver.switchTo().alert();
+		alert.dismiss();
 	}
 	
 	public void waitForAlertPresent() throws Throwable {

@@ -382,26 +382,29 @@ public class ServiceProviderSteps extends TestBase {
 	@When("^user presses to Delete icon$")
 	public void user_presses_to_Delete_icon() throws Throwable {
 		serviceProvider = homePage.gotoServiceProviderPage();
-		Thread.sleep(5000);
+		Thread.sleep(3000);
 		clickToElementByJavaScript(serviceProvider.deleteServiceProviderIcon);
 		//clickToElement(serviceProvider.deleteServiceProviderIcon);
 	}
 
 	@Then("^user presses to Cancel button in the alert$")
 	public void user_presses_to_Cancel_button_in_the_alert() throws Throwable {
-		waitForAlertPresent();
-		cancelAlert();
+		//waitForAlertPresent();
+		Thread.sleep(3000);
+		clickToElementByJavaScript(serviceProvider.CancelButtonInDeleteConfirmAlert);
 	}
 	
-	//@After("@SP19")
+	@After("@SP19")
 	public void closeBrowser19() {
 		tearDown();
 	}
 
 	@Then("^user presses to OK button in the alert$")
 	public void user_presses_to_OK_button_in_the_alert() throws Throwable {
-		waitForAlertPresent();
-		acceptAlert();
+		//waitForAlertPresent();
+		Thread.sleep(3000);
+		clickToElementByJavaScript(serviceProvider.OKButtonInDeleteConfirmAlert);
+		//acceptAlert();
 	}
 
 	@Then("^verify delete Service Provider success message$")
@@ -411,7 +414,7 @@ public class ServiceProviderSteps extends TestBase {
 		System.out.print("Delete the Service Provider is: " + flag);
 	}
 	
-	//@After("@SP20")
+	@After("@SP20")
 	public void closeBrowser20() {
 		tearDown();
 	}

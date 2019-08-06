@@ -162,6 +162,12 @@ public class ServiceProvider extends TestBase {
 	
 	@FindBy(xpath = "//div[@id='w16-success']")
 	public WebElement deleteSuccessMessage;
+	
+	@FindBy(xpath = "//button[@class = 'btn btn-warning']")
+	public WebElement OKButtonInDeleteConfirmAlert;
+	
+	@FindBy(xpath = "//button[@class = 'btn btn-default']")
+	public WebElement CancelButtonInDeleteConfirmAlert;
 
 	String resultCompareText = "chang10";
 
