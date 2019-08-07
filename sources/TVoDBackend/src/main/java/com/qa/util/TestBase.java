@@ -298,5 +298,33 @@ public class TestBase {
 		return text.contains(subText);
 	}
 	
+	public void HandleJQueryDateTimePicker(String day, By locator)
+			throws InterruptedException {
+		wait = new WebDriverWait(driver, 5);
+		//wait.until(ExpectedConditions.presenceOfElementLocated(By
+				//.id("ui-datepicker-div")));
+		WebElement table = driver.findElement(locator);
+		System.out.println("JQuery Calendar Dates");
+
+		List<WebElement> tableRows = table.findElements(By.xpath("//tr"));
+		for (WebElement row : tableRows) {
+			List<WebElement> cells = row.findElements(By.xpath("td"));
+
+			for (WebElement cell : cells) {
+				if (cell.getText().equals(day)) {
+					driver.findElement(By.linkText(day)).click();
+				}
+			}
+		}
+
+		// Switch back to the default screen again and scroll up by using
+		// the negative y-coordinates.
+		driver.switchTo().defaultContent();
+		((JavascriptExecutor) driver).executeScript("scroll(0, -250);");
+
+		// Intentional pause for 2 seconds.
+		Thread.sleep(2000);
+	}
+	
 
 }
