@@ -125,6 +125,11 @@ Scenario: Delete Service Provider and press OK button
 	Then user presses to OK button in the alert
 	And verify delete Service Provider success message
 	
+@SP21
+Scenario: View detail the Service Provider
+	When user go to Service Provider page
+	Then user views the Service Provider in list
+	Then user prints the result
 	
 
 	

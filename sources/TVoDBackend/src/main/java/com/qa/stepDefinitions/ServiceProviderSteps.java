@@ -418,6 +418,18 @@ public class ServiceProviderSteps extends TestBase {
 	public void closeBrowser20() {
 		tearDown();
 	}
+	
+	
+	@Then("^user views the Service Provider in list$")
+	public void user_views_the_Service_Provider_in_list() throws Throwable {
+		viewDetailContent(serviceProvider.listViewIcon);
+	}
+
+	@Then("^user prints the result$")
+	public void user_prints_the_result() throws Throwable {
+		System.out.print("Check view the Service Provider in list is done!");
+	}
+
 
 
 }

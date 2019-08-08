@@ -124,8 +124,8 @@ public class ServiceProvider extends TestBase {
 	@FindBy(xpath = "//tr[19]//td[6]//a[2]//span[1]")
 	public WebElement deleteServiceProviderIcon;
 
-	@FindBy(xpath = "//tr[5]//td[6]//a[3]//span[1]")
-	public WebElement listViewIcon;
+	@FindBy(xpath = "//tr//td[6]//a[3]//span[1]")
+	public List<WebElement> listViewIcon;
 
 	@FindBy(xpath = "//tr//td[6]//a[4]//span[1]")
 	public List<WebElement> listDeliveryContentIcon;

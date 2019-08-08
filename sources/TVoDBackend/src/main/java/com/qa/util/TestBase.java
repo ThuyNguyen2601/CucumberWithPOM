@@ -25,6 +25,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 public class TestBase {
 	public static WebDriver driver;
@@ -390,6 +391,28 @@ public class TestBase {
 			} else {
 				System.out.print("No results found!\n");
 			}
+		}
+	}
+	
+	public void viewDetailContent(List<WebElement> elements) throws Throwable {
+		String xpathValueOfName = "//th[contains(text(),'Name')]//following-sibling::td";
+		for(int i = 0; i < elements.size(); i++) {
+			//click in view icon order i
+			JavascriptExecutor ex=(JavascriptExecutor)driver;
+			ex.executeScript("arguments[0].click()", elements.get(i));
+			//clickToElement(elements.get(i));
+
+			//get name of content
+			String nameOfElement = driver.findElement(By.xpath(xpathValueOfName)).getText();
+			
+			//get the title of detail content page
+			String titleOfDetailContentPage = getPageTitle();
+			
+			//assert the title of page with name of content
+			Assert.assertEquals(titleOfDetailContentPage, nameOfElement);
+			Thread.sleep(2000);
+			back();
+			//scrollToElement(elements.get(i + 1));
 		}
 	}
 	
