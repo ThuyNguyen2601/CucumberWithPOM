@@ -1,5 +1,8 @@
 package com.qa.pages;
 
+import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -16,6 +19,13 @@ public class HomePage extends TestBase{
 	
 	@FindBy(xpath = "//a[contains(text(),'Manage service provider')]")
 	WebElement managementServiceProviderLink;
+	
+	@FindBy(xpath = "//a[contains(text(),'Content Provider')]")
+	WebElement contentProviderMenu;
+	
+	@FindBy(xpath = "//a[contains(text(),'Manage content provider')]")
+	WebElement manageContentProviderMenu;
+	
 	
 	//Initializing the Page Objects:
 	public HomePage() {
@@ -40,6 +50,12 @@ public class HomePage extends TestBase{
 		moveToElement(serviceProviderMenu);
 		clickToElement(managementServiceProviderLink);
 		return new ServiceProvider();
+	}
+	
+	public ContentProvider gotoContentProviderPage() {
+		moveToElement(contentProviderMenu);
+		clickToElement(manageContentProviderMenu);
+		return new ContentProvider();
 	}
 
 }

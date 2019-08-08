@@ -1,4 +1,4 @@
-Feature: Search Service Provider function
+Feature: Service Provider functions
 
 Background:
 		Given user open the browser

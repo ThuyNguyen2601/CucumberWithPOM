@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Properties;
 import java.util.Random;
@@ -325,6 +326,73 @@ public class TestBase {
 		// Intentional pause for 2 seconds.
 		Thread.sleep(2000);
 	}
+	public void selectValueInDateTiemPicker(String date) throws Throwable {
+		//button to open the calendar
+		WebElement selectDate = driver.findElement(By.xpath("//i[@class='glyphicon glyphicon-calendar']"));
+		selectDate.click();
+		
+		//button to move next in calendar
+		WebElement nextLink = driver.findElement(By.xpath("//div[@class='datepicker-days']//th[@class='next'][contains(text(),'»')]"));
+		
+		//button to click center of calendar header
+		WebElement midLink = driver.findElement(By.xpath("//div[@class='datepicker-days']//th[@class='datepicker-switch']"));
+		
+		//button to click previous in calendar
+		WebElement previousLink = driver.findElement(By.xpath("//div[@class='datepicker-days']//th[@class='prev'][contains(text(),'«')]"));
+		
+		//Split the date time to get only the date part
+		String date_dd_MM_yyyy[] = (date.split(" ")[0]).split("/");
+		
+		//get the year difference between current year and year to set in calander
+		int yearDiff = Integer.parseInt(date_dd_MM_yyyy[2]) - Calendar.getInstance().get(Calendar.YEAR);
+		
+		midLink.click();
+		if(yearDiff != 0) {
+			//if you have to move next year
+			if(yearDiff > 0) {
+				for(int i = 0; i < yearDiff; i++) {
+					System.out.println("Year Diff->"+i);
+					nextLink.click();
+				}
+			}
+			
+			//if you have to move previous year
+			else if(yearDiff < 0) {
+				for(int i = 0; i < (yearDiff*(-1)); i++) {
+					System.out.println("Year Diff->"+i);
+					previousLink.click();
+				}
+			}
+		}
+		
+		Thread.sleep(1000);
+		
+		//Get all months from calendar to select correct one
+		List<WebElement> listAllMonthToBook = driver.findElements(By.xpath("//div[@class='datepicker-months']//span"));
+		listAllMonthToBook.get(Integer.parseInt(date_dd_MM_yyyy[1]) - 1).click();
+		
+		Thread.sleep(1000);
+		
+		//get all dates from calendar to select correct one
+		List<WebElement> listAllDateToBook = driver.findElements(By.xpath("//div[@class='datepicker-days']//td[@class = 'day']"));
+		listAllDateToBook.get(Integer.parseInt(date_dd_MM_yyyy[0]) - 1).click();
+			
+	}
+	
+	public void searchByName(List<WebElement> elements, WebElement nameCriteria, String value) throws Throwable {
+		sendKeyToElement(nameCriteria, value);
+		sendKeyboardToElement(nameCriteria, Keys.ENTER);
+		Thread.sleep(3000);
+		for (int i = 1; i < elements.size() + 1; i++) {
+			String resultText = driver.findElement(By.xpath("//tbody//tr[" + i + "]//td[1]")).getText();
+			if (compareContainText(resultText, value)) {
+				System.out.print("The result is true\n");
+			} else {
+				System.out.print("No results found!\n");
+			}
+		}
+	}
+	
 	
 
 }
