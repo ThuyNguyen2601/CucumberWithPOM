@@ -398,9 +398,7 @@ public class TestBase {
 		String xpathValueOfName = "//th[contains(text(),'Name')]//following-sibling::td";
 		for(int i = 0; i < elements.size(); i++) {
 			//click in view icon order i
-			JavascriptExecutor ex=(JavascriptExecutor)driver;
-			ex.executeScript("arguments[0].click()", elements.get(i));
-			//clickToElement(elements.get(i));
+			clickToElementByJavaScript(elements.get(i));
 
 			//get name of content
 			String nameOfElement = driver.findElement(By.xpath(xpathValueOfName)).getText();
@@ -412,7 +410,6 @@ public class TestBase {
 			Assert.assertEquals(titleOfDetailContentPage, nameOfElement);
 			Thread.sleep(2000);
 			back();
-			//scrollToElement(elements.get(i + 1));
 		}
 	}
 	
