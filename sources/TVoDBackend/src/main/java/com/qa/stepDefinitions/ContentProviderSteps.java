@@ -154,93 +154,176 @@ public class ContentProviderSteps extends TestBase{
 
 	@Then("^user create Content Provider with wrong email format$")
 	public void user_create_Content_Provider_with_wrong_email_format() throws Throwable {
-		
+		contentProvider.createContentProvider(name, taxCode, address, status, accountName, "123", phoneNumber, password, confirmPassword, fullName, "CREATE");
 	}
 
 	@Then("^verify the wrong email format message$")
 	public void verify_the_wrong_email_format_message() throws Throwable {
-		
+		boolean flag = contentProvider.verifyWrongEmailFormatMessage();
+		Assert.assertTrue(flag);
+		System.out.print("Check create CP wrong email format is: " + flag + "\n");
+	}
+	
+	@After("@CP7")
+	public void closeBrowser7() {
+		tearDown();
 	}
 
 	@Then("^user create Content Provider without phone number$")
 	public void user_create_Content_Provider_without_phone_number() throws Throwable {
-		
+		contentProvider.createContentProvider(name, taxCode, address, status, accountName, email, " ", password, confirmPassword, fullName, "CREATE");
 	}
 
 	@Then("^verify the phone number blank message$")
 	public void verify_the_phone_number_blank_message() throws Throwable {
-		
+		boolean flag = contentProvider.verifyPhoneNumberBlankMessage();
+		Assert.assertTrue(flag);
+		System.out.print("Check create CP without phone number is: " + flag + "\n");
+	}
+	
+	@After("@CP8")
+	public void closeBrowser8() {
+		tearDown();
 	}
 
 	@Then("^user create Content Provider with wrong phone number format$")
 	public void user_create_Content_Provider_with_wrong_phone_number_format() throws Throwable {
-		
+		contentProvider.createContentProvider(name, taxCode, address, status, accountName, email, "aaa", password, confirmPassword, fullName, "CREATE");
 	}
 
 	@Then("^verify the wrong phone number format message$")
 	public void verify_the_wrong_phone_number_format_message() throws Throwable {
-		
+		boolean flag = contentProvider.verifyWrongPhoneNumberFormatMessage();
+		Assert.assertTrue(flag);
+		System.out.print("Check create CP wrong phone number format is: " + flag + "\n");
+	}
+	
+	@After("@CP9")
+	public void closeBrowser9() {
+		tearDown();
 	}
 
 	@Then("^user create Content Provider without password$")
 	public void user_create_Content_Provider_without_password() throws Throwable {
-		
+		contentProvider.createContentProvider(name, taxCode, address, status, accountName, email, phoneNumber, " ", confirmPassword, fullName, "CREATE");
 	}
 
 	@Then("^verify the password blank message$")
 	public void verify_the_password_blank_message() throws Throwable {
-		
+		boolean flag = contentProvider.verifyPasswordBlankMessage();
+		Assert.assertTrue(flag);
+		System.out.print("Check create CP without password is: " + flag + "\n");
 	}
-
+	
+	@After("@CP10")
+	public void closeBrowser10() {
+		tearDown();
+	}
+	
 	@Then("^user create Content Provider with wrong password format$")
 	public void user_create_Content_Provider_with_wrong_password_format() throws Throwable {
-		
+		contentProvider.createContentProvider(name, taxCode, address, status, accountName, email, phoneNumber, "11111", confirmPassword, fullName, "CREATE");
 	}
 
 	@Then("^verify the wrong password format message$")
 	public void verify_the_wrong_password_format_message() throws Throwable {
-		
+		boolean flag = contentProvider.verifyWrongPasswordFormatMessage();
+		Assert.assertTrue(flag);
+		System.out.print("Check create CP wrong password format is: " + flag + "\n");
+	}
+	
+	@After("@CP11")
+	public void closeBrowser11() {
+		tearDown();
 	}
 
 	@Then("^user create Content Provider without confirm password$")
 	public void user_create_Content_Provider_without_confirm_password() throws Throwable {
-		
+		contentProvider.createContentProvider(name, taxCode, address, status, accountName, email, phoneNumber, password, " ", fullName, "CREATE");
 	}
 
 	@Then("^verify the confirm password blank message$")
 	public void verify_the_confirm_password_blank_message() throws Throwable {
-		
+		boolean flag = contentProvider.verifyConfirmPasswordBlankMessage();
+		Assert.assertTrue(flag);
+		System.out.print("Check create CP without confirm password is: " + flag + "\n");
+	}
+	
+	@After("@CP12")
+	public void closeBrowser12() {
+		tearDown();
 	}
 
 	@Then("^user create Content Provider with wrong confirm password format$")
 	public void user_create_Content_Provider_with_wrong_confirm_password_format() throws Throwable {
-		
+		contentProvider.createContentProvider(name, taxCode, address, status, accountName, email, phoneNumber, password, "22222", fullName, "CREATE");
 	}
 
 	@Then("^verify the wrong confirm password format message$")
 	public void verify_the_wrong_confirm_password_format_message() throws Throwable {
-		
+		boolean flag = contentProvider.verifyWrongConfirmPasswordFormat();
+		Assert.assertTrue(flag);
+		System.out.print("Check create CP wrong confirm password format is: " + flag + "\n");
+	}
+	
+	@After("@CP13")
+	public void closeBrowser13() {
+		tearDown();
 	}
 
 	@Then("^user create Content Provider with password and confirm password not matched$")
 	public void user_create_Content_Provider_with_password_and_confirm_password_not_matched() throws Throwable {
-		
+		contentProvider.createContentProvider(name, taxCode, address, status, accountName, email, phoneNumber, "111111111", "999999999", fullName, "CREATE");
 	}
 
 	@Then("^verify the password and confirm password not matched message$")
 	public void verify_the_password_and_confirm_password_not_matched_message() throws Throwable {
-		
+		boolean flag = contentProvider.verifyPasswordAndConfirmPasswordNotMatchedMessage();
+		Assert.assertTrue(flag);
+		System.out.print("Check create CP password and confirm password not matched is: " + flag + "\n");
+	}
+	
+	@After("@CP14")
+	public void closeBrowser14() {
+		tearDown();
 	}
 
 	@Then("^user create Content Provider without full name$")
 	public void user_create_Content_Provider_without_full_name() throws Throwable {
-		
+		contentProvider.createContentProvider(name, taxCode, address, status, accountName, email, phoneNumber, password, confirmPassword, " ", "CREATE");
 	}
 
 	@Then("^verify the full name blank message$")
 	public void verify_the_full_name_blank_message() throws Throwable {
-		
+		boolean flag = contentProvider.verifyFullNameBlankMessage();
+		Assert.assertTrue(flag);
+		System.out.print("Check create CP without full name is: " + flag + "\n");
 	}
+	
+	@After("@CP15")
+	public void closeBrowser15() {
+		tearDown();
+	}
+	
+	@Then("^user create Content Provider with valid value$")
+	public void user_create_Content_Provider_with_valid_value() throws Throwable {
+		contentProvider.createContentProvider(name, taxCode, address, status, accountName, email, phoneNumber, password, confirmPassword, fullName, "CREATE");
+	}
+
+	@Then("^verify the create content provider success message$")
+	public void verify_the_create_content_provider_success_message() throws Throwable {
+		boolean flag = contentProvider.verifyCreateContentProviderSuccessMessage();
+		Assert.assertTrue(flag);
+		System.out.print("Check create Content Provider success is: " + flag + "\n");
+	}
+	
+	@After("@CP16")
+	public void closeBrowser16() {
+		tearDown();
+	}
+	
+
+
 
 
 	

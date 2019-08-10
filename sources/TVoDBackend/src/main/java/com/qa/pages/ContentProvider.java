@@ -91,6 +91,9 @@ public class ContentProvider extends TestBase{
 	@FindBy(xpath = "//a[@class='btn btn-default']")
 	public WebElement cancelButton;
 	
+	@FindBy(xpath = "//div[@id='w13-success']")
+	public WebElement createContentProviderSuccessMessage;
+	
 	
 	@FindBy(xpath = ".//*[@id='w0-container']/table/tbody/tr/td[1]")
 	public List<WebElement> listRowResult;
@@ -174,7 +177,9 @@ public class ContentProvider extends TestBase{
 		return isControlDisplayed(fullNameBlankMessage);
 	}
 	
-	
+	public boolean verifyCreateContentProviderSuccessMessage() {
+		return isControlDisplayed(createContentProviderSuccessMessage);
+	}
 	
 
 }

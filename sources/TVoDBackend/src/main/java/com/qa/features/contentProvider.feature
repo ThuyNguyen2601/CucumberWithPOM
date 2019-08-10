@@ -108,5 +108,12 @@ Scenario: Create Content Provider when do not enter full name
 	Then user create Content Provider without full name
 	Then verify the full name blank message
 	
+@CP16
+Scenario: Create Content Provider success
+	When user goes to the Content Provider page
+	Then user presses Create Content Provider button
+	Then user create Content Provider with valid value
+	Then verify the create content provider success message
+	
 
 
