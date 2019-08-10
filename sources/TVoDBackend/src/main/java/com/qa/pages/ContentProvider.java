@@ -98,6 +98,43 @@ public class ContentProvider extends TestBase{
 	@FindBy(xpath = ".//*[@id='w0-container']/table/tbody/tr/td[1]")
 	public List<WebElement> listRowResult;
 	
+	@FindBy(xpath = "//tr[3]//td[5]//a[2]//span[1]")
+	public WebElement updateContentProviderIcon;
+	
+	@FindBy(xpath = "//input[@id='contentproviderform-cp_name']")
+	public WebElement nameUpdateTextbox;
+	
+	@FindBy(xpath = "//input[@id='contentproviderform-cp_mst']")
+	public WebElement taxCodeUpdateTextbox;
+	
+	@FindBy(xpath = "//textarea[@id='contentproviderform-cp_address']")
+	public WebElement addressUpdateTextbox;
+	
+	@FindBy(xpath = "//select[@id='contentproviderform-status']")
+	public WebElement statusUpdateDropdown;
+	
+	@FindBy(xpath = "//input[@id='contentproviderform-email']")
+	public WebElement emailUpdateTextbox;
+	
+	@FindBy(xpath = "//input[@id='contentproviderform-phone_number']")
+	public WebElement phoneNumberUpdateTextbox;
+	
+	@FindBy(xpath = "//input[@id='contentproviderform-password']")
+	public WebElement passwordUpdateTextbox;
+	
+	@FindBy(xpath = "//input[@id='contentproviderform-confirm_password']")
+	public WebElement confirmPasswordUpdateTextbox;
+	
+	@FindBy(xpath = "//input[@id='contentproviderform-fullname']")
+	public WebElement fullNameUpdateTextbox;
+	
+	@FindBy(xpath = "//button[@class='btn btn-success']")
+	public WebElement updateButton;
+	
+	@FindBy(xpath = "//a[@class='btn btn-default']")
+	public WebElement cancelUpdateButton;
+	
+	
 	public ContentProvider() {
 		PageFactory.initElements(driver, this);
 	}
@@ -123,6 +160,39 @@ public class ContentProvider extends TestBase{
 		else if(command == "CANCEL") {
 			clickToElement(cancelButton);
 		}
+	}
+	
+	public void updateContentProvider(String name, String taxCode, String address, String status, String email, String phoneNumber, String password, String confirmPassword, String fullname, String command) {
+		clearToElement(nameUpdateTextbox);
+		sendKeyToElement(nameUpdateTextbox, name);
+		
+		clearToElement(taxCodeUpdateTextbox);
+		sendKeyToElement(taxCodeUpdateTextbox, taxCode);
+		
+		clearToElement(addressUpdateTextbox);
+		sendKeyToElement(statusUpdateDropdown, status);
+		
+		clearToElement(emailUpdateTextbox);
+		sendKeyToElement(emailUpdateTextbox, email);
+		
+		clearToElement(phoneNumberUpdateTextbox);
+		sendKeyToElement(phoneNumberUpdateTextbox, phoneNumber);
+		
+		clearToElement(passwordUpdateTextbox);
+		sendKeyToElement(passwordUpdateTextbox, password);
+		
+		clearToElement(confirmPasswordUpdateTextbox);
+		sendKeyToElement(confirmPasswordUpdateTextbox, confirmPassword);
+		
+		clearToElement(fullNameUpdateTextbox);
+		sendKeyToElement(fullNameUpdateTextbox, fullname);
+		if(command == "UPDATE") {
+			clickToElement(updateButton);
+		}
+		else if(command == "CANCEL") {
+			clickToElement(cancelUpdateButton);
+		}
+			
 	}
 	
 	public boolean verifyNameBlankMessage() {
@@ -165,7 +235,7 @@ public class ContentProvider extends TestBase{
 		return isControlDisplayed(wrongConfirmPasswordMessage);
 	}
 	
-	public boolean verifyPhoneNumberBlankMessage() {
+	public boolean verifyPhoneNumberBlankMessage() throws Throwable {
 		return isControlDisplayed(phoneNumberBlankMessage);
 	}
 	

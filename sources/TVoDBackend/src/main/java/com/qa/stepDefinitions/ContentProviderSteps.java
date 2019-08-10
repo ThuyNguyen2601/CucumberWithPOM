@@ -36,7 +36,7 @@ public class ContentProviderSteps extends TestBase{
 	@Given("^user goes to the TVoD login page$")
 	public void user_goes_to_the_TVoD_login_page() throws Throwable {
 		loginPage = new LoginPage();
-		Thread.sleep(3000);
+		Thread.sleep(1000);
 		String title = loginPage.getLoginPageTitle();
 		Assert.assertEquals(title, "Login");
 	}
@@ -86,7 +86,7 @@ public class ContentProviderSteps extends TestBase{
 
 	@Then("^user create Content Provider without name$")
 	public void user_create_Content_Provider_without_name() throws Throwable {
-		contentProvider.createContentProvider(" ", taxCode, address, status, accountName, email, phoneNumber, password, confirmPassword, fullName, "CREATE");
+		contentProvider.createContentProvider("", taxCode, address, status, accountName, email, phoneNumber, password, confirmPassword, fullName, "CREATE");
 	}
 
 	@Then("^verify the name blank message$")
@@ -103,7 +103,7 @@ public class ContentProviderSteps extends TestBase{
 
 	@Then("^user create Content Provider without account name$")
 	public void user_create_Content_Provider_without_account_name() throws Throwable {
-		contentProvider.createContentProvider(name, taxCode, address, status, " ", email, phoneNumber, password, confirmPassword, fullName, "CREATE");
+		contentProvider.createContentProvider(name, taxCode, address, status, "", email, phoneNumber, password, confirmPassword, fullName, "CREATE");
 	}
 
 	@Then("^verify the account name blank message$")
@@ -137,7 +137,7 @@ public class ContentProviderSteps extends TestBase{
 
 	@Then("^user create Content Provider without email$")
 	public void user_create_Content_Provider_without_email() throws Throwable {
-		contentProvider.createContentProvider(name, taxCode, address, status, accountName, " ", phoneNumber, password, confirmPassword, fullName, "CREATE");
+		contentProvider.createContentProvider(name, taxCode, address, status, accountName, "", phoneNumber, password, confirmPassword, fullName, "CREATE");
 	}
 
 	@Then("^verify the email blank message$")
@@ -171,7 +171,7 @@ public class ContentProviderSteps extends TestBase{
 
 	@Then("^user create Content Provider without phone number$")
 	public void user_create_Content_Provider_without_phone_number() throws Throwable {
-		contentProvider.createContentProvider(name, taxCode, address, status, accountName, email, " ", password, confirmPassword, fullName, "CREATE");
+		contentProvider.createContentProvider(name, taxCode, address, status, accountName, email, "", password, confirmPassword, fullName, "CREATE");
 	}
 
 	@Then("^verify the phone number blank message$")
@@ -205,7 +205,7 @@ public class ContentProviderSteps extends TestBase{
 
 	@Then("^user create Content Provider without password$")
 	public void user_create_Content_Provider_without_password() throws Throwable {
-		contentProvider.createContentProvider(name, taxCode, address, status, accountName, email, phoneNumber, " ", confirmPassword, fullName, "CREATE");
+		contentProvider.createContentProvider(name, taxCode, address, status, accountName, email, phoneNumber, "", confirmPassword, fullName, "CREATE");
 	}
 
 	@Then("^verify the password blank message$")
@@ -239,7 +239,7 @@ public class ContentProviderSteps extends TestBase{
 
 	@Then("^user create Content Provider without confirm password$")
 	public void user_create_Content_Provider_without_confirm_password() throws Throwable {
-		contentProvider.createContentProvider(name, taxCode, address, status, accountName, email, phoneNumber, password, " ", fullName, "CREATE");
+		contentProvider.createContentProvider(name, taxCode, address, status, accountName, email, phoneNumber, password, "", fullName, "CREATE");
 	}
 
 	@Then("^verify the confirm password blank message$")
@@ -290,7 +290,7 @@ public class ContentProviderSteps extends TestBase{
 
 	@Then("^user create Content Provider without full name$")
 	public void user_create_Content_Provider_without_full_name() throws Throwable {
-		contentProvider.createContentProvider(name, taxCode, address, status, accountName, email, phoneNumber, password, confirmPassword, " ", "CREATE");
+		contentProvider.createContentProvider(name, taxCode, address, status, accountName, email, phoneNumber, password, confirmPassword, "", "CREATE");
 	}
 
 	@Then("^verify the full name blank message$")
@@ -322,7 +322,147 @@ public class ContentProviderSteps extends TestBase{
 		tearDown();
 	}
 	
+	@Then("^user create Content Provider but press Cancel button$")
+	public void user_create_Content_Provider_but_press_Cancel_button() throws Throwable {
+		contentProvider.createContentProvider(name, taxCode, address, status, accountName, email, phoneNumber, password, confirmPassword, fullName, "CANCEL");
+	}
 
+	@Then("^verify the title of page after Cancel$")
+	public void verify_the_title_of_page_after_Cancel() throws Throwable {
+		String title = contentProvider.getContentProviderPageTitle();
+		Assert.assertEquals(title, "Manage Content Provider");
+		System.out.print("Check create CP but press Cancel is OK");
+	}
+	
+	@After("@CP17")
+	public void closeBrowser17() {
+		tearDown();
+	}
+	
+	@Then("^user presses update Content Provider button$")
+	public void user_presses_update_Content_Provider_button() throws Throwable {
+
+	}
+
+	@Then("^user update Content Provider without name$")
+	public void user_update_Content_Provider_without_name() throws Throwable {
+
+	}
+
+	@Then("^verify the name update blank message$")
+	public void verify_the_name_update_blank_message() throws Throwable {
+
+	}
+
+	@Then("^user update Content Provider without email$")
+	public void user_update_Content_Provider_without_email() throws Throwable {
+
+	}
+
+	@Then("^verify the email update blank message$")
+	public void verify_the_email_update_blank_message() throws Throwable {
+
+	}
+
+	@Then("^user update Content Provider with wrong email format$")
+	public void user_update_Content_Provider_with_wrong_email_format() throws Throwable {
+
+	}
+
+	@Then("^verify the wrong email format update blank message$")
+	public void verify_the_wrong_email_format_update_blank_message() throws Throwable {
+
+	}
+
+	@Then("^user update Content Provider without phone number$")
+	public void user_update_Content_Provider_without_phone_number() throws Throwable {
+
+	}
+
+	@Then("^verify the phone number update blank message$")
+	public void verify_the_phone_number_update_blank_message() throws Throwable {
+
+	}
+
+	@Then("^user update Content Provider with wrong phone number format$")
+	public void user_update_Content_Provider_with_wrong_phone_number_format() throws Throwable {
+
+	}
+
+	@Then("^verify the wrong phone number format update blank message$")
+	public void verify_the_wrong_phone_number_format_update_blank_message() throws Throwable {
+
+	}
+
+	@Then("^user update Content Provider without password$")
+	public void user_update_Content_Provider_without_password() throws Throwable {
+
+	}
+
+	@Then("^verify the password update blank message$")
+	public void verify_the_password_update_blank_message() throws Throwable {
+
+	}
+
+	@Then("^user update Content Provider with wrong password format$")
+	public void user_update_Content_Provider_with_wrong_password_format() throws Throwable {
+
+	}
+
+	@Then("^verify the wrong password format update blank message$")
+	public void verify_the_wrong_password_format_update_blank_message() throws Throwable {
+
+	}
+
+	@Then("^user update Content Provider without confirm password$")
+	public void user_update_Content_Provider_without_confirm_password() throws Throwable {
+
+	}
+
+	@Then("^verify the confirm password update blank message$")
+	public void verify_the_confirm_password_update_blank_message() throws Throwable {
+
+	}
+
+	@Then("^user update Content Provider with password and confirm password not matched$")
+	public void user_update_Content_Provider_with_password_and_confirm_password_not_matched() throws Throwable {
+
+	}
+
+	@Then("^verify the password and confirm password update not matched message$")
+	public void verify_the_password_and_confirm_password_update_not_matched_message() throws Throwable {
+
+	}
+
+	@Then("^user update Content Provider without full name$")
+	public void user_update_Content_Provider_without_full_name() throws Throwable {
+
+	}
+
+	@Then("^verify the full name update blank message$")
+	public void verify_the_full_name_update_blank_message() throws Throwable {
+
+	}
+
+	@Then("^user update Content Provider when press Cancel button$")
+	public void user_update_Content_Provider_when_press_Cancel_button() throws Throwable {
+
+	}
+
+	@Then("^verify the page title after press Cancel update$")
+	public void verify_the_page_title_after_press_Cancel_update() throws Throwable {
+
+	}
+
+	@Then("^user update Content Provider with valid values$")
+	public void user_update_Content_Provider_with_valid_values() throws Throwable {
+
+	}
+
+	@Then("^verify the update Content Provider success message$")
+	public void verify_the_update_Content_Provider_success_message() throws Throwable {
+
+	}
 
 
 

@@ -22,7 +22,7 @@ public class LoginPageSteps extends TestBase{
 	@When("^user in the login page$")
 	public void user_in_the_login_page() throws Throwable {
 		loginPage = new LoginPage();
-		Thread.sleep(3000);
+		Thread.sleep(1000);
 		String title = loginPage.getLoginPageTitle();
 		Assert.assertEquals(title, "Login");
 	}

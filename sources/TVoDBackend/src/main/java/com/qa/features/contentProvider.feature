@@ -115,5 +115,97 @@ Scenario: Create Content Provider success
 	Then user create Content Provider with valid value
 	Then verify the create content provider success message
 	
+@CP17
+Scenario: Create Content Provider but press Cancel
+	When user goes to the Content Provider page
+	Then user presses Create Content Provider button
+	Then user create Content Provider but press Cancel button
+	Then verify the title of page after Cancel
+	
+@CP18
+Scenario: Update Content Provider without name
+	When user goes to the Content Provider page
+	Then user presses update Content Provider button
+	Then user update Content Provider without name
+	Then verify the name update blank message
+	
+@CP19
+Scenario: Update Content Provider without email
+	When user goes to the Content Provider page
+	Then user presses update Content Provider button
+	Then user update Content Provider without email
+	Then verify the email update blank message
+	
+@CP20
+Scenario: Update Content Provider with wrong email format
+	When user goes to the Content Provider page
+	Then user presses update Content Provider button
+	Then user update Content Provider with wrong email format
+	Then verify the wrong email format update blank message
+	
+@CP21
+Scenario: Update Content Provider without phone number
+	When user goes to the Content Provider page
+	Then user presses update Content Provider button
+	Then user update Content Provider without phone number
+	Then verify the phone number update blank message
+	
+@CP22
+Scenario: Update Content Provider with wrong phone number format
+	When user goes to the Content Provider page
+	Then user presses update Content Provider button
+	Then user update Content Provider with wrong phone number format
+	Then verify the wrong phone number format update blank message
+	
+@CP23
+Scenario: Update Content Provider without password
+	When user goes to the Content Provider page
+	Then user presses update Content Provider button
+	Then user update Content Provider without password
+	Then verify the password update blank message
+	
+@CP24
+Scenario: Update Content Provider with wrong password format
+	When user goes to the Content Provider page
+	Then user presses update Content Provider button
+	Then user update Content Provider with wrong password format
+	Then verify the wrong password format update blank message
+	
+@CP25
+Scenario: Update Content Provider without confirm password
+	When user goes to the Content Provider page
+	Then user presses update Content Provider button
+	Then user update Content Provider without confirm password
+	Then verify the confirm password update blank message
+	
+@CP26
+Scenario: Update Content Provider with password and confirm password not matched
+	When user goes to the Content Provider page
+	Then user presses update Content Provider button
+	Then user update Content Provider with password and confirm password not matched
+	Then verify the password and confirm password update not matched message
+	
+@CP27
+Scenario: Update Content Provider without full name
+	When user goes to the Content Provider page
+	Then user presses update Content Provider button
+	Then user update Content Provider without full name
+	Then verify the full name update blank message
+	
+@CP28
+Scenario: Update Content Provider when press Cancel button
+	When user goes to the Content Provider page
+	Then user presses update Content Provider button
+	Then user update Content Provider when press Cancel button
+	Then verify the page title after press Cancel update
+	
+@CP29
+Scenario: Update Content Provider success
+	When user goes to the Content Provider page
+	Then user presses update Content Provider button
+	Then user update Content Provider with valid values
+	Then verify the update Content Provider success message
+
+
 
 

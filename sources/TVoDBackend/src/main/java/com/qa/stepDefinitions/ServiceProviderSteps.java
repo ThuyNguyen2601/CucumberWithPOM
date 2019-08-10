@@ -39,7 +39,7 @@ public class ServiceProviderSteps extends TestBase {
 	@And("^user goto the login page$")
 	public void user_goto_the_page() throws Throwable {
 		loginPage = new LoginPage();
-		Thread.sleep(3000);
+		Thread.sleep(1000);
 		String title = loginPage.getLoginPageTitle();
 		Assert.assertEquals(title, "Login");
 	}
