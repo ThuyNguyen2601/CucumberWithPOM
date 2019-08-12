@@ -216,8 +216,14 @@ public class TestBase {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		return js.executeScript("arguments[0].scrollIntoView(true);", element);
 	}
+	
+	public Object scrollToIntoviewElement(WebElement element) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		return js.executeScript("arguments[0].scrollIntoView();", element);
+	}
+	
 
-	public void highlighElemtn(WebElement element) {
+	public void highlighElement(WebElement element) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		String originalStyle = element.getAttribute("style");
 		js.executeScript("arguments[0].setAttribute(arguments[1],arguments[2])", element, "style",
@@ -234,6 +240,8 @@ public class TestBase {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		return js.executeScript("arguments[0].removeAttribute('" + attributeRemove + "');", element);
 	}
+	
+	
 
 	// window
 	public void switchToWindowByID(String parent) {

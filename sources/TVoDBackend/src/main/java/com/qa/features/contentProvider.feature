@@ -206,6 +206,33 @@ Scenario: Update Content Provider success
 	Then user update Content Provider with valid values
 	Then verify the update Content Provider success message
 
+@CP30
+Scenario: Reset the status of Content Provider but press Cancel
+	When user goes to the Content Provider page
+	Then user clicks to Reset button
+	Then user presses Cancel button on the confirmation reset status alert
+	
+@CP31
+Scenario: Reset the status success
+	When user goes to the Content Provider page
+	Then user clicks to Reset button
+	Then user presses OK button on the confirmation reset status alert
+	Then verify the change status successful message
+	
+@CP32
+Scenario: Delete the Content Provider but press Cancel button
+	When user goes to the Content Provider page
+	Then user clicks to Delete button
+	Then user presses Cancel button on the confirmation delete content provider alert
+	
+@CP33
+Scenario: Delete the Content Provider success
+	When user goes to the Content Provider page
+	Then user clicks to Delete button
+	Then user presses OK button on the confirmation delete content provider alert
+	Then verify the delete Content Provider success message
+	
+
 
 
 

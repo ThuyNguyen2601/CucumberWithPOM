@@ -101,6 +101,9 @@ public class ContentProvider extends TestBase{
 	@FindBy(xpath = "//tr[3]//td[5]//a[2]//span[1]")
 	public WebElement updateContentProviderIcon;
 	
+	@FindBy(xpath = "//a[contains(text(),'»')]")
+	public WebElement nextPageIcon;
+	
 	@FindBy(xpath = "//input[@id='contentproviderform-cp_name']")
 	public WebElement nameUpdateTextbox;
 	
@@ -133,6 +136,33 @@ public class ContentProvider extends TestBase{
 	
 	@FindBy(xpath = "//a[@class='btn btn-default']")
 	public WebElement cancelUpdateButton;
+	
+	@FindBy(xpath = "//div[@id='w13-success']")
+	public WebElement updateContentProviderSuccessMessage;
+	
+	@FindBy(xpath = "//div[@id='w13-success']")
+	public WebElement changeStatusSuccessMessage;
+	
+	@FindBy(xpath = "//tr[13]//td[5]//a[3]//span[1]")
+	public WebElement changeStatusIcon;
+	
+	@FindBy(xpath = "//button[@class='btn btn-default']")
+	public WebElement cancelChangeStatusButton;
+	
+	@FindBy(xpath = "//button[@class='btn btn-warning']")
+	public WebElement okChangeStatusButton;
+	
+	@FindBy(xpath = "//tr[14]//td[5]//a[4]//span[1]")
+	public WebElement deleteContentProviderIcon;
+	
+	@FindBy(xpath = "//button[@class='btn btn-default']")
+	public WebElement cancelDeleteContentProviderButton;
+	
+	@FindBy(xpath = "//button[@class='btn btn-warning']")
+	public WebElement okDeleteContentProviderButton;
+	
+	@FindBy(xpath = "//div[@id='w16-success']")
+	public WebElement deleteContentProviderSuccessMessage;
 	
 	
 	public ContentProvider() {
@@ -251,5 +281,16 @@ public class ContentProvider extends TestBase{
 		return isControlDisplayed(createContentProviderSuccessMessage);
 	}
 	
+	public boolean verifyUpdateContentProviderSuccessMessage() throws Throwable {
+		return isControlDisplayed(updateContentProviderSuccessMessage);
+	}
+	
+	public boolean verifyChangeStatusSuccessMessage() {
+		return isControlDisplayed(changeStatusSuccessMessage);
+	}
+	
+	public boolean verifyDeleteContentProviderSuccessMessage() {
+		return isControlDisplayed(deleteContentProviderSuccessMessage);
+	}
 
 }

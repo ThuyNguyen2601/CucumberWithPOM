@@ -13,7 +13,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 @CucumberOptions(features = "src/main/java/com/qa/features", glue = { "com.qa.stepDefinitions" }, tags = {
-		"@CP8,@CP17" }, format = { "pretty", "html:target/cucumber-reports/cucumber-pretty",
+		"@CP32,@CP33" }, format = { "pretty", "html:target/cucumber-reports/cucumber-pretty",
 				"json:target/cucumber-reports/CucumberTestReport.json", "rerun:target/cucumber-reports/rerun.txt" })
 
 public class TestRunner {
