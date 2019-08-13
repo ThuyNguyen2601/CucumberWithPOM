@@ -46,17 +46,21 @@ public class HomePage extends TestBase{
 		managementServiceProviderLink.click();
 	}
 	
-	public ServiceProvider gotoServiceProviderPage() {
+	public ServiceProvider gotoServiceProviderPage() throws Throwable {
 		moveToElementByJS(serviceProviderMenu);
 		//moveToElement(serviceProviderMenu);
-		clickToElement(managementServiceProviderLink);
+		//clickToElement(managementServiceProviderLink);
+		Thread.sleep(1000);
+		clickToElementByJavaScript(managementServiceProviderLink);
 		return new ServiceProvider();
 	}
 	
 	public ContentProvider gotoContentProviderPage() throws Throwable {
 		moveToElementByJS(contentProviderMenu);
+		Thread.sleep(1000);
 		//moveToElement(contentProviderMenu);
-		clickToElement(manageContentProviderMenu);
+		//clickToElement(manageContentProviderMenu);
+		clickToElementByJavaScript(manageContentProviderMenu);
 		return new ContentProvider();
 	}
 
