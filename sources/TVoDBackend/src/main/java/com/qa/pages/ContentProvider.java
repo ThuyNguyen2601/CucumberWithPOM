@@ -16,7 +16,7 @@ public class ContentProvider extends TestBase{
 	@FindBy(xpath = "//i[@class='glyphicon glyphicon-calendar']")
 	public WebElement calendarIcon;
 	
-	@FindBy(xpath = "//a[@class='btn btn-success']")
+	@FindBy(xpath = "//a[text()='Create Content Provider']")
 	public WebElement createContentProviderButton;
 	
 	@FindBy(xpath = "//input[@id='contentproviderform-cp_name']")

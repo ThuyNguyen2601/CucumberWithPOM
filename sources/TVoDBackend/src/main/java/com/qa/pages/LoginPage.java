@@ -10,25 +10,25 @@ import com.qa.util.TestBase;
 public class LoginPage  extends TestBase{
 	//Page Factory - OR
 	@FindBy(id="loginform-username")
-	WebElement usernameElement;
+	public WebElement usernameElement;
 	
 	@FindBy(id="loginform-password")
-	WebElement passwordElement;
+	public WebElement passwordElement;
 	
 	@FindBy(name="login-button")
-	WebElement loginButtonElement;
+	public WebElement loginButtonElement;
 	
 	@FindBy(xpath="//p[@class='lead']")
-	WebElement successMessage;
+	public WebElement successMessage;
 	
 	@FindBy(xpath="//div[contains(text(),'Account name not allowed to be blank')]")
-	WebElement usernameBlankText;
+	public WebElement usernameBlankText;
 	
 	@FindBy(xpath="//div[contains(text(),'Password not allowed to be blank')]")
-	WebElement passwordBlankText;
+	public WebElement passwordBlankText;
 	
 	@FindBy(xpath="//div[contains(text(),'Account name or password is incorrect. Please try')]")
-	WebElement incorrectAccountText;
+	public WebElement incorrectAccountText;
 	
 	//Initializing the Page Objects:
 	public LoginPage() {
@@ -47,11 +47,8 @@ public class LoginPage  extends TestBase{
 	
 	public HomePage login(String name, String pwd) {
 		sendKeyToElement(usernameElement, name);
-		//username.sendKeys(name);
 		sendKeyToElement(passwordElement, pwd);
-		//password.sendKeys(pwd);
 		clickToElement(loginButtonElement);
-		//loginButton.click();
 		
 		return new HomePage();
 	}

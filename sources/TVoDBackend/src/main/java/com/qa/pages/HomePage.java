@@ -52,7 +52,7 @@ public class HomePage extends TestBase{
 		return new ServiceProvider();
 	}
 	
-	public ContentProvider gotoContentProviderPage() {
+	public ContentProvider gotoContentProviderPage() throws Throwable {
 		moveToElement(contentProviderMenu);
 		clickToElement(manageContentProviderMenu);
 		return new ContentProvider();

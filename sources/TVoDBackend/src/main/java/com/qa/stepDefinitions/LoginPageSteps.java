@@ -14,21 +14,81 @@ public class LoginPageSteps extends TestBase{
 	LoginPage loginPage;
 	HomePage homePage;
 	
-	@Given("^open the browser$")
-	public void open_the_browser() throws Throwable {
-		initialization();
-	}
+//	@Given("^open the browser$")
+//	public void open_the_browser() throws Throwable {
+//		initialization();
+//	}
 
-	@When("^user in the login page$")
-	public void user_in_the_login_page() throws Throwable {
+//	@When("^user in the login page$")
+//	public void user_in_the_login_page() throws Throwable {
+//		loginPage = new LoginPage();
+//		Thread.sleep(1000);
+//		String title = loginPage.getLoginPageTitle();
+//		Assert.assertEquals(title, "Login");
+//	}
+
+	
+	
+	@Then("^user logs into the page with username blank$")
+	public void user_logs_into_the_page_with_username_blank() throws Throwable {
 		loginPage = new LoginPage();
-		Thread.sleep(1000);
-		String title = loginPage.getLoginPageTitle();
-		Assert.assertEquals(title, "Login");
+		homePage = loginPage.login("", prop.getProperty("password"));
 	}
 
+	@Then("^validate the username blank message$")
+	public void validate_the_username_blank_message() throws Throwable {
+		boolean flag = loginPage.verifyUsernameBlankDisplayed();
+		Assert.assertTrue(flag);
+	}
+	
+	//@After("@Test2")
+	public void closeBrowser2() {
+		tearDown();
+	}
+	
+	@Then("^user logs into the page with password blank$")
+	public void user_logs_into_the_page_with_password_blank() throws Throwable{
+		loginPage = new LoginPage();
+		clearToElement(loginPage.usernameElement);
+		clearToElement(loginPage.passwordElement);
+		homePage = loginPage.login(prop.getProperty("username"), " ");
+	}
+	
+	@Then("^validate the password blank message$")
+	public void validate_the_password_blank_message() throws Throwable{
+		boolean flag = loginPage.verifyPasswordBlankDisplayed();
+		Assert.assertTrue(flag);
+	}
+	
+	//@After("@Test3")
+	public void closeBrowser3() {
+		tearDown();
+	}
+	
+	@Then("^user logs into the page with wrong account$")
+	public void user_logs_into_the_page_with_wrong_account() throws Throwable {
+		loginPage = new LoginPage();
+		clearToElement(loginPage.usernameElement);
+		clearToElement(loginPage.passwordElement);
+		homePage = loginPage.login("admin1", "123456");
+	}
+
+	@Then("^validate the wrong account message$")
+	public void validate_the_wrong_account_message() throws Throwable {
+		boolean flag = loginPage.verifyIncorrectAccount();
+		Assert.assertTrue(flag);
+	}
+	
+	//@After("@Test4")
+	public void closeBrowser4() {
+		tearDown();
+	}
+	
 	@Then("^user logs into the page$")
 	public void user_logs_into_the_page() throws Throwable {
+		loginPage = new LoginPage();
+		clearToElement(loginPage.usernameElement);
+		clearToElement(loginPage.passwordElement);
 		homePage = loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
 	}
 
@@ -46,57 +106,9 @@ public class LoginPageSteps extends TestBase{
 		Assert.assertTrue(flag);
 	}
 	
-	@After("@Test1")
+	//@After("@Test1")
 	public void closeBrowser1() {
 		tearDown();
 	}
 	
-	
-	@Then("^user logs into the page with username blank$")
-	public void user_logs_into_the_page_with_username_blank() throws Throwable {
-		homePage = loginPage.login("", prop.getProperty("password"));
-	}
-
-	@Then("^validate the username blank message$")
-	public void validate_the_username_blank_message() throws Throwable {
-		boolean flag = loginPage.verifyUsernameBlankDisplayed();
-		Assert.assertTrue(flag);
-	}
-	
-	@After("@Test2")
-	public void closeBrowser2() {
-		tearDown();
-	}
-	
-	@Then("^user logs into the page with password blank$")
-	public void user_logs_into_the_page_with_password_blank() throws Throwable{
-		homePage = loginPage.login(prop.getProperty("username"), " ");
-	}
-	
-	@Then("^validate the password blank message$")
-	public void validate_the_password_blank_message() throws Throwable{
-		boolean flag = loginPage.verifyPasswordBlankDisplayed();
-		Assert.assertTrue(flag);
-	}
-	
-	@After("@Test3")
-	public void closeBrowser3() {
-		tearDown();
-	}
-	
-	@Then("^user logs into the page with wrong account$")
-	public void user_logs_into_the_page_with_wrong_account() throws Throwable {
-		homePage = loginPage.login("admin1", "123456");
-	}
-
-	@Then("^validate the wrong account message$")
-	public void validate_the_wrong_account_message() throws Throwable {
-		boolean flag = loginPage.verifyIncorrectAccount();
-		Assert.assertTrue(flag);
-	}
-	
-	@After("@Test4")
-	public void closeBrowser4() {
-		tearDown();
-	}
 }

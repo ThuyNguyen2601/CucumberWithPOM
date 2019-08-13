@@ -30,27 +30,21 @@ public class ServiceProviderSteps extends TestBase {
 	String status = "Active";
 	
 	
-	
-	@Given("^user open the browser$")
-	public void user_open_the_browser() throws Throwable {
-		initialization();
-	}
-	
-	@And("^user goto the login page$")
-	public void user_goto_the_page() throws Throwable {
-		loginPage = new LoginPage();
-		Thread.sleep(1000);
-		String title = loginPage.getLoginPageTitle();
-		Assert.assertEquals(title, "Login");
-	}
-	
-	@And("^user logins into the page$")
-	public void user_logins_into_the_page() throws Throwable {
-		homePage = loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
-	}
+//	@When("^Admin logins into the page$")
+//	public void user_logins_into_the_page() throws Throwable {
+//		homePage = loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
+//	}
+//	
+//	@Then("^verify the title of page$")
+//	public void verify_the_title_of_page() throws Throwable {
+//		String titlePage = homePage.getHomePageTitle();
+//		Assert.assertEquals(titlePage, "TVOD-Backend");
+//	}
 
 	@When("^user go to Service Provider page$")
 	public void user_go_to_Service_Provider_page() throws Throwable {
+		Thread.sleep(1000);
+		homePage = new HomePage();
 		serviceProvider = homePage.gotoServiceProviderPage();
 	}
 
@@ -65,7 +59,7 @@ public class ServiceProviderSteps extends TestBase {
 		serviceProvider.searchServiceProviderByName("chang");
 	}
 	
-	@After("@SP1")
+	//@After("@SP1")
 	public void closeBrowser1() {
 		tearDown();
 	}
@@ -89,7 +83,7 @@ public class ServiceProviderSteps extends TestBase {
 		System.out.print("Check Name blank is : "+ flag + "\n");
 	}
 	
-	@After("@SP2")
+	//@After("@SP2")
 	public void closeBrowser2() {
 		tearDown();
 	}
@@ -106,7 +100,7 @@ public class ServiceProviderSteps extends TestBase {
 		System.out.print("Check Account Name blank is: " + flag + "\n");
 	}
 
-	@After("@SP3")
+	//@After("@SP3")
 	public void closeBrowser3() {
 		tearDown();
 	}
@@ -123,7 +117,7 @@ public class ServiceProviderSteps extends TestBase {
 		System.out.println("Check Email blank is: " + flag + "\n");
 	}
 	
-	@After("@SP4")
+	//@After("@SP4")
 	public void closeBrowser4() {
 		tearDown();
 	}
@@ -141,7 +135,7 @@ public class ServiceProviderSteps extends TestBase {
 		System.out.println("Check Phone Number blank is: " + flag  + "\n");
 	}
 	
-	@After("@SP5")
+	//@After("@SP5")
 	public void closeBrowser5() {
 		tearDown();
 	}
@@ -158,7 +152,7 @@ public class ServiceProviderSteps extends TestBase {
 		System.out.println("Check Password blank is: " + flag + "\n");
 	}
 	
-	@After("@SP6")
+	//@After("@SP6")
 	public void closeBrowser6() {
 		tearDown();
 	}
@@ -175,7 +169,7 @@ public class ServiceProviderSteps extends TestBase {
 		System.out.print("Check Confirm Password blank is: " + flag + "\n");
 	}
 	
-	@After("@SP7")
+	//@After("@SP7")
 	public void closeBrowser7() {
 		tearDown();
 	}
@@ -192,7 +186,7 @@ public class ServiceProviderSteps extends TestBase {
 		System.out.println("Check Existed Service Provider Name is: " + flag + "\n");
 	}
 
-	@After("@SP8")
+	//@After("@SP8")
 	public void closeBrowser8() {
 		tearDown();
 	}
@@ -209,7 +203,7 @@ public class ServiceProviderSteps extends TestBase {
 		System.out.println("Check Account Name existed is: " + flag  + "\n");
 	}
 	
-	@After("@SP9")
+	//@After("@SP9")
 	public void closeBrowser9() {
 		tearDown();
 	}
@@ -226,7 +220,7 @@ public class ServiceProviderSteps extends TestBase {
 		System.out.print("Check Invalid Email is: " + flag + "\n");
 	}
 	
-	@After("@SP10")
+	//@After("@SP10")
 	public void closeBrowser10() {
 		tearDown();
 	}
@@ -243,7 +237,7 @@ public class ServiceProviderSteps extends TestBase {
 		System.out.println("Check Invalid Password is: " + flag + "\n");
 	}
 	
-	@After("@SP11")
+	//@After("@SP11")
 	public void closeBrowser11() {
 		tearDown();
 	}
@@ -260,7 +254,7 @@ public class ServiceProviderSteps extends TestBase {
 		System.out.print("Check Invalid Confirm Password is: " + flag + "\n");
 	}
 	
-	@After("@SP12")
+	//@After("@SP12")
 	public void closeBrowser12() {
 		tearDown();
 	}
@@ -277,7 +271,7 @@ public class ServiceProviderSteps extends TestBase {
 		System.out.print("Check Wrong Format Phone Number is: " + flag + "\n");
 	}
 	
-	@After("@SP13")
+	//@After("@SP13")
 	public void closeBrowser13() {
 		tearDown();
 	}
@@ -294,7 +288,7 @@ public class ServiceProviderSteps extends TestBase {
 		System.out.println("Check not matched password and confirm password is: " + flag + "\n");
 	}
 	
-	@After("@SP14")
+	//@After("@SP14")
 	public void closeBrowser14() {
 		tearDown();
 	}
@@ -312,7 +306,7 @@ public class ServiceProviderSteps extends TestBase {
 		System.out.print("Check Create Service Provider success is: " + flag + "\n");
 	}
 	
-	@After("@SP15")
+	//@After("@SP15")
 	public void closeBrowser15() {
 		tearDown();
 	}
@@ -340,7 +334,7 @@ public class ServiceProviderSteps extends TestBase {
 		System.out.print("Check update Service Provider with name blank is: " + flag);
 	}
 	
-	@After("@SP16")
+	//@After("@SP16")
 	public void closeBrowser16() {
 		tearDown();
 	}
@@ -357,7 +351,7 @@ public class ServiceProviderSteps extends TestBase {
 		System.out.print("Check update Service Provider success is: " + flag);
 	}
 	
-	@After("@SP17")
+	//@After("@SP17")
 	public void closeBrowser17() {
 		tearDown();
 	}
@@ -374,7 +368,7 @@ public class ServiceProviderSteps extends TestBase {
 		System.out.println("The title of page after press Cancel is: " + serviceProviderTitle);
 	}
 	
-	@After("@SP18")
+	//@After("@SP18")
 	public void closeBrowser18() {
 		tearDown();
 	}
@@ -394,7 +388,7 @@ public class ServiceProviderSteps extends TestBase {
 		clickToElementByJavaScript(serviceProvider.CancelButtonInDeleteConfirmAlert);
 	}
 	
-	@After("@SP19")
+	//@After("@SP19")
 	public void closeBrowser19() {
 		tearDown();
 	}
@@ -414,7 +408,7 @@ public class ServiceProviderSteps extends TestBase {
 		System.out.print("Delete the Service Provider is: " + flag);
 	}
 	
-	@After("@SP20")
+	//@After("@SP20")
 	public void closeBrowser20() {
 		tearDown();
 	}

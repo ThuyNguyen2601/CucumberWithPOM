@@ -28,27 +28,35 @@ public class ContentProviderSteps extends TestBase{
 	String confirmPassword = "12345678";
 	String fullName = "Nguyen Thi Thuy " + randomData();
 	
-	@Given("^user opens the browser page$")
-	public void user_opens_the_browser_page() throws Throwable {
-		initialization();
-	}
+//	@Given("^Admin opens the browser page$")
+//	public void user_opens_the_browser_page() throws Throwable {
+//		initialization();
+//	}
+//
+//	@When("^Admin goes to the TVoD login page$")
+//	public void user_goes_to_the_TVoD_login_page() throws Throwable {
+//		loginPage = new LoginPage();
+//		Thread.sleep(1000);
+//		String title = loginPage.getLoginPageTitle();
+//		Assert.assertEquals(title, "Login");
+//	}
 
-	@Given("^user goes to the TVoD login page$")
-	public void user_goes_to_the_TVoD_login_page() throws Throwable {
-		loginPage = new LoginPage();
-		Thread.sleep(1000);
-		String title = loginPage.getLoginPageTitle();
-		Assert.assertEquals(title, "Login");
-	}
+//	@When("^Admin logs into the TVoD page$")
+//	public void user_logs_into_the_TVoD_page() throws Throwable {
+//		loginPage = new LoginPage();
+//		homePage = loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
+//	}
+//	
+//	@Then("^verify the title of page$")
+//	public void verify_the_title_of_page() throws Throwable {
+//		String titlePage = homePage.getHomePageTitle();
+//		Assert.assertEquals(titlePage, "TVOD-Backend");
+//	}
 
-	@Given("^user logs into the TVoD page$")
-	public void user_logs_into_the_TVoD_page() throws Throwable {
-		homePage = loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
-	}
-
-	@When("^user goes to the Content Provider page$")
+	@Then("^user goes to the Content Provider page$")
 	public void user_goes_to_the_Content_Provider_page() throws Throwable {
-		//Thread.sleep(3000);
+		Thread.sleep(1000);
+		homePage = new HomePage();
 		contentProvider = homePage.gotoContentProviderPage();
 	}
 
@@ -63,7 +71,7 @@ public class ContentProviderSteps extends TestBase{
 		searchByName(contentProvider.listRowResult, contentProvider.nameCriteria, "123");
 	}
 	
-	@After("@CP1")
+	//@After("@CP1")
 	public void closeBrowser1() {
 		tearDown();
 	}
@@ -74,14 +82,15 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check searches Content Provider by calendar success!");
 	}
 	
-	@After("@CP2")
+	//@After("@CP2")
 	public void closeBrowser2() {
 		tearDown();
 	}
 	
 	@Then("^user presses Create Content Provider button$")
 	public void user_presses_Create_Content_Provider_button() throws Throwable {
-		clickToElement(contentProvider.createContentProviderButton);
+		//clickToElement(contentProvider.createContentProviderButton);
+		clickToElementByJavaScript(contentProvider.createContentProviderButton);
 	}
 
 	@Then("^user create Content Provider without name$")
@@ -96,7 +105,7 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check create CP without name is: " + flag + "\n");
 	}
 	
-	@After("@CP3")
+	//@After("@CP3")
 	public void closeBrowser3() {
 		tearDown();
 	}
@@ -113,7 +122,7 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check create CP without account name is: " + flag + "\n");
 	}
 	
-	@After("@CP4")
+	//@After("@CP4")
 	public void closeBrowser4() {
 		tearDown();
 	}
@@ -130,7 +139,7 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check create CP with existed account name is: " + flag + "\n");
 	}
 	
-	@After("@CP5")
+	//@After("@CP5")
 	public void closeBrowser5() {
 		tearDown();
 	}
@@ -147,7 +156,7 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check create CP without email is: " + flag + "\n");
 	}
 	
-	@After("@CP6")
+	//@After("@CP6")
 	public void closeBrowser6() {
 		tearDown();
 	}
@@ -164,7 +173,7 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check create CP wrong email format is: " + flag + "\n");
 	}
 	
-	@After("@CP7")
+	//@After("@CP7")
 	public void closeBrowser7() {
 		tearDown();
 	}
@@ -181,7 +190,7 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check create CP without phone number is: " + flag + "\n");
 	}
 	
-	@After("@CP8")
+	//@After("@CP8")
 	public void closeBrowser8() {
 		tearDown();
 	}
@@ -198,7 +207,7 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check create CP wrong phone number format is: " + flag + "\n");
 	}
 	
-	@After("@CP9")
+	//@After("@CP9")
 	public void closeBrowser9() {
 		tearDown();
 	}
@@ -215,7 +224,7 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check create CP without password is: " + flag + "\n");
 	}
 	
-	@After("@CP10")
+	//@After("@CP10")
 	public void closeBrowser10() {
 		tearDown();
 	}
@@ -232,7 +241,7 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check create CP wrong password format is: " + flag + "\n");
 	}
 	
-	@After("@CP11")
+	//@After("@CP11")
 	public void closeBrowser11() {
 		tearDown();
 	}
@@ -249,7 +258,7 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check create CP without confirm password is: " + flag + "\n");
 	}
 	
-	@After("@CP12")
+	//@After("@CP12")
 	public void closeBrowser12() {
 		tearDown();
 	}
@@ -266,7 +275,7 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check create CP wrong confirm password format is: " + flag + "\n");
 	}
 	
-	@After("@CP13")
+	//@After("@CP13")
 	public void closeBrowser13() {
 		tearDown();
 	}
@@ -283,7 +292,7 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check create CP password and confirm password not matched is: " + flag + "\n");
 	}
 	
-	@After("@CP14")
+	//@After("@CP14")
 	public void closeBrowser14() {
 		tearDown();
 	}
@@ -300,7 +309,7 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check create CP without full name is: " + flag + "\n");
 	}
 	
-	@After("@CP15")
+	//@After("@CP15")
 	public void closeBrowser15() {
 		tearDown();
 	}
@@ -317,7 +326,7 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check create Content Provider success is: " + flag + "\n");
 	}
 	
-	@After("@CP16")
+	//@After("@CP16")
 	public void closeBrowser16() {
 		tearDown();
 	}
@@ -334,7 +343,7 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check create CP but press Cancel is OK");
 	}
 	
-	@After("@CP17")
+	//@After("@CP17")
 	public void closeBrowser17() {
 		tearDown();
 	}
@@ -357,7 +366,7 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check update Content Provider without name is: " + flag + "\n");
 	}
 	
-	@After("@CP18")
+	//@After("@CP18")
 	public void closeBrowser18() {
 		tearDown();
 	}
@@ -374,7 +383,7 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check update Content Provider without email is: " + flag + "\n");
 	}
 	
-	@After("@CP19")
+	//@After("@CP19")
 	public void closeBrowser19() {
 		tearDown();
 	}
@@ -391,7 +400,7 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check update Content Provider with wrong email format is: " + flag + "\n");
 	}
 	
-	@After("@CP20")
+	//@After("@CP20")
 	public void closeBrowser20() {
 		tearDown();
 	}
@@ -408,7 +417,7 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check update Content Provider without phone number is: " + flag + "\n");
 	}
 	
-	@After("@CP21")
+	//@After("@CP21")
 	public void closeBrowser21() {
 		tearDown();
 	}
@@ -425,7 +434,7 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check update Content Provider with wrong phone number format is: " + flag + "\n");
 	}
 	
-	@After("@CP22")
+	//@After("@CP22")
 	public void closeBrowser22() {
 		tearDown();
 	}
@@ -442,7 +451,7 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check update Content Provider without password is: " + flag + "\n");
 	}
 	
-	@After("@CP23")
+	//@After("@CP23")
 	public void closeBrowser23() {
 		tearDown();
 	}
@@ -459,7 +468,7 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check update Content Provider with wrong password format is: " + flag + "\n");
 	}
 	
-	@After("@CP24")
+	//@After("@CP24")
 	public void closeBrowser24() {
 		tearDown();
 	}
@@ -476,7 +485,7 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check update Content Provider without confirm password is: " + flag + "\n");
 	}
 	
-	@After("@CP25")
+	//@After("@CP25")
 	public void closeBrowser25() {
 		tearDown();
 	}
@@ -493,7 +502,7 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check update Content Provider with password and confirm password not matched is: " + flag + "\n");
 	}
 	
-	@After("@CP26")
+	//@After("@CP26")
 	public void closeBrowser26() {
 		tearDown();
 	}
@@ -510,7 +519,7 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check update Content Provider without fullname is: " + flag + "\n");
 	}
 	
-	@After("@CP27")
+	//@After("@CP27")
 	public void closeBrowser27() {
 		tearDown();
 	}
@@ -526,7 +535,7 @@ public class ContentProviderSteps extends TestBase{
 		Assert.assertEquals(pageTitle, "Manage Content Provider");
 	}
 	
-	@After("@CP28")
+	//@After("@CP28")
 	public void closeBrowser28() {
 		tearDown();
 	}
@@ -543,7 +552,7 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check update Content Provider success is: " + flag + "\n");
 	}
 	
-	@After("@CP29")
+	//@After("@CP29")
 	public void closeBrowser29() {
 		tearDown();
 	}
@@ -558,7 +567,7 @@ public class ContentProviderSteps extends TestBase{
 		clickToElement(contentProvider.cancelChangeStatusButton);
 	}
 	
-	@After("@CP30")
+	//@After("@CP30")
 	public void closeBrowser30() {
 		tearDown();
 	}
@@ -575,7 +584,7 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check change status of Content Provider success is: " + flag + "\n");
 	}
 	
-	@After("@CP31")
+	//@After("@CP31")
 	public void closeBrowser31() {
 		tearDown();
 	}
@@ -590,7 +599,7 @@ public class ContentProviderSteps extends TestBase{
 		clickToElement(contentProvider.cancelDeleteContentProviderButton);
 	}
 	
-	@After("@CP32")
+	//@After("@CP32")
 	public void closeBrowser32() {
 		tearDown();
 	}
@@ -607,7 +616,7 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check delete Content Provider success is: " + flag + "\n");
 	}
 
-	@After("@CP33")
+	//@After("@CP33")
 	public void closeBrowser33() {
 		tearDown();
 	}

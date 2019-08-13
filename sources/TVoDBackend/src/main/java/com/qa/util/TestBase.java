@@ -65,7 +65,7 @@ public class TestBase {
 		}
 
 		driver.manage().window().maximize();
-		driver.manage().deleteAllCookies();
+		//driver.manage().deleteAllCookies();
 		driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(TestUtil.IMPLICIT_WAIT, TimeUnit.SECONDS);
 
@@ -420,6 +420,12 @@ public class TestBase {
 			back();
 		}
 	}
+	
+//	public void waitForElementVisible(String locator) {
+//		WebDriverWait waitExplicit = new WebDriverWait(driver, 20);
+//		By byLocator = By.xpath(locator);
+//		waitExplicit.until(ExpectedConditions.visibilityOfElementLocated(byLocator));
+//	}
 	
 	
 
