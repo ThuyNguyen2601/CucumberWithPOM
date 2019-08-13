@@ -65,10 +65,11 @@ public class ServiceProviderSteps extends TestBase {
 	}
 	
 	
-	@When("^user presses to Create Service Provider button$")
+	@Then("^user presses to Create Service Provider button$")
 	public void user_presses_to_Create_Service_Provider_button() throws Throwable {
+		homePage = new HomePage();
 		serviceProvider = homePage.gotoServiceProviderPage();
-		clickToElement(serviceProvider.createServiceProviderButton);
+		clickToElementByJavaScript(serviceProvider.createServiceProviderButton);
 	}
 
 	@Then("^user creates Service Provider with Name blank$")

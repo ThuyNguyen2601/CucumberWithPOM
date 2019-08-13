@@ -47,13 +47,15 @@ public class HomePage extends TestBase{
 	}
 	
 	public ServiceProvider gotoServiceProviderPage() {
-		moveToElement(serviceProviderMenu);
+		moveToElementByJS(serviceProviderMenu);
+		//moveToElement(serviceProviderMenu);
 		clickToElement(managementServiceProviderLink);
 		return new ServiceProvider();
 	}
 	
 	public ContentProvider gotoContentProviderPage() throws Throwable {
-		moveToElement(contentProviderMenu);
+		moveToElementByJS(contentProviderMenu);
+		//moveToElement(contentProviderMenu);
 		clickToElement(manageContentProviderMenu);
 		return new ContentProvider();
 	}

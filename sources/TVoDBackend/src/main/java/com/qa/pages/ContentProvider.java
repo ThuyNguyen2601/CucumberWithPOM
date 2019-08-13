@@ -185,10 +185,12 @@ public class ContentProvider extends TestBase{
 		sendKeyToElement(confirmPasswordAddTextbox, confirmPassword);
 		sendKeyToElement(fullNameAddTextbox, fullName);
 		if(command == "CREATE") {
-			clickToElement(createButton);
+			clickToElementByJavaScript(createButton);
+			//clickToElement(createButton);
 		}
 		else if(command == "CANCEL") {
-			clickToElement(cancelButton);
+			clickToElementByJavaScript(cancelButton);
+			//clickToElement(cancelButton);
 		}
 	}
 	
@@ -217,10 +219,12 @@ public class ContentProvider extends TestBase{
 		clearToElement(fullNameUpdateTextbox);
 		sendKeyToElement(fullNameUpdateTextbox, fullname);
 		if(command == "UPDATE") {
-			clickToElement(updateButton);
+			clickToElementByJavaScript(updateButton);
+			//clickToElement(updateButton);
 		}
 		else if(command == "CANCEL") {
-			clickToElement(cancelUpdateButton);
+			clickToElementByJavaScript(cancelUpdateButton);
+			//clickToElement(cancelUpdateButton);
 		}
 			
 	}

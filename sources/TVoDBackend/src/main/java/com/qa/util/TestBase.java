@@ -162,6 +162,12 @@ public class TestBase {
 		action = new Actions(driver);
 		action.moveToElement(element).perform();
 	}
+	
+	public void moveToElementByJS(WebElement element) {
+		action = new Actions(driver);
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
+		action.moveToElement(element).perform();
+	}
 
 	public void rightClick(WebElement element) {
 		action = new Actions(driver);

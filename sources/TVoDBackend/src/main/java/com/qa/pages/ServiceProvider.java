@@ -201,7 +201,8 @@ public class ServiceProvider extends TestBase {
 		sendKeyToElement(phoneNumberAddTextbox, phoneNumber);
 		sendKeyToElement(passwordAddTextbox, password);
 		sendKeyToElement(confirmPasswordAddTextbox, confirmPassword);
-		clickToElement(createButton);
+		clickToElementByJavaScript(createButton);
+		//clickToElement(createButton);
 	}
 	
 	public void createServiceProviderButCancel(String name, String accountName, String email, String phoneNumber,
@@ -212,7 +213,8 @@ public class ServiceProvider extends TestBase {
 		sendKeyToElement(phoneNumberAddTextbox, phoneNumber);
 		sendKeyToElement(passwordAddTextbox, password);
 		sendKeyToElement(confirmPasswordAddTextbox, confirmPassword);
-		clickToElement(cancelButton);
+		clickToElementByJavaScript(cancelButton);
+		//clickToElement(cancelButton);
 	}
 
 	public void createServiceProviderWithFullValue(String name, String description, String website, String currencies,

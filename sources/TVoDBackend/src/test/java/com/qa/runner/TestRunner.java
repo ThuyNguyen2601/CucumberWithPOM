@@ -15,8 +15,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-@CucumberOptions(features = "src/main/java/com/qa/features", glue = { "com.qa.stepDefinitions" }, tags = {
-		"~@A1,~@A2,~@A3" }, format = { "pretty", "html:target/cucumber-reports/cucumber-pretty",
+@CucumberOptions(features = { "src/main/java/com/qa/features/" }, glue = { "com.qa.stepDefinitions" }, tags = {
+		"~@Ignore" }, format = { "pretty", "html:target/cucumber-reports/cucumber-pretty",
 				"json:target/cucumber-reports/CucumberTestReport.json", "rerun:target/cucumber-reports/rerun.txt" })
 
 public class TestRunner extends TestBase{

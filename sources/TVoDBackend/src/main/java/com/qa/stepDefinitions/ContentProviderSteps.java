@@ -55,7 +55,7 @@ public class ContentProviderSteps extends TestBase{
 
 	@Then("^user goes to the Content Provider page$")
 	public void user_goes_to_the_Content_Provider_page() throws Throwable {
-		Thread.sleep(1000);
+		//Thread.sleep(1000);
 		homePage = new HomePage();
 		contentProvider = homePage.gotoContentProviderPage();
 	}
@@ -76,11 +76,11 @@ public class ContentProviderSteps extends TestBase{
 		tearDown();
 	}
 	
-	@Then("^user searches Content Provider by calendar$")
-	public void user_searches_Content_Provider_by_calendar() throws Throwable {
-		selectValueInDateTiemPicker("04/07/2019");
-		System.out.print("Check searches Content Provider by calendar success!");
-	}
+//	@Then("^user searches Content Provider by calendar$")
+//	public void user_searches_Content_Provider_by_calendar() throws Throwable {
+//		selectValueInDateTiemPicker("04/07/2019");
+//		System.out.print("Check searches Content Provider by calendar success!");
+//	}
 	
 	//@After("@CP2")
 	public void closeBrowser2() {
