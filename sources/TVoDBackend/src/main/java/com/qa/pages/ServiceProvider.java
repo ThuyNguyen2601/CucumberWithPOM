@@ -85,7 +85,7 @@ public class ServiceProvider extends TestBase {
 	@FindBy(xpath = "//div[contains(text(),'Name cannot be blank.')]")
 	public WebElement nameBlankMessage;
 
-	@FindBy(xpath = "//div[text()='Account name  cannot be blank.']")
+	@FindBy(xpath = "//div[contains(text(),'cannot be blank.')]")
 	public WebElement accountNameBlankMessage;
 
 	@FindBy(xpath = "//div[contains(text(),'Account name already exists, please choose another')]")
@@ -194,27 +194,29 @@ public class ServiceProvider extends TestBase {
 	}
 
 	public void createServiceProvider(String name, String accountName, String email, String phoneNumber,
-			String password, String confirmPassword) {
+			String password, String confirmPassword) throws Throwable {
 		sendKeyToElement(nameAddTextbox, name);
 		sendKeyToElement(accountNameAddTextbox, accountName);
 		sendKeyToElement(emailAddTextbox, email);
 		sendKeyToElement(phoneNumberAddTextbox, phoneNumber);
 		sendKeyToElement(passwordAddTextbox, password);
 		sendKeyToElement(confirmPasswordAddTextbox, confirmPassword);
-		clickToElementByJavaScript(createButton);
-		//clickToElement(createButton);
+		Thread.sleep(1000);
+		//clickToElementByJavaScript(createButton);
+		clickToElement(createButton);
 	}
 	
 	public void createServiceProviderButCancel(String name, String accountName, String email, String phoneNumber,
-			String password, String confirmPassword) {
+			String password, String confirmPassword) throws Throwable {
 		sendKeyToElement(nameAddTextbox, name);
 		sendKeyToElement(accountNameAddTextbox, accountName);
 		sendKeyToElement(emailAddTextbox, email);
 		sendKeyToElement(phoneNumberAddTextbox, phoneNumber);
 		sendKeyToElement(passwordAddTextbox, password);
 		sendKeyToElement(confirmPasswordAddTextbox, confirmPassword);
-		clickToElementByJavaScript(cancelButton);
-		//clickToElement(cancelButton);
+		Thread.sleep(1000);
+		//clickToElementByJavaScript(cancelButton);
+		clickToElement(cancelButton);
 	}
 
 	public void createServiceProviderWithFullValue(String name, String description, String website, String currencies,
@@ -279,7 +281,8 @@ public class ServiceProvider extends TestBase {
 		return isControlDisplayed(nameBlankMessage);
 	}
 
-	public boolean verifyAccountNameBlankMessage() {
+	public boolean verifyAccountNameBlankMessage() throws Throwable {
+		Thread.sleep(1000);
 		return isControlDisplayed(accountNameBlankMessage);
 	}
 
