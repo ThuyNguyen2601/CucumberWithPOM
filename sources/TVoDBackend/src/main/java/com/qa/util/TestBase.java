@@ -408,11 +408,10 @@ public class TestBase {
 		}
 	}
 	
-	public void viewDetailContent(List<WebElement> elements) throws Throwable {
+	public void viewDetailContent(WebElement element) throws Throwable {
 		String xpathValueOfName = "//th[contains(text(),'Name')]//following-sibling::td";
-		for(int i = 0; i < elements.size(); i++) {
-			//click in view icon order i
-			clickToElementByJavaScript(elements.get(i));
+			//click in view icon
+			clickToElementByJavaScript(element);
 
 			//get name of content
 			String nameOfElement = driver.findElement(By.xpath(xpathValueOfName)).getText();
@@ -422,9 +421,9 @@ public class TestBase {
 			
 			//assert the title of page with name of content
 			Assert.assertEquals(titleOfDetailContentPage, nameOfElement);
-			Thread.sleep(2000);
+			Thread.sleep(1000);
 			back();
-		}
+		
 	}
 	
 //	public void waitForElementVisible(String locator) {

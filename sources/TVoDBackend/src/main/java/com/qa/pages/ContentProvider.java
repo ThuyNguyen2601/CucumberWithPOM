@@ -128,7 +128,7 @@ public class ContentProvider extends TestBase{
 	@CacheLookup
 	public List<WebElement> listRowResult;
 	
-	@FindBy(xpath = "//tr[3]//td[5]//a[2]//span[1]")
+	@FindBy(xpath = "//tr[15]//td[5]//a[2]//span[1]")
 	@CacheLookup
 	public WebElement updateContentProviderIcon;
 	
@@ -141,60 +141,79 @@ public class ContentProvider extends TestBase{
 	public WebElement nameUpdateTextbox;
 	
 	@FindBy(xpath = "//input[@id='contentproviderform-cp_mst']")
+	@CacheLookup
 	public WebElement taxCodeUpdateTextbox;
 	
 	@FindBy(xpath = "//textarea[@id='contentproviderform-cp_address']")
+	@CacheLookup
 	public WebElement addressUpdateTextbox;
 	
 	@FindBy(xpath = "//select[@id='contentproviderform-status']")
+	@CacheLookup
 	public WebElement statusUpdateDropdown;
 	
 	@FindBy(xpath = "//input[@id='contentproviderform-email']")
+	@CacheLookup
 	public WebElement emailUpdateTextbox;
 	
 	@FindBy(xpath = "//input[@id='contentproviderform-phone_number']")
+	@CacheLookup
 	public WebElement phoneNumberUpdateTextbox;
 	
 	@FindBy(xpath = "//input[@id='contentproviderform-password']")
+	@CacheLookup
 	public WebElement passwordUpdateTextbox;
 	
 	@FindBy(xpath = "//input[@id='contentproviderform-confirm_password']")
+	@CacheLookup
 	public WebElement confirmPasswordUpdateTextbox;
 	
 	@FindBy(xpath = "//input[@id='contentproviderform-fullname']")
+	@CacheLookup
 	public WebElement fullNameUpdateTextbox;
 	
 	@FindBy(xpath = "//button[@class='btn btn-success']")
+	@CacheLookup
 	public WebElement updateButton;
 	
 	@FindBy(xpath = "//a[@class='btn btn-default']")
+	@CacheLookup
 	public WebElement cancelUpdateButton;
 	
 	@FindBy(xpath = "//div[@id='w13-success']")
+	@CacheLookup
 	public WebElement updateContentProviderSuccessMessage;
 	
 	@FindBy(xpath = "//div[@id='w13-success']")
+	@CacheLookup
 	public WebElement changeStatusSuccessMessage;
 	
 	@FindBy(xpath = "//tr[13]//td[5]//a[3]//span[1]")
+	@CacheLookup
 	public WebElement changeStatusIcon;
 	
 	@FindBy(xpath = "//button[@class='btn btn-default']")
+	@CacheLookup
 	public WebElement cancelChangeStatusButton;
 	
 	@FindBy(xpath = "//button[@class='btn btn-warning']")
+	@CacheLookup
 	public WebElement okChangeStatusButton;
 	
 	@FindBy(xpath = "//tr[14]//td[5]//a[4]//span[1]")
+	@CacheLookup
 	public WebElement deleteContentProviderIcon;
 	
 	@FindBy(xpath = "//button[@class='btn btn-default']")
+	@CacheLookup
 	public WebElement cancelDeleteContentProviderButton;
 	
 	@FindBy(xpath = "//button[@class='btn btn-warning']")
+	@CacheLookup
 	public WebElement okDeleteContentProviderButton;
 	
 	@FindBy(xpath = "//div[@id='w16-success']")
+	@CacheLookup
 	public WebElement deleteContentProviderSuccessMessage;
 	
 	
@@ -206,7 +225,7 @@ public class ContentProvider extends TestBase{
 		return getPageTitle();
 	}
 	
-	public void createContentProvider(String name, String taxCode, String address, String status, String accountName, String email, String phoneNumber, String password, String confirmPassword, String fullName, String command) {
+	public void createContentProvider(String name, String taxCode, String address, String status, String accountName, String email, String phoneNumber, String password, String confirmPassword, String fullName, String command) throws Throwable {
 		sendKeyToElement(nameAddTextbox, name);
 		sendKeyToElement(taxCodeAddTextbox, taxCode);
 		sendKeyToElement(addressAddTextbox, address);
@@ -220,10 +239,12 @@ public class ContentProvider extends TestBase{
 		if(command == "CREATE") {
 			//clickToElementByJavaScript(createButton);
 			clickToElement(createButton);
+			Thread.sleep(1000);
 		}
 		else if(command == "CANCEL") {
 			//clickToElementByJavaScript(cancelButton);
 			clickToElement(cancelButton);
+			Thread.sleep(1000);
 		}
 	}
 	

@@ -100,17 +100,16 @@ Scenario: Update Service Provider when do not enter Name
 	Then user update Service Provider when do not enter name
 	And verify update Service Provider name blank message
 	
-
-Scenario: Update Service Provider success
-	Then user presses to Update icon
-	Then user update Service Provider with values
-	And verify update Service Provider success
-	
-
 Scenario: Update Service Provider but press Cancel
 	Then user presses to Update icon
 	Then user update Service Provider but press Cancel button
 	And verify title of Service Provider page
+	
+	
+Scenario: Update Service Provider success
+	Then user presses to Update icon
+	Then user update Service Provider with values
+	And verify update Service Provider success
 
 
 Scenario: Delete Service Provider but press Cancel button

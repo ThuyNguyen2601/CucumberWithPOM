@@ -62,13 +62,14 @@ public class ContentProviderSteps extends TestBase{
 
 	@Then("^user checks the title of Content Provider page$")
 	public void user_checks_the_title_of_Content_Provider_page() throws Throwable {
+		Thread.sleep(1000);
 		String title = contentProvider.getContentProviderPageTitle();
 		Assert.assertEquals(title, "Manage Content Provider");
 	}
 
 	@Then("^user searches Content Provider by name$")
 	public void user_searches_Content_Provider_by_name() throws Throwable {
-		searchByName(contentProvider.listRowResult, contentProvider.nameCriteria, "123");
+		searchByName(contentProvider.listRowResult, contentProvider.nameCriteria, "Thuy");
 	}
 	
 	//@After("@CP1")
@@ -350,7 +351,8 @@ public class ContentProviderSteps extends TestBase{
 	
 	@Then("^user presses update Content Provider button$")
 	public void user_presses_update_Content_Provider_button() throws Throwable {
-		clickToElementByJavaScript(contentProvider.nextPageIcon);
+		//clickToElementByJavaScript(contentProvider.nextPageIcon);
+		Thread.sleep(1000);
 		clickToElementByJavaScript(contentProvider.updateContentProviderIcon);
 	}
 
@@ -559,12 +561,14 @@ public class ContentProviderSteps extends TestBase{
 	
 	@Then("^user clicks to Reset button$")
 	public void user_clicks_to_Reset_button() throws Throwable {
+		Thread.sleep(1000);
 		clickToElementByJavaScript(contentProvider.changeStatusIcon);
 	}
 
 	@Then("^user presses Cancel button on the confirmation reset status alert$")
 	public void user_presses_Cancel_button_on_the_confirmation_reset_status_alert() throws Throwable {
-		clickToElement(contentProvider.cancelChangeStatusButton);
+		Thread.sleep(1000);
+		clickToElementByJavaScript(contentProvider.cancelChangeStatusButton);
 	}
 	
 	//@After("@CP30")
@@ -574,11 +578,12 @@ public class ContentProviderSteps extends TestBase{
 
 	@Then("^user presses OK button on the confirmation reset status alert$")
 	public void user_presses_OK_button_on_the_confirmation_reset_status_alert() throws Throwable {
-		clickToElement(contentProvider.okChangeStatusButton);
+		clickToElementByJavaScript(contentProvider.okChangeStatusButton);
 	}
 
 	@Then("^verify the change status successful message$")
 	public void verify_the_change_status_successful_message() throws Throwable {
+		Thread.sleep(1000);
 		boolean flag = contentProvider.verifyChangeStatusSuccessMessage();
 		Assert.assertTrue(flag);
 		System.out.print("Check change status of Content Provider success is: " + flag + "\n");
@@ -591,12 +596,14 @@ public class ContentProviderSteps extends TestBase{
 	
 	@Then("^user clicks to Delete button$")
 	public void user_clicks_to_Delete_button() throws Throwable {
+		Thread.sleep(1000);
 		clickToElementByJavaScript(contentProvider.deleteContentProviderIcon);
 	}
 
 	@Then("^user presses Cancel button on the confirmation delete content provider alert$")
 	public void user_presses_Cancel_button_on_the_confirmation_delete_content_provider_alert() throws Throwable {
-		clickToElement(contentProvider.cancelDeleteContentProviderButton);
+		Thread.sleep(1000);
+		clickToElementByJavaScript(contentProvider.cancelDeleteContentProviderButton);
 	}
 	
 	//@After("@CP32")
@@ -606,11 +613,13 @@ public class ContentProviderSteps extends TestBase{
 
 	@Then("^user presses OK button on the confirmation delete content provider alert$")
 	public void user_presses_OK_button_on_the_confirmation_delete_content_provider_alert() throws Throwable {
-		clickToElement(contentProvider.okDeleteContentProviderButton);
+		Thread.sleep(1000);
+		clickToElementByJavaScript(contentProvider.okDeleteContentProviderButton);
 	}
 
 	@Then("^verify the delete Content Provider success message$")
 	public void verify_the_delete_Content_Provider_success_message() throws Throwable {
+		Thread.sleep(1000);
 		boolean flag = contentProvider.verifyDeleteContentProviderSuccessMessage();
 		Assert.assertTrue(flag);
 		System.out.print("Check delete Content Provider success is: " + flag + "\n");

@@ -43,13 +43,13 @@ public class ServiceProviderSteps extends TestBase {
 
 	@When("^user go to Service Provider page$")
 	public void user_go_to_Service_Provider_page() throws Throwable {
-		Thread.sleep(1000);
 		homePage = new HomePage();
 		serviceProvider = homePage.gotoServiceProviderPage();
 	}
 
 	@Then("^user check the title of page$")
 	public void user_check_the_title_of_page() throws Throwable {
+		Thread.sleep(1000);
 		String spTitle = serviceProvider.getServiceProviderTitle();
 		Assert.assertEquals(spTitle, "Manage Service Provider");
 	}
@@ -314,11 +314,10 @@ public class ServiceProviderSteps extends TestBase {
 	
 	@When("^user presses to Update icon$")
 	public void user_presses_to_Update_icon() throws Throwable {
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
+		homePage =  new HomePage();
 		serviceProvider = homePage.gotoServiceProviderPage();
-		//Thread.sleep(10000);
-		//scrollToElement(serviceProvider.updateServiceProviderIcon);
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		//clickToElement(serviceProvider.updateServiceProviderIcon);
 		clickToElementByJavaScript(serviceProvider.updateServiceProviderIcon);
 	}
@@ -340,23 +339,6 @@ public class ServiceProviderSteps extends TestBase {
 		tearDown();
 	}
 	
-	@Then("^user update Service Provider with values$")
-	public void user_update_Service_Provider_with_values() throws Throwable {
-		serviceProvider.updateServiceProvider(name, description, website, dealer, currencies, status);
-	}
-
-	@Then("^verify update Service Provider success$")
-	public void verify_update_Service_Provider_success() throws Throwable {
-		boolean flag = serviceProvider.verifyUpdateServiceProviderSuccessMessage();
-		Assert.assertTrue(flag);
-		System.out.print("Check update Service Provider success is: " + flag);
-	}
-	
-	//@After("@SP17")
-	public void closeBrowser17() {
-		tearDown();
-	}
-	
 	@Then("^user update Service Provider but press Cancel button$")
 	public void user_update_Service_Provider_but_press_Cancel_button() throws Throwable {
 		serviceProvider.updateServiceProviderButCancel(name, description, website, dealer, currencies, status);
@@ -369,37 +351,39 @@ public class ServiceProviderSteps extends TestBase {
 		System.out.println("The title of page after press Cancel is: " + serviceProviderTitle);
 	}
 	
-	//@After("@SP18")
-	public void closeBrowser18() {
-		tearDown();
+	@Then("^user update Service Provider with values$")
+	public void user_update_Service_Provider_with_values() throws Throwable {
+		serviceProvider.updateServiceProvider(name, description, website, dealer, currencies, status);
 	}
+
+	@Then("^verify update Service Provider success$")
+	public void verify_update_Service_Provider_success() throws Throwable {
+		boolean flag = serviceProvider.verifyUpdateServiceProviderSuccessMessage();
+		Assert.assertTrue(flag);
+		System.out.print("Check update Service Provider success is: " + flag);
+	}
+	
 	
 	@When("^user presses to Delete icon$")
 	public void user_presses_to_Delete_icon() throws Throwable {
+		homePage = new HomePage();
 		serviceProvider = homePage.gotoServiceProviderPage();
-		Thread.sleep(3000);
+		Thread.sleep(1000);
 		clickToElementByJavaScript(serviceProvider.deleteServiceProviderIcon);
 		//clickToElement(serviceProvider.deleteServiceProviderIcon);
 	}
 
 	@Then("^user presses to Cancel button in the alert$")
 	public void user_presses_to_Cancel_button_in_the_alert() throws Throwable {
-		//waitForAlertPresent();
-		Thread.sleep(3000);
+		Thread.sleep(1000);
 		clickToElementByJavaScript(serviceProvider.CancelButtonInDeleteConfirmAlert);
 	}
 	
-	//@After("@SP19")
-	public void closeBrowser19() {
-		tearDown();
-	}
 
 	@Then("^user presses to OK button in the alert$")
 	public void user_presses_to_OK_button_in_the_alert() throws Throwable {
-		//waitForAlertPresent();
-		Thread.sleep(3000);
+		Thread.sleep(1000);
 		clickToElementByJavaScript(serviceProvider.OKButtonInDeleteConfirmAlert);
-		//acceptAlert();
 	}
 
 	@Then("^verify delete Service Provider success message$")
@@ -407,11 +391,6 @@ public class ServiceProviderSteps extends TestBase {
 		boolean flag = serviceProvider.verifyDeleteSuccessMessage();
 		Assert.assertTrue(flag);
 		System.out.print("Delete the Service Provider is: " + flag);
-	}
-	
-	//@After("@SP20")
-	public void closeBrowser20() {
-		tearDown();
 	}
 	
 	

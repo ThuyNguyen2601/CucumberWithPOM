@@ -5,7 +5,7 @@ Feature: Content Provider functions
 #Scenario: Admin logs into the page
 	#When Admin logs into the TVoD page
 	#Then verify the title of page
-@A3
+@A31
 Scenario: Search Content Provider by name
 	Then user goes to the Content Provider page
 	Then user checks the title of Content Provider page
@@ -205,26 +205,26 @@ Scenario: Update Content Provider success
 	Then user update Content Provider with valid values
 	Then verify the update Content Provider success message
 
-@A3
+@A32
 Scenario: Reset the status of Content Provider but press Cancel
 	Then user goes to the Content Provider page
 	Then user clicks to Reset button
 	Then user presses Cancel button on the confirmation reset status alert
 	
-@A3
+@A33
 Scenario: Reset the status success
 	Then user goes to the Content Provider page
 	Then user clicks to Reset button
 	Then user presses OK button on the confirmation reset status alert
 	Then verify the change status successful message
 	
-@A3
+@A34
 Scenario: Delete the Content Provider but press Cancel button
 	Then user goes to the Content Provider page
 	Then user clicks to Delete button
 	Then user presses Cancel button on the confirmation delete content provider alert
 	
-@A3
+@A35
 Scenario: Delete the Content Provider success
 	Then user goes to the Content Provider page
 	Then user clicks to Delete button

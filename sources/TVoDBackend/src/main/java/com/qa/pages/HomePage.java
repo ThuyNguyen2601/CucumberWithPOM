@@ -48,18 +48,14 @@ public class HomePage extends TestBase{
 	
 	public ServiceProvider gotoServiceProviderPage() throws Throwable {
 		moveToElementByJS(serviceProviderMenu);
-		//moveToElement(serviceProviderMenu);
-		//clickToElement(managementServiceProviderLink);
-		Thread.sleep(1000);
+		//Thread.sleep(1000);
 		clickToElementByJavaScript(managementServiceProviderLink);
 		return new ServiceProvider();
 	}
 	
 	public ContentProvider gotoContentProviderPage() throws Throwable {
 		moveToElementByJS(contentProviderMenu);
-		Thread.sleep(1000);
-		//moveToElement(contentProviderMenu);
-		//clickToElement(manageContentProviderMenu);
+		//Thread.sleep(1000);
 		clickToElementByJavaScript(manageContentProviderMenu);
 		return new ContentProvider();
 	}
