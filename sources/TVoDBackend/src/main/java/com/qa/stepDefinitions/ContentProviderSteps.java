@@ -3,8 +3,10 @@ package com.qa.stepDefinitions;
 import org.testng.Assert;
 
 import com.qa.pages.ContentProvider;
+import com.qa.pages.ContentProviderUI;
 import com.qa.pages.HomePage;
 import com.qa.pages.LoginPage;
+import com.qa.util.PageGeneratorManager;
 import com.qa.util.TestBase;
 
 import cucumber.api.java.After;
@@ -56,7 +58,8 @@ public class ContentProviderSteps extends TestBase{
 	@Then("^user goes to the Content Provider page$")
 	public void user_goes_to_the_Content_Provider_page() throws Throwable {
 		//Thread.sleep(1000);
-		homePage = new HomePage();
+		//homePage = new HomePage();
+		homePage = PageGeneratorManager.getHomePage();
 		contentProvider = homePage.gotoContentProviderPage();
 	}
 
@@ -69,7 +72,7 @@ public class ContentProviderSteps extends TestBase{
 
 	@Then("^user searches Content Provider by name$")
 	public void user_searches_Content_Provider_by_name() throws Throwable {
-		searchByName(contentProvider.listRowResult, contentProvider.nameCriteria, "Thuy");
+		searchByName(ContentProviderUI.listRowResult, ContentProviderUI.nameCriteria, "Thuy");
 	}
 	
 	//@After("@CP1")
@@ -91,7 +94,7 @@ public class ContentProviderSteps extends TestBase{
 	@Then("^user presses Create Content Provider button$")
 	public void user_presses_Create_Content_Provider_button() throws Throwable {
 		//clickToElement(contentProvider.createContentProviderButton);
-		clickToElementByJavaScript(contentProvider.createContentProviderButton);
+		clickToElementByJavaScript(ContentProviderUI.createContentProviderButton);
 	}
 
 	@Then("^user create Content Provider without name$")
@@ -353,7 +356,7 @@ public class ContentProviderSteps extends TestBase{
 	public void user_presses_update_Content_Provider_button() throws Throwable {
 		//clickToElementByJavaScript(contentProvider.nextPageIcon);
 		Thread.sleep(1000);
-		clickToElementByJavaScript(contentProvider.updateContentProviderIcon);
+		clickToElementByJavaScript(ContentProviderUI.updateContentProviderIcon);
 	}
 
 	@Then("^user update Content Provider without name$")
@@ -562,13 +565,13 @@ public class ContentProviderSteps extends TestBase{
 	@Then("^user clicks to Reset button$")
 	public void user_clicks_to_Reset_button() throws Throwable {
 		Thread.sleep(1000);
-		clickToElementByJavaScript(contentProvider.changeStatusIcon);
+		clickToElementByJavaScript(ContentProviderUI.changeStatusIcon);
 	}
 
 	@Then("^user presses Cancel button on the confirmation reset status alert$")
 	public void user_presses_Cancel_button_on_the_confirmation_reset_status_alert() throws Throwable {
 		Thread.sleep(1000);
-		clickToElementByJavaScript(contentProvider.cancelChangeStatusButton);
+		clickToElementByJavaScript(ContentProviderUI.cancelChangeStatusButton);
 	}
 	
 	//@After("@CP30")
@@ -578,7 +581,7 @@ public class ContentProviderSteps extends TestBase{
 
 	@Then("^user presses OK button on the confirmation reset status alert$")
 	public void user_presses_OK_button_on_the_confirmation_reset_status_alert() throws Throwable {
-		clickToElementByJavaScript(contentProvider.okChangeStatusButton);
+		clickToElementByJavaScript(ContentProviderUI.okChangeStatusButton);
 	}
 
 	@Then("^verify the change status successful message$")
@@ -597,13 +600,13 @@ public class ContentProviderSteps extends TestBase{
 	@Then("^user clicks to Delete button$")
 	public void user_clicks_to_Delete_button() throws Throwable {
 		Thread.sleep(1000);
-		clickToElementByJavaScript(contentProvider.deleteContentProviderIcon);
+		clickToElementByJavaScript(ContentProviderUI.deleteContentProviderIcon);
 	}
 
 	@Then("^user presses Cancel button on the confirmation delete content provider alert$")
 	public void user_presses_Cancel_button_on_the_confirmation_delete_content_provider_alert() throws Throwable {
 		Thread.sleep(1000);
-		clickToElementByJavaScript(contentProvider.cancelDeleteContentProviderButton);
+		clickToElementByJavaScript(ContentProviderUI.cancelDeleteContentProviderButton);
 	}
 	
 	//@After("@CP32")
@@ -614,7 +617,7 @@ public class ContentProviderSteps extends TestBase{
 	@Then("^user presses OK button on the confirmation delete content provider alert$")
 	public void user_presses_OK_button_on_the_confirmation_delete_content_provider_alert() throws Throwable {
 		Thread.sleep(1000);
-		clickToElementByJavaScript(contentProvider.okDeleteContentProviderButton);
+		clickToElementByJavaScript(ContentProviderUI.okDeleteContentProviderButton);
 	}
 
 	@Then("^verify the delete Content Provider success message$")

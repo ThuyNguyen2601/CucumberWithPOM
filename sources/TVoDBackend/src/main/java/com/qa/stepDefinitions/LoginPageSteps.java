@@ -2,6 +2,8 @@ package com.qa.stepDefinitions;
 
 import com.qa.pages.HomePage;
 import com.qa.pages.LoginPage;
+import com.qa.pages.LoginPageUI;
+import com.qa.util.PageGeneratorManager;
 import com.qa.util.TestBase;
 
 import cucumber.api.java.After;
@@ -31,7 +33,8 @@ public class LoginPageSteps extends TestBase{
 	
 	@Then("^user logs into the page with username blank$")
 	public void user_logs_into_the_page_with_username_blank() throws Throwable {
-		loginPage = new LoginPage();
+		//loginPage = new LoginPage();
+		loginPage = PageGeneratorManager.getLoginPage();
 		homePage = loginPage.login("", prop.getProperty("password"));
 	}
 
@@ -48,9 +51,10 @@ public class LoginPageSteps extends TestBase{
 	
 	@Then("^user logs into the page with password blank$")
 	public void user_logs_into_the_page_with_password_blank() throws Throwable{
-		loginPage = new LoginPage();
-		clearToElement(loginPage.usernameElement);
-		clearToElement(loginPage.passwordElement);
+		//loginPage = new LoginPage();
+		loginPage = PageGeneratorManager.getLoginPage();
+		clearToElement(LoginPageUI.usernameElement);
+		clearToElement(LoginPageUI.passwordElement);
 		homePage = loginPage.login(prop.getProperty("username"), " ");
 	}
 	
@@ -67,9 +71,10 @@ public class LoginPageSteps extends TestBase{
 	
 	@Then("^user logs into the page with wrong account$")
 	public void user_logs_into_the_page_with_wrong_account() throws Throwable {
-		loginPage = new LoginPage();
-		clearToElement(loginPage.usernameElement);
-		clearToElement(loginPage.passwordElement);
+		//loginPage = new LoginPage();
+		loginPage = PageGeneratorManager.getLoginPage();
+		clearToElement(LoginPageUI.usernameElement);
+		clearToElement(LoginPageUI.passwordElement);
 		homePage = loginPage.login("admin1", "123456");
 	}
 
@@ -86,9 +91,10 @@ public class LoginPageSteps extends TestBase{
 	
 	@Then("^user logs into the page$")
 	public void user_logs_into_the_page() throws Throwable {
-		loginPage = new LoginPage();
-		clearToElement(loginPage.usernameElement);
-		clearToElement(loginPage.passwordElement);
+		//loginPage = new LoginPage();
+		loginPage = PageGeneratorManager.getLoginPage();
+		clearToElement(LoginPageUI.usernameElement);
+		clearToElement(LoginPageUI.passwordElement);
 		homePage = loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
 	}
 

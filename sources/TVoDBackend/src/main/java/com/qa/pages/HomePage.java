@@ -8,24 +8,11 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.qa.util.PageGeneratorManager;
 import com.qa.util.TestBase;
+import com.qa.pages.HomePageUI;
 
 public class HomePage extends TestBase{
-	@FindBy(xpath = "//span[@class='username username-hide-on-mobile']")
-	WebElement userNameLabel;
-	
-	@FindBy(xpath = "//a[contains(text(),'Service Provider')]")
-	WebElement serviceProviderMenu;
-	
-	@FindBy(xpath = "//a[contains(text(),'Manage service provider')]")
-	WebElement managementServiceProviderLink;
-	
-	@FindBy(xpath = "//a[contains(text(),'Content Provider')]")
-	WebElement contentProviderMenu;
-	
-	@FindBy(xpath = "//a[contains(text(),'Manage content provider')]")
-	WebElement manageContentProviderMenu;
-	
 	
 	//Initializing the Page Objects:
 	public HomePage() {
@@ -37,27 +24,35 @@ public class HomePage extends TestBase{
 	}
 	
 	public boolean verifyCorrectUserName() {
-		return userNameLabel.isDisplayed();
+		//return HomePageUI.userNameLabel.isDisplayed();
+		return isControlDisplayed(HomePageUI.userNameLabel);
 	}
 	
 	public void clickToManagementServiceProvider() {
 		Actions action = new Actions(driver);
-		action.moveToElement(serviceProviderMenu).build().perform();
-		managementServiceProviderLink.click();
+		action.moveToElement(HomePageUI.serviceProviderMenu).build().perform();
+		//HomePageUI.managementServiceProviderLink.click();
+		clickToElement(HomePageUI.managementServiceProviderLink);
 	}
 	
 	public ServiceProvider gotoServiceProviderPage() throws Throwable {
-		moveToElementByJS(serviceProviderMenu);
+		moveToElementByJS(HomePageUI.serviceProviderMenu);
+		moveToElement(HomePageUI.serviceProviderMenu);
 		//Thread.sleep(1000);
-		clickToElementByJavaScript(managementServiceProviderLink);
-		return new ServiceProvider();
+		//clickToElementByJavaScript(HomePageUI.managementServiceProviderLink);
+		clickToElement(HomePageUI.managementServiceProviderLink);
+		//return new ServiceProvider();
+		return PageGeneratorManager.getServiceProvider();
 	}
 	
 	public ContentProvider gotoContentProviderPage() throws Throwable {
-		moveToElementByJS(contentProviderMenu);
+		//moveToElementByJS(HomePageUI.contentProviderMenu);
+		moveToElement(HomePageUI.contentProviderMenu);
 		//Thread.sleep(1000);
-		clickToElementByJavaScript(manageContentProviderMenu);
-		return new ContentProvider();
+		//clickToElementByJavaScript(HomePageUI.manageContentProviderMenu);
+		clickToElement(HomePageUI.manageContentProviderMenu);
+		//return new ContentProvider();
+		return PageGeneratorManager.getContentProvider();
 	}
 
 }

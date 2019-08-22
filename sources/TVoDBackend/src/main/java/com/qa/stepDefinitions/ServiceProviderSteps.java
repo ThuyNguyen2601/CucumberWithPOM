@@ -5,6 +5,8 @@ import org.testng.Assert;
 import com.qa.pages.HomePage;
 import com.qa.pages.LoginPage;
 import com.qa.pages.ServiceProvider;
+import com.qa.pages.ServiceProviderUI;
+import com.qa.util.PageGeneratorManager;
 import com.qa.util.TestBase;
 
 import cucumber.api.java.After;
@@ -43,7 +45,8 @@ public class ServiceProviderSteps extends TestBase {
 
 	@When("^user go to Service Provider page$")
 	public void user_go_to_Service_Provider_page() throws Throwable {
-		homePage = new HomePage();
+		//homePage = new HomePage();
+		homePage = PageGeneratorManager.getHomePage();
 		serviceProvider = homePage.gotoServiceProviderPage();
 	}
 
@@ -67,9 +70,10 @@ public class ServiceProviderSteps extends TestBase {
 	
 	@Then("^user presses to Create Service Provider button$")
 	public void user_presses_to_Create_Service_Provider_button() throws Throwable {
-		homePage = new HomePage();
+		//homePage = new HomePage();
+		homePage = PageGeneratorManager.getHomePage();
 		serviceProvider = homePage.gotoServiceProviderPage();
-		clickToElementByJavaScript(serviceProvider.createServiceProviderButton);
+		clickToElementByJavaScript(ServiceProviderUI.createServiceProviderButton);
 	}
 
 	@Then("^user creates Service Provider with Name blank$")
@@ -315,11 +319,12 @@ public class ServiceProviderSteps extends TestBase {
 	@When("^user presses to Update icon$")
 	public void user_presses_to_Update_icon() throws Throwable {
 		//Thread.sleep(5000);
-		homePage =  new HomePage();
+		//homePage =  new HomePage();
+		homePage = PageGeneratorManager.getHomePage();
 		serviceProvider = homePage.gotoServiceProviderPage();
 		Thread.sleep(1000);
 		//clickToElement(serviceProvider.updateServiceProviderIcon);
-		clickToElementByJavaScript(serviceProvider.updateServiceProviderIcon);
+		clickToElementByJavaScript(ServiceProviderUI.updateServiceProviderIcon);
 	}
 
 	@Then("^user update Service Provider when do not enter name$")
@@ -366,24 +371,25 @@ public class ServiceProviderSteps extends TestBase {
 	
 	@When("^user presses to Delete icon$")
 	public void user_presses_to_Delete_icon() throws Throwable {
-		homePage = new HomePage();
+		//homePage = new HomePage();
+		homePage = PageGeneratorManager.getHomePage();
 		serviceProvider = homePage.gotoServiceProviderPage();
 		Thread.sleep(1000);
-		clickToElementByJavaScript(serviceProvider.deleteServiceProviderIcon);
+		clickToElementByJavaScript(ServiceProviderUI.deleteServiceProviderIcon);
 		//clickToElement(serviceProvider.deleteServiceProviderIcon);
 	}
 
 	@Then("^user presses to Cancel button in the alert$")
 	public void user_presses_to_Cancel_button_in_the_alert() throws Throwable {
 		Thread.sleep(1000);
-		clickToElementByJavaScript(serviceProvider.CancelButtonInDeleteConfirmAlert);
+		clickToElementByJavaScript(ServiceProviderUI.CancelButtonInDeleteConfirmAlert);
 	}
 	
 
 	@Then("^user presses to OK button in the alert$")
 	public void user_presses_to_OK_button_in_the_alert() throws Throwable {
 		Thread.sleep(1000);
-		clickToElementByJavaScript(serviceProvider.OKButtonInDeleteConfirmAlert);
+		clickToElementByJavaScript(ServiceProviderUI.OKButtonInDeleteConfirmAlert);
 	}
 
 	@Then("^verify delete Service Provider success message$")
@@ -396,7 +402,7 @@ public class ServiceProviderSteps extends TestBase {
 	
 	@Then("^user views the Service Provider in list$")
 	public void user_views_the_Service_Provider_in_list() throws Throwable {
-		viewDetailContent(serviceProvider.listViewIcon);
+		viewDetailContent(ServiceProviderUI.listViewIcon);
 	}
 
 	@Then("^user prints the result$")
