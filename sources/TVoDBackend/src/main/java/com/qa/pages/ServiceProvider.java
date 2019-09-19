@@ -15,6 +15,212 @@ import com.qa.util.TestBase;
 
 public class ServiceProvider extends TestBase {
 	
+	@FindBy(xpath = "//input[@name='SiteSearch[name]']")
+	@CacheLookup
+	public WebElement nameCriteria;
+
+	@FindBy(xpath = ".//*[@id='w0-container']/table/thead/tr/th")
+	@CacheLookup
+	public By collumnResult;
+
+	@FindBy(xpath = ".//*[@id='w0-container']/table/tbody/tr/td[1]")
+	@CacheLookup
+	public List<WebElement> rowResults;
+
+	@FindBy(xpath = "//input[@name='SiteSearch[description]']")
+	@CacheLookup
+	public WebElement descriptionCriteria;
+
+	@FindBy(xpath = "//a[@class='btn btn-success']")
+	@CacheLookup
+	public WebElement createServiceProviderButton;
+
+	@FindBy(xpath = "//tr[1]//td[6]//a[1]//span[1]")
+	@CacheLookup
+	public WebElement updateIcon;
+
+	@FindBy(xpath = "//tr[1]//td[6]//a[2]//span[1]")
+	@CacheLookup
+	public WebElement deleteIcon;
+
+	@FindBy(xpath = "//tr[1]//td[6]//a[3]//span[1]")
+	@CacheLookup
+	public WebElement viewIcon;
+
+	@FindBy(xpath = "//tr[1]//td[6]//a[4]//span[1]")
+	@CacheLookup
+	public WebElement contentDeliveryIcon;
+
+	@FindBy(xpath = "//input[@id='serviceproviderform-name']")
+	@CacheLookup
+	public WebElement nameAddTextbox;
+
+	@FindBy(xpath = "//textarea[@id='serviceproviderform-description']")
+	@CacheLookup
+	public WebElement descriptionAddTextbox;
+
+	@FindBy(xpath = "//input[@id='serviceproviderform-website']")
+	@CacheLookup
+	public WebElement websiteAddTextbox;
+
+	@FindBy(xpath = "//select[@id='serviceproviderform-currency']")
+	@CacheLookup
+	public WebElement currenciesAddDropdown;
+
+	@FindBy(xpath = "//input[@id='serviceproviderform-cp_revernue_percent']")
+	@CacheLookup
+	public WebElement dealerRevueSharingAddTextbox;
+
+	@FindBy(xpath = "//select[@id='serviceproviderform-status']")
+	@CacheLookup
+	public WebElement statusAddDropdown;
+
+	@FindBy(xpath = "//input[@id='serviceproviderform-username']")
+	@CacheLookup
+	public WebElement accountNameAddTextbox;
+
+	@FindBy(xpath = "//input[@id='serviceproviderform-password']")
+	@CacheLookup
+	public WebElement passwordAddTextbox;
+
+	@FindBy(xpath = "//input[@id='serviceproviderform-email']")
+	@CacheLookup
+	public WebElement emailAddTextbox;
+
+	@FindBy(xpath = "//input[@id='serviceproviderform-confirm_password']")
+	@CacheLookup
+	public WebElement confirmPasswordAddTextbox;
+
+	@FindBy(xpath = "//input[@id='serviceproviderform-phone_number']")
+	@CacheLookup
+	public WebElement phoneNumberAddTextbox;
+
+	@FindBy(xpath = "//button[@class='btn btn-success']")
+	@CacheLookup
+	public WebElement createButton;
+
+	@FindBy(xpath = "//a[@class='btn btn-default']")
+	@CacheLookup
+	public WebElement cancelButton;
+
+	@FindBy(xpath = "//div[@id='w16-success']")
+	@CacheLookup
+	public WebElement createSuccessMessage;
+
+	@FindBy(xpath = "//div[contains(text(),'Name cannot be blank.')]")
+	@CacheLookup
+	public WebElement nameBlankMessage;
+
+	@FindBy(xpath = "//div[contains(text(),'cannot be blank.')]")
+	@CacheLookup
+	public WebElement accountNameBlankMessage;
+
+	@FindBy(xpath = "//div[contains(text(),'Account name already exists, please choose another')]")
+	@CacheLookup
+	public WebElement accountNameExistMessage;
+
+	@FindBy(xpath = "//div[contains(text(),'Password cannot be blank.')]")
+	@CacheLookup
+	public WebElement passwordBlankMessage;
+
+	@FindBy(xpath = "//div[contains(text(),'Invalid password. Password at least 8 characters')]")
+	@CacheLookup
+	public WebElement passwordInvalidMessage;
+
+	@FindBy(xpath = "//div[contains(text(),'Email cannot be blank.')]")
+	@CacheLookup
+	public WebElement emailBlankMessage;
+
+	@FindBy(xpath = "//div[contains(text(),'Email address is not valid')]")
+	@CacheLookup
+	public WebElement emailInvalidMessage;
+
+	@FindBy(xpath = "//div[contains(text(),'Confirm password cannot be blank.')]")
+	@CacheLookup
+	public WebElement confirmPasswordBlankMessage;
+
+	@FindBy(xpath = "//div[contains(text(),'Confirm password was wrong')]")
+	@CacheLookup
+	public WebElement confirmPasswordInvalidMessage;
+
+	@FindBy(xpath = "//div[contains(text(),'Phone number cannot be blank.')]")
+	@CacheLookup
+	public WebElement phoneNumberBlankMessage;
+
+	@FindBy(xpath = "//div[contains(text(),'Phone number must be number')]")
+	@CacheLookup
+	public WebElement phoneNumberWrongFormatMessage;
+
+	@FindBy(xpath = "//div[contains(text(),'Service provider name already exists, please choos')]")
+	@CacheLookup
+	public WebElement serviceProviderExistedMessage;
+
+	@FindBy(xpath = "//tr[5]//td[6]//a[1]//span[1]")
+	@CacheLookup
+	public WebElement updateServiceProviderIcon;
+
+	@FindBy(xpath = "//tr[19]//td[6]//a[2]//span[1]")
+	@CacheLookup
+	public WebElement deleteServiceProviderIcon;
+
+	@FindBy(xpath = "//tr[10]//td[6]//a[3]//span[1]")
+	@CacheLookup
+	public WebElement listViewIcon;
+
+
+	@FindBy(xpath = "//input[@id='site-name']")
+	@CacheLookup
+	public WebElement nameUpdateTextbox;
+
+	@FindBy(xpath = "//textarea[@id='site-description']")
+	@CacheLookup
+	public WebElement descriptionUpdateTextbox;
+
+	@FindBy(xpath = "//input[@id='site-website']")
+	@CacheLookup
+	public WebElement websiteUpdateTextbox;
+
+	@FindBy(xpath = "//input[@id='site-cp_revernue_percent']")
+	@CacheLookup
+	public WebElement dealerRevenueSharingUpdateTextbox;
+
+	@FindBy(xpath = "//select[@id='site-currency']")
+	@CacheLookup
+	public WebElement currenciesUpdateDropdown;
+
+	@FindBy(xpath = "//select[@id='site-status']")
+	@CacheLookup
+	public WebElement statusUpdateDropdown;
+
+	@FindBy(xpath = "//button[@class='btn btn-primary']")
+	@CacheLookup
+	public WebElement updateButton;
+
+	@FindBy(xpath = "//a[@class='btn btn-default']")
+	@CacheLookup
+	public WebElement cancelUpdateButton;
+	
+	@FindBy(xpath = "//div[@id='w16-success']")
+	@CacheLookup
+	public WebElement updateSuccessMessage;
+	
+	@FindBy(xpath = "//div[contains(text(),'Name cannot be blank.')]")
+	@CacheLookup
+	public WebElement nameUpdateBlankMessage;
+	
+	@FindBy(xpath = "//div[@id='w16-success']")
+	@CacheLookup
+	public WebElement deleteSuccessMessage;
+	
+	@FindBy(xpath = "//button[@class = 'btn btn-warning']")
+	@CacheLookup
+	public WebElement OKButtonInDeleteConfirmAlert;
+	
+	@FindBy(xpath = "//button[@class = 'btn btn-default']")
+	@CacheLookup
+	public WebElement CancelButtonInDeleteConfirmAlert;
+
+	public String resultCompareText = "chang10";
 
 	public ServiceProvider() {
 		PageFactory.initElements(driver, this);
@@ -25,10 +231,10 @@ public class ServiceProvider extends TestBase {
 	}
 
 	public void searchServiceProviderByName(String value) throws Throwable {
-		sendKeyToElement(ServiceProviderUI.nameCriteria, value);
-		sendKeyboardToElement(ServiceProviderUI.nameCriteria, Keys.ENTER);
+		sendKeyToElement(nameCriteria, value);
+		sendKeyboardToElement(nameCriteria, Keys.ENTER);
 		Thread.sleep(3000);
-		for (int i = 1; i < ServiceProviderUI.rowResults.size() + 1; i++) {
+		for (int i = 1; i < rowResults.size() + 1; i++) {
 			String resultText = driver.findElement(By.xpath("//tbody//tr[" + i + "]//td[1]")).getText();
 			if (compareContainText(resultText, value)) {
 				System.out.print("The result is true\n");
@@ -40,151 +246,155 @@ public class ServiceProvider extends TestBase {
 
 	public void createServiceProvider(String name, String accountName, String email, String phoneNumber,
 			String password, String confirmPassword) throws Throwable {
-		sendKeyToElement(ServiceProviderUI.nameAddTextbox, name);
-		sendKeyToElement(ServiceProviderUI.accountNameAddTextbox, accountName);
-		sendKeyToElement(ServiceProviderUI.emailAddTextbox, email);
-		sendKeyToElement(ServiceProviderUI.phoneNumberAddTextbox, phoneNumber);
-		sendKeyToElement(ServiceProviderUI.passwordAddTextbox, password);
-		sendKeyToElement(ServiceProviderUI.confirmPasswordAddTextbox, confirmPassword);
-		Thread.sleep(1000);
-		//clickToElementByJavaScript(createButton);
-		clickToElement(ServiceProviderUI.createButton);
+		sendKeyToElement(nameAddTextbox, name);
+		sendKeyToElement(accountNameAddTextbox, accountName);
+		sendKeyToElement(emailAddTextbox, email);
+		sendKeyToElement(phoneNumberAddTextbox, phoneNumber);
+		sendKeyToElement(passwordAddTextbox, password);
+		sendKeyToElement(confirmPasswordAddTextbox, confirmPassword);
+		waitForElementVisible(createButton);
+		clickToElementByJavaScript(createButton);
+		//clickToElement(createButton);
 	}
 	
 	public void createServiceProviderButCancel(String name, String accountName, String email, String phoneNumber,
 			String password, String confirmPassword) throws Throwable {
-		sendKeyToElement(ServiceProviderUI.nameAddTextbox, name);
-		sendKeyToElement(ServiceProviderUI.accountNameAddTextbox, accountName);
-		sendKeyToElement(ServiceProviderUI.emailAddTextbox, email);
-		sendKeyToElement(ServiceProviderUI.phoneNumberAddTextbox, phoneNumber);
-		sendKeyToElement(ServiceProviderUI.passwordAddTextbox, password);
-		sendKeyToElement(ServiceProviderUI.confirmPasswordAddTextbox, confirmPassword);
-		Thread.sleep(1000);
-		//clickToElementByJavaScript(cancelButton);
-		clickToElement(ServiceProviderUI.cancelButton);
+		sendKeyToElement(nameAddTextbox, name);
+		sendKeyToElement(accountNameAddTextbox, accountName);
+		sendKeyToElement(emailAddTextbox, email);
+		sendKeyToElement(phoneNumberAddTextbox, phoneNumber);
+		sendKeyToElement(passwordAddTextbox, password);
+		sendKeyToElement(confirmPasswordAddTextbox, confirmPassword);
+		waitForElementVisible(cancelButton);
+		clickToElementByJavaScript(cancelButton);
+		//clickToElement(cancelButton);
 	}
 
 	public void createServiceProviderWithFullValue(String name, String description, String website, String currencies,
 			String dealer, String status, String accountName, String email, String phoneNumber, String password,
 			String confirmPassword) throws Throwable {
-		sendKeyToElement(ServiceProviderUI.nameAddTextbox, name);
-		// Thread.sleep(1000);
-		sendKeyToElement(ServiceProviderUI.descriptionAddTextbox, description);
-		// Thread.sleep(1000);
-		sendKeyToElement(ServiceProviderUI.websiteAddTextbox, website);
-		// Thread.sleep(1000);
-		selectItemHtmlDropdown(ServiceProviderUI.currenciesAddDropdown, currencies);
-		// Thread.sleep(1000);
-		sendKeyToElement(ServiceProviderUI.dealerRevueSharingAddTextbox, dealer);
-		// Thread.sleep(1000);
-		selectItemHtmlDropdown(ServiceProviderUI.statusAddDropdown, status);
-		// Thread.sleep(1000);
-		sendKeyToElement(ServiceProviderUI.accountNameAddTextbox, accountName);
-		// Thread.sleep(1000);
-		sendKeyToElement(ServiceProviderUI.emailAddTextbox, email);
-		// Thread.sleep(1000);
-		sendKeyToElement(ServiceProviderUI.phoneNumberAddTextbox, password);
-		// Thread.sleep(1000);
-		sendKeyToElement(ServiceProviderUI.passwordAddTextbox, password);
-		// Thread.sleep(2000);
-		sendKeyToElement(ServiceProviderUI.confirmPasswordAddTextbox, confirmPassword);
-		// Thread.sleep(2000);
-		clickToElement(ServiceProviderUI.createButton);
+		sendKeyToElement(nameAddTextbox, name);
+		sendKeyToElement(descriptionAddTextbox, description);
+		sendKeyToElement(websiteAddTextbox, website);
+		selectItemHtmlDropdown(currenciesAddDropdown, currencies);
+		sendKeyToElement(dealerRevueSharingAddTextbox, dealer);
+		selectItemHtmlDropdown(statusAddDropdown, status);
+		sendKeyToElement(accountNameAddTextbox, accountName);
+		sendKeyToElement(emailAddTextbox, email);
+		sendKeyToElement(phoneNumberAddTextbox, password);
+		sendKeyToElement(passwordAddTextbox, password);
+		sendKeyToElement(confirmPasswordAddTextbox, confirmPassword);
+		clickToElement(createButton);
 	}
 
 	public void updateServiceProvider(String name, String description, String website, String dealer, String currencies, String status) {
-		clearToElement(ServiceProviderUI.nameUpdateTextbox);
-		sendKeyToElement(ServiceProviderUI.nameUpdateTextbox, name);
+		clearToElement(nameUpdateTextbox);
+		sendKeyToElement(nameUpdateTextbox, name);
 		
-		clearToElement(ServiceProviderUI.descriptionUpdateTextbox);
-		sendKeyToElement(ServiceProviderUI.descriptionUpdateTextbox, description);
+		clearToElement(descriptionUpdateTextbox);
+		sendKeyToElement(descriptionUpdateTextbox, description);
 		
-		clearToElement(ServiceProviderUI.websiteUpdateTextbox);
-		sendKeyToElement(ServiceProviderUI.websiteUpdateTextbox, website);
+		clearToElement(websiteUpdateTextbox);
+		sendKeyToElement(websiteUpdateTextbox, website);
 		
-		clearToElement(ServiceProviderUI.dealerRevenueSharingUpdateTextbox);
-		sendKeyToElement(ServiceProviderUI.dealerRevenueSharingUpdateTextbox, dealer);
+		clearToElement(dealerRevenueSharingUpdateTextbox);
+		sendKeyToElement(dealerRevenueSharingUpdateTextbox, dealer);
 		
-		sendKeyToElement(ServiceProviderUI.currenciesUpdateDropdown, currencies);
+		sendKeyToElement(currenciesUpdateDropdown, currencies);
 		
-		sendKeyToElement(ServiceProviderUI.statusUpdateDropdown, status);
+		sendKeyToElement(statusUpdateDropdown, status);
 		
-		clickToElement(ServiceProviderUI.updateButton);
+		clickToElement(updateButton);
 	}
 	
 	public void updateServiceProviderButCancel(String name, String description, String website, String dealer, String currencies, String status) {
-		sendKeyToElement(ServiceProviderUI.nameUpdateTextbox, name);
-		sendKeyToElement(ServiceProviderUI.descriptionUpdateTextbox, description);
-		sendKeyToElement(ServiceProviderUI.websiteUpdateTextbox, website);
-		sendKeyToElement(ServiceProviderUI.dealerRevenueSharingUpdateTextbox, dealer);
-		sendKeyToElement(ServiceProviderUI.currenciesUpdateDropdown, currencies);
-		sendKeyToElement(ServiceProviderUI.statusUpdateDropdown, status);
-		clickToElement(ServiceProviderUI.cancelUpdateButton);
+		sendKeyToElement(nameUpdateTextbox, name);
+		sendKeyToElement(descriptionUpdateTextbox, description);
+		sendKeyToElement(websiteUpdateTextbox, website);
+		sendKeyToElement(dealerRevenueSharingUpdateTextbox, dealer);
+		sendKeyToElement(currenciesUpdateDropdown, currencies);
+		sendKeyToElement(statusUpdateDropdown, status);
+		clickToElement(cancelUpdateButton);
 	}
 
 	public boolean verifyNameBlankMessage() {
-		return isControlDisplayed(ServiceProviderUI.nameBlankMessage);
+		waitForElementVisible(nameBlankMessage);
+		return isControlDisplayed(nameBlankMessage);
 	}
 
 	public boolean verifyAccountNameBlankMessage() throws Throwable {
-		Thread.sleep(1000);
-		return isControlDisplayed(ServiceProviderUI.accountNameBlankMessage);
+		waitForElementVisible(accountNameBlankMessage);
+		return isControlDisplayed(accountNameBlankMessage);
 	}
 
 	public boolean verifyEmailBlankMessage() {
-		return isControlDisplayed(ServiceProviderUI.emailBlankMessage);
+		waitForElementVisible(emailBlankMessage);
+		return isControlDisplayed(emailBlankMessage);
 	}
 
 	public boolean verifyPasswordBlankMessage() {
-		return isControlDisplayed(ServiceProviderUI.passwordBlankMessage);
+		waitForElementVisible(passwordBlankMessage);
+		return isControlDisplayed(passwordBlankMessage);
 	}
 
 	public boolean verifyConfirmPasswordBlankMessage() {
-		return isControlDisplayed(ServiceProviderUI.confirmPasswordBlankMessage);
+		waitForElementVisible(confirmPasswordBlankMessage);
+		return isControlDisplayed(confirmPasswordBlankMessage);
 	}
 
 	public boolean verifyPhoneNumberBlankMessage() {
-		return isControlDisplayed(ServiceProviderUI.phoneNumberBlankMessage);
+		waitForElementVisible(phoneNumberBlankMessage);
+		return isControlDisplayed(phoneNumberBlankMessage);
 	}
 
 	public boolean verifyAccountNameExistedMessage() {
-		return isControlDisplayed(ServiceProviderUI.accountNameExistMessage);
+		waitForElementVisible(accountNameExistMessage);
+		return isControlDisplayed(accountNameExistMessage);
 	}
 
 	public boolean verifyPasswordInvalidMessage() {
-		return isControlDisplayed(ServiceProviderUI.passwordInvalidMessage);
+		waitForElementVisible(passwordInvalidMessage);
+		return isControlDisplayed(passwordInvalidMessage);
 	}
 
 	public boolean verifyConfirmPasswordInvalidMessage() {
-		return isControlDisplayed(ServiceProviderUI.confirmPasswordInvalidMessage);
+		waitForElementVisible(confirmPasswordInvalidMessage);
+		return isControlDisplayed(confirmPasswordInvalidMessage);
 	}
 
 	public boolean verifyEmailInvalidMessage() {
-		return isControlDisplayed(ServiceProviderUI.emailInvalidMessage);
+		waitForElementVisible(emailInvalidMessage);
+		return isControlDisplayed(emailInvalidMessage);
 	}
 
 	public boolean verifyPhoneNumberWrongFormat() {
-		return isControlDisplayed(ServiceProviderUI.phoneNumberWrongFormatMessage);
+		waitForElementVisible(phoneNumberWrongFormatMessage);
+		return isControlDisplayed(phoneNumberWrongFormatMessage);
 	}
 
 	public boolean verifyServiceProviderExistedMessage() {
-		return isControlDisplayed(ServiceProviderUI.serviceProviderExistedMessage);
+		waitForElementVisible(serviceProviderExistedMessage);
+		return isControlDisplayed(serviceProviderExistedMessage);
 	}
 
 	public boolean verifyCreateServiceProviderSuccessMessage() {
-		return isControlDisplayed(ServiceProviderUI.createSuccessMessage);
+		waitForElementVisible(createSuccessMessage);
+		return isControlDisplayed(createSuccessMessage);
 	}
 	
 	public boolean verifyUpdateServiceProviderSuccessMessage() {
-		return isControlDisplayed(ServiceProviderUI.updateSuccessMessage);
+		waitForElementVisible(updateSuccessMessage);
+		return isControlDisplayed(updateSuccessMessage);
 	}
 	
 	public boolean verifyNameUpdateBlankMessage() {
-		return isControlDisplayed(ServiceProviderUI.nameUpdateBlankMessage);
+		waitForElementVisible(nameUpdateBlankMessage);
+		return isControlDisplayed(nameUpdateBlankMessage);
 	}
 	
 	public boolean verifyDeleteSuccessMessage() {
-		return isControlDisplayed(ServiceProviderUI.deleteSuccessMessage);
+		waitForElementVisible(deleteSuccessMessage);
+		return isControlDisplayed(deleteSuccessMessage);
 	}
 	
 

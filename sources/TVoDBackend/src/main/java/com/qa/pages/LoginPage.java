@@ -7,63 +7,82 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.qa.util.PageGeneratorManager;
 import com.qa.util.TestBase;
-import com.qa.pages.LoginPageUI;
 
-public class LoginPage  extends TestBase{
-	
-	//Initializing the Page Objects:
+public class LoginPage extends TestBase {
+
+	// Page Factory - OR
+	@FindBy(id = "loginform-username")
+	public WebElement usernameElement;
+
+	@FindBy(id = "loginform-password")
+	public WebElement passwordElement;
+
+	@FindBy(name = "login-button")
+	public WebElement loginButtonElement;
+
+	@FindBy(xpath = "//p[@class='lead']")
+	public WebElement successMessage;
+
+	@FindBy(xpath = "//div[contains(text(),'Account name not allowed to be blank')]")
+	public WebElement usernameBlankText;
+
+	@FindBy(xpath = "//div[contains(text(),'Password not allowed to be blank')]")
+	public WebElement passwordBlankText;
+
+	@FindBy(xpath = "//div[contains(text(),'Account name or password is incorrect. Please try')]")
+	public WebElement incorrectAccountText;
+
+	// Initializing the Page Objects:
 	public LoginPage() {
 		PageFactory.initElements(driver, this);
 	}
-	
-	//Actions:
+
+	// Actions:
 	public String getLoginPageTitle() {
 		return driver.getTitle();
 	}
-	
+
 	public boolean validateSuccessMsg() {
-		return isControlDisplayed(LoginPageUI.successMessage);
-		//return successMessage.isDisplayed();
+		return isControlDisplayed(successMessage);
+		// return successMessage.isDisplayed();
 	}
-	
+
 	public HomePage login(String name, String pwd) {
-		sendKeyToElement(LoginPageUI.usernameElement, name);
-		sendKeyToElement(LoginPageUI.passwordElement, pwd);
-		clickToElement(LoginPageUI.loginButtonElement);
-		
-		//return new HomePage();
+		sendKeyToElement(usernameElement, name);
+		sendKeyToElement(passwordElement, pwd);
+		clickToElement(loginButtonElement);
+
+		// return new HomePage();
 		return PageGeneratorManager.getHomePage();
 	}
-	
-	
+
 	public boolean verifyPasswordBlankTextDisplayed() {
-		return isControlDisplayed(LoginPageUI.passwordBlankText);
-		//return passwordBlankText.isDisplayed();
+		waitForElementVisible(passwordBlankText);
+		return isControlDisplayed(passwordBlankText);
 	}
-	
+
 	public boolean verifyUsernameBlankDisplayed() {
-		return isControlDisplayed(LoginPageUI.usernameBlankText);
-		//return usernameBlankText.isDisplayed();
+		waitForElementVisible(usernameBlankText);
+		return isControlDisplayed(usernameBlankText);
 	}
-	
+
 	public boolean verifyPasswordBlankDisplayed() {
-		//return passwordBlankText.isDisplayed();
-		return isControlDisplayed(LoginPageUI.passwordBlankText);
+		waitForElementVisible(passwordBlankText);
+		return isControlDisplayed(passwordBlankText);
 	}
-	
+
 	public boolean verifyUsernameAndPasswordBlankDisplayed() {
-		boolean flag1 = isControlDisplayed(LoginPageUI.usernameBlankText);
-		boolean flag2 = isControlDisplayed(LoginPageUI.passwordBlankText);
-		if(flag1 && flag2) {
+		boolean flag1 = isControlDisplayed(usernameBlankText);
+		boolean flag2 = isControlDisplayed(passwordBlankText);
+		if (flag1 && flag2) {
 			return true;
-		}
-		else {
+		} else {
 			return false;
 		}
 	}
-	
+
 	public boolean verifyIncorrectAccount() {
-		return isControlDisplayed(LoginPageUI.incorrectAccountText);
+		return isControlDisplayed(incorrectAccountText);
 	}
 
 }

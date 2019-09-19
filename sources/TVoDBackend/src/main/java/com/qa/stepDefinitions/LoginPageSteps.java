@@ -2,7 +2,6 @@ package com.qa.stepDefinitions;
 
 import com.qa.pages.HomePage;
 import com.qa.pages.LoginPage;
-import com.qa.pages.LoginPageUI;
 import com.qa.util.PageGeneratorManager;
 import com.qa.util.TestBase;
 
@@ -53,8 +52,8 @@ public class LoginPageSteps extends TestBase{
 	public void user_logs_into_the_page_with_password_blank() throws Throwable{
 		//loginPage = new LoginPage();
 		loginPage = PageGeneratorManager.getLoginPage();
-		clearToElement(LoginPageUI.usernameElement);
-		clearToElement(LoginPageUI.passwordElement);
+		clearToElement(loginPage.usernameElement);
+		clearToElement(loginPage.passwordElement);
 		homePage = loginPage.login(prop.getProperty("username"), " ");
 	}
 	
@@ -73,8 +72,8 @@ public class LoginPageSteps extends TestBase{
 	public void user_logs_into_the_page_with_wrong_account() throws Throwable {
 		//loginPage = new LoginPage();
 		loginPage = PageGeneratorManager.getLoginPage();
-		clearToElement(LoginPageUI.usernameElement);
-		clearToElement(LoginPageUI.passwordElement);
+		clearToElement(loginPage.usernameElement);
+		clearToElement(loginPage.passwordElement);
 		homePage = loginPage.login("admin1", "123456");
 	}
 
@@ -93,8 +92,8 @@ public class LoginPageSteps extends TestBase{
 	public void user_logs_into_the_page() throws Throwable {
 		//loginPage = new LoginPage();
 		loginPage = PageGeneratorManager.getLoginPage();
-		clearToElement(LoginPageUI.usernameElement);
-		clearToElement(LoginPageUI.passwordElement);
+		clearToElement(loginPage.usernameElement);
+		clearToElement(loginPage.passwordElement);
 		homePage = loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
 	}
 

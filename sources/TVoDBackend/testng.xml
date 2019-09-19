@@ -8,18 +8,25 @@
 		</classes>
 	</test>
 
-	<test name="Run on CHROME" annotations="JDK" preserve-order="true">
-		<parameter name="browser" value="chrome" />
-		<classes>
-			<class name="TestRunner" />
-		</classes>
-	</test>
+	<!-- <test name="Run on CHROME" annotations="JDK" preserve-order="true"> -->
+	<!-- <parameter name="browser" value="chrome" /> -->
+	<!-- <classes> -->
+	<!-- <class name="TestRunner" /> -->
+	<!-- </classes> -->
+	<!-- </test> -->
 
-<!-- 	<test name="Run on CHROME HEADLESS" annotations="JDK" preserve-order="true"> -->
-<!-- 		<parameter name="browser" value="headlesschrome" /> -->
-<!-- 		<classes> -->
-<!-- 			<class name="TestRunner" /> -->
-<!-- 		</classes> -->
-<!-- 	</test> -->
+	<!-- <test name="Run on CHROME HEADLESS" annotations="JDK" preserve-order="true"> -->
+	<!-- <parameter name="browser" value="headlesschrome" /> -->
+	<!-- <classes> -->
+	<!-- <class name="TestRunner" /> -->
+	<!-- </classes> -->
+	<!-- </test> -->
+
+	<listeners>
+		<listener class-name="org.uncommons.reportng.HTMLReporter" />
+		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+		<listener class-name="commons.ExtentReportListener" />
+	</listeners>
+
 
 </suite>

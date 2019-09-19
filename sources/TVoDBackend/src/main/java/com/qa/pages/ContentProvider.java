@@ -8,10 +8,213 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.qa.util.TestBase;
-import com.qa.pages.ContentProviderUI;
 
 public class ContentProvider extends TestBase{
 	
+	@FindBy(xpath = "//input[@name='ContentProviderSearch[cp_name]']")
+	@CacheLookup
+	public WebElement nameCriteria;
+	
+	@FindBy(xpath = "//i[@class='glyphicon glyphicon-calendar']")
+	@CacheLookup
+	public WebElement calendarIcon;
+	
+	@FindBy(xpath = "//a[text()='Create Content Provider']")
+	@CacheLookup
+	public WebElement createContentProviderButton;
+	
+	@FindBy(xpath = "//input[@id='contentproviderform-cp_name']")
+	@CacheLookup
+	public WebElement nameAddTextbox;
+	
+	@FindBy(xpath = "//input[@id='contentproviderform-cp_mst']")
+	@CacheLookup
+	public WebElement taxCodeAddTextbox;
+	
+	@FindBy(xpath = "//textarea[@id='contentproviderform-cp_address']")
+	@CacheLookup
+	public WebElement addressAddTextbox;
+	
+	@FindBy(xpath = "//select[@id='contentproviderform-status']")
+	@CacheLookup
+	public WebElement statusAddDropdown;
+	
+	@FindBy(xpath = "//input[@id='contentproviderform-username']")
+	@CacheLookup
+	public WebElement accountNameAddTextbox;
+	
+	@FindBy(xpath = "//input[@id='contentproviderform-password']")
+	@CacheLookup
+	public WebElement passwordAddTextbox;
+	
+	@FindBy(xpath = "//input[@id='contentproviderform-email']")
+	@CacheLookup
+	public WebElement emailAddTextbox;
+	
+	@FindBy(xpath = "//input[@id='contentproviderform-confirm_password']")
+	@CacheLookup
+	public WebElement confirmPasswordAddTextbox;
+	
+	@FindBy(xpath = "//input[@id='contentproviderform-phone_number']")
+	@CacheLookup
+	public WebElement phoneNumberAddTextbox;
+	
+	@FindBy(xpath = "//input[@id='contentproviderform-fullname']")
+	@CacheLookup
+	public WebElement fullNameAddTextbox;
+	
+	@FindBy(xpath = "//div[contains(text(),'Provider name cannot be blank.')]")
+	@CacheLookup
+	public WebElement nameBlankMessage;
+	
+	@FindBy(xpath = "//div[@class = 'help-block' and contains(text(),'cannot be blank.')]")
+	@CacheLookup
+	public WebElement accountNameBlankMessage;
+	
+	@FindBy(xpath = "//div[contains(text(),'Account name already exists, please choose another name')]")
+	@CacheLookup
+	public WebElement accountNameExistedMessage;
+	
+	@FindBy(xpath = "//div[contains(text(),'Password cannot be blank.')]")
+	@CacheLookup
+	public WebElement passwordBlankMessage;
+	
+	@FindBy(xpath = "//div[contains(text(),'Invalid password. Password at least 8 characters')]")
+	@CacheLookup
+	public WebElement wrongPasswordFormatMessage;
+
+	@FindBy(xpath = "//div[contains(text(),'Email of the representative cannot be blank.')]")
+	@CacheLookup
+	public WebElement emailBlankMessage;
+	
+	@FindBy(xpath = "//div[contains(text(),'Email address is not valid')]")
+	@CacheLookup
+	public WebElement wrongEmailFormatMessage;
+	
+	@FindBy(xpath = "//div[contains(text(),'Confirm password cannot be blank.')]")
+	@CacheLookup
+	public WebElement confirmPasswordBlankMessage;
+	
+	@FindBy(xpath = "//div[contains(text(),'Confirm password was wrong.')]")
+	@CacheLookup
+	public WebElement wrongConfirmPasswordMessage;
+	
+	@FindBy(xpath = "//div[contains(text(),'Phone number of representative cannot be blank.')]")
+	@CacheLookup
+	public WebElement phoneNumberBlankMessage;
+	
+	@FindBy(xpath = "//div[contains(text(),'Phone number must be number')]")
+	@CacheLookup
+	public WebElement wrongPhoneNumberFormatMessage;
+	
+	@FindBy(xpath = "//div[contains(text(),'Full name of representative cannot be blank.')]")
+	@CacheLookup
+	public WebElement fullNameBlankMessage;
+	
+	@FindBy(xpath = "//button[@class='btn btn-success']")
+	@CacheLookup
+	public WebElement createButton;
+	
+	@FindBy(xpath = "//a[@class='btn btn-default']")
+	@CacheLookup
+	public WebElement cancelButton;
+	
+	@FindBy(xpath = "//div[@id='w13-success']")
+	@CacheLookup
+	public WebElement createContentProviderSuccessMessage;
+	
+	
+	@FindBy(xpath = ".//*[@id='w0-container']/table/tbody/tr/td[1]")
+	@CacheLookup
+	public List<WebElement> listRowResult;
+	
+	@FindBy(xpath = "//tr[15]//td[5]//a[2]//span[1]")
+	@CacheLookup
+	public WebElement updateContentProviderIcon;
+	
+	@FindBy(xpath = "//a[contains(text(),'»')]")
+	@CacheLookup
+	public WebElement nextPageIcon;
+	
+	@FindBy(xpath = "//input[@id='contentproviderform-cp_name']")
+	@CacheLookup
+	public WebElement nameUpdateTextbox;
+	
+	@FindBy(xpath = "//input[@id='contentproviderform-cp_mst']")
+	@CacheLookup
+	public WebElement taxCodeUpdateTextbox;
+	
+	@FindBy(xpath = "//textarea[@id='contentproviderform-cp_address']")
+	@CacheLookup
+	public WebElement addressUpdateTextbox;
+	
+	@FindBy(xpath = "//select[@id='contentproviderform-status']")
+	@CacheLookup
+	public WebElement statusUpdateDropdown;
+	
+	@FindBy(xpath = "//input[@id='contentproviderform-email']")
+	@CacheLookup
+	public WebElement emailUpdateTextbox;
+	
+	@FindBy(xpath = "//input[@id='contentproviderform-phone_number']")
+	@CacheLookup
+	public WebElement phoneNumberUpdateTextbox;
+	
+	@FindBy(xpath = "//input[@id='contentproviderform-password']")
+	@CacheLookup
+	public WebElement passwordUpdateTextbox;
+	
+	@FindBy(xpath = "//input[@id='contentproviderform-confirm_password']")
+	@CacheLookup
+	public WebElement confirmPasswordUpdateTextbox;
+	
+	@FindBy(xpath = "//input[@id='contentproviderform-fullname']")
+	@CacheLookup
+	public WebElement fullNameUpdateTextbox;
+	
+	@FindBy(xpath = "//button[@class='btn btn-success']")
+	@CacheLookup
+	public WebElement updateButton;
+	
+	@FindBy(xpath = "//a[@class='btn btn-default']")
+	@CacheLookup
+	public WebElement cancelUpdateButton;
+	
+	@FindBy(xpath = "//div[@id='w13-success']")
+	@CacheLookup
+	public WebElement updateContentProviderSuccessMessage;
+	
+	@FindBy(xpath = "//div[@id='w13-success']")
+	@CacheLookup
+	public WebElement changeStatusSuccessMessage;
+	
+	@FindBy(xpath = "//tr[13]//td[5]//a[3]//span[1]")
+	@CacheLookup
+	public WebElement changeStatusIcon;
+	
+	@FindBy(xpath = "//button[@class='btn btn-default']")
+	@CacheLookup
+	public WebElement cancelChangeStatusButton;
+	
+	@FindBy(xpath = "//button[@class='btn btn-warning']")
+	@CacheLookup
+	public WebElement okChangeStatusButton;
+	
+	@FindBy(xpath = "//tr[14]//td[5]//a[4]//span[1]")
+	@CacheLookup
+	public WebElement deleteContentProviderIcon;
+	
+	@FindBy(xpath = "//button[@class='btn btn-default']")
+	@CacheLookup
+	public WebElement cancelDeleteContentProviderButton;
+	
+	@FindBy(xpath = "//button[@class='btn btn-warning']")
+	@CacheLookup
+	public WebElement okDeleteContentProviderButton;
+	
+	@FindBy(xpath = "//div[@id='w16-success']")
+	@CacheLookup
+	public WebElement deleteContentProviderSuccessMessage;
 	
 	public ContentProvider() {
 		PageFactory.initElements(driver, this);
@@ -22,130 +225,140 @@ public class ContentProvider extends TestBase{
 	}
 	
 	public void createContentProvider(String name, String taxCode, String address, String status, String accountName, String email, String phoneNumber, String password, String confirmPassword, String fullName, String command) throws Throwable {
-		sendKeyToElement(ContentProviderUI.accountNameAddTextbox, name);
-		sendKeyToElement(ContentProviderUI.taxCodeAddTextbox, taxCode);
-		sendKeyToElement(ContentProviderUI.addressAddTextbox, address);
-		sendKeyToElement(ContentProviderUI.statusAddDropdown, status);
-		sendKeyToElement(ContentProviderUI.accountNameAddTextbox, accountName);
-		sendKeyToElement(ContentProviderUI.emailAddTextbox, email);
-		sendKeyToElement(ContentProviderUI.phoneNumberAddTextbox, phoneNumber);
-		sendKeyToElement(ContentProviderUI.passwordAddTextbox, password);
-		sendKeyToElement(ContentProviderUI.confirmPasswordAddTextbox, confirmPassword);
-		sendKeyToElement(ContentProviderUI.fullNameAddTextbox, fullName);
+		sendKeyToElement(accountNameAddTextbox, name);
+		sendKeyToElement(taxCodeAddTextbox, taxCode);
+		sendKeyToElement(addressAddTextbox, address);
+		sendKeyToElement(statusAddDropdown, status);
+		sendKeyToElement(accountNameAddTextbox, accountName);
+		sendKeyToElement(emailAddTextbox, email);
+		sendKeyToElement(phoneNumberAddTextbox, phoneNumber);
+		sendKeyToElement(passwordAddTextbox, password);
+		sendKeyToElement(confirmPasswordAddTextbox, confirmPassword);
+		sendKeyToElement(fullNameAddTextbox, fullName);
 		if(command == "CREATE") {
-			//clickToElementByJavaScript(createButton);
-			clickToElement(ContentProviderUI.createButton);
-			Thread.sleep(1000);
+			clickToElementByJavaScript(createButton);
 		}
 		else if(command == "CANCEL") {
-			//clickToElementByJavaScript(cancelButton);
-			clickToElement(ContentProviderUI.cancelButton);
-			Thread.sleep(1000);
+			clickToElementByJavaScript(cancelButton);
 		}
 	}
 	
 	public void updateContentProvider(String name, String taxCode, String address, String status, String email, String phoneNumber, String password, String confirmPassword, String fullname, String command) {
-		clearToElement(ContentProviderUI.nameUpdateTextbox);
-		sendKeyToElement(ContentProviderUI.nameUpdateTextbox, name);
+		clearToElement(nameUpdateTextbox);
+		sendKeyToElement(nameUpdateTextbox, name);
 		
-		clearToElement(ContentProviderUI.taxCodeUpdateTextbox);
-		sendKeyToElement(ContentProviderUI.taxCodeUpdateTextbox, taxCode);
+		clearToElement(taxCodeUpdateTextbox);
+		sendKeyToElement(taxCodeUpdateTextbox, taxCode);
 		
-		clearToElement(ContentProviderUI.addressUpdateTextbox);
-		sendKeyToElement(ContentProviderUI.statusUpdateDropdown, status);
+		clearToElement(addressUpdateTextbox);
+		sendKeyToElement(statusUpdateDropdown, status);
 		
-		clearToElement(ContentProviderUI.emailUpdateTextbox);
-		sendKeyToElement(ContentProviderUI.emailUpdateTextbox, email);
+		clearToElement(emailUpdateTextbox);
+		sendKeyToElement(emailUpdateTextbox, email);
 		
-		clearToElement(ContentProviderUI.phoneNumberUpdateTextbox);
-		sendKeyToElement(ContentProviderUI.phoneNumberUpdateTextbox, phoneNumber);
+		clearToElement(phoneNumberUpdateTextbox);
+		sendKeyToElement(phoneNumberUpdateTextbox, phoneNumber);
 		
-		clearToElement(ContentProviderUI.passwordUpdateTextbox);
-		sendKeyToElement(ContentProviderUI.passwordUpdateTextbox, password);
+		clearToElement(passwordUpdateTextbox);
+		sendKeyToElement(passwordUpdateTextbox, password);
 		
-		clearToElement(ContentProviderUI.confirmPasswordUpdateTextbox);
-		sendKeyToElement(ContentProviderUI.confirmPasswordUpdateTextbox, confirmPassword);
+		clearToElement(confirmPasswordUpdateTextbox);
+		sendKeyToElement(confirmPasswordUpdateTextbox, confirmPassword);
 		
-		clearToElement(ContentProviderUI.fullNameUpdateTextbox);
-		sendKeyToElement(ContentProviderUI.fullNameUpdateTextbox, fullname);
+		clearToElement(fullNameUpdateTextbox);
+		sendKeyToElement(fullNameUpdateTextbox, fullname);
 		if(command == "UPDATE") {
-			//clickToElementByJavaScript(updateButton);
-			clickToElement(ContentProviderUI.updateButton);
+			clickToElementByJavaScript(updateButton);
 		}
 		else if(command == "CANCEL") {
-			//clickToElementByJavaScript(cancelUpdateButton);
-			clickToElement(ContentProviderUI.cancelUpdateButton);
+			clickToElementByJavaScript(cancelUpdateButton);
 		}
 			
 	}
 	
 	public boolean verifyNameBlankMessage() {
-		return isControlDisplayed(ContentProviderUI.nameBlankMessage);
+		waitForElementVisible(nameBlankMessage);
+		return isControlDisplayed(nameBlankMessage);
 	}
 	
 	public boolean verifyAccountNameBlankMessage() throws Throwable {
-		Thread.sleep(1000);
-		return isControlDisplayed(ContentProviderUI.accountNameBlankMessage);
+		waitForElementVisible(accountNameBlankMessage);
+		return isControlDisplayed(accountNameBlankMessage);
 	}
 	
 	public boolean verifyAccountNameExistedMessage() {
-		return isControlDisplayed(ContentProviderUI.accountNameExistedMessage);
+		waitForElementVisible(accountNameExistedMessage);
+		return isControlDisplayed(accountNameExistedMessage);
 	}
 	
 	public boolean verifyEmailBlankMessage() {
-		return isControlDisplayed(ContentProviderUI.emailBlankMessage);
+		waitForElementVisible(emailBlankMessage);
+		return isControlDisplayed(emailBlankMessage);
 	}
 	
 	public boolean verifyWrongEmailFormatMessage() {
-		return isControlDisplayed(ContentProviderUI.wrongEmailFormatMessage);
+		waitForElementVisible(wrongEmailFormatMessage);
+		return isControlDisplayed(wrongEmailFormatMessage);
 	}
 	
 	public boolean verifyPasswordBlankMessage() {
-		return isControlDisplayed(ContentProviderUI.passwordBlankMessage);
+		waitForElementVisible(passwordBlankMessage);
+		return isControlDisplayed(passwordBlankMessage);
 	}
 	
 	public boolean verifyWrongPasswordFormatMessage() {
-		return isControlDisplayed(ContentProviderUI.wrongPasswordFormatMessage);
+		waitForElementVisible(wrongPasswordFormatMessage);
+		return isControlDisplayed(wrongPasswordFormatMessage);
 	}
 	
 	public boolean verifyConfirmPasswordBlankMessage() {
-		return isControlDisplayed(ContentProviderUI.confirmPasswordBlankMessage);
+		waitForElementVisible(confirmPasswordBlankMessage);
+		return isControlDisplayed(confirmPasswordBlankMessage);
 	}
 	
 	public boolean verifyWrongConfirmPasswordFormat() {
-		return isControlDisplayed(ContentProviderUI.wrongConfirmPasswordMessage);
+		waitForElementVisible(wrongConfirmPasswordMessage);
+		return isControlDisplayed(wrongConfirmPasswordMessage);
 	}
 	
 	public boolean verifyPasswordAndConfirmPasswordNotMatchedMessage() {
-		return isControlDisplayed(ContentProviderUI.wrongConfirmPasswordMessage);
+		waitForElementVisible(wrongConfirmPasswordMessage);
+		return isControlDisplayed(wrongConfirmPasswordMessage);
 	}
 	
 	public boolean verifyPhoneNumberBlankMessage() throws Throwable {
-		return isControlDisplayed(ContentProviderUI.phoneNumberBlankMessage);
+		waitForElementVisible(phoneNumberBlankMessage);
+		return isControlDisplayed(phoneNumberBlankMessage);
 	}
 	
 	public boolean verifyWrongPhoneNumberFormatMessage() {
-		return isControlDisplayed(ContentProviderUI.wrongPhoneNumberFormatMessage);
+		waitForElementVisible(wrongPhoneNumberFormatMessage);
+		return isControlDisplayed(wrongPhoneNumberFormatMessage);
 	}
 	
 	public boolean verifyFullNameBlankMessage() {
-		return isControlDisplayed(ContentProviderUI.fullNameBlankMessage);
+		waitForElementVisible(fullNameBlankMessage);
+		return isControlDisplayed(fullNameBlankMessage);
 	}
 	
 	public boolean verifyCreateContentProviderSuccessMessage() {
-		return isControlDisplayed(ContentProviderUI.createContentProviderSuccessMessage);
+		waitForElementVisible(createContentProviderSuccessMessage);
+		return isControlDisplayed(createContentProviderSuccessMessage);
 	}
 	
 	public boolean verifyUpdateContentProviderSuccessMessage() throws Throwable {
-		return isControlDisplayed(ContentProviderUI.updateContentProviderSuccessMessage);
+		waitForElementVisible(updateContentProviderSuccessMessage);
+		return isControlDisplayed(updateContentProviderSuccessMessage);
 	}
 	
 	public boolean verifyChangeStatusSuccessMessage() {
-		return isControlDisplayed(ContentProviderUI.changeStatusSuccessMessage);
+		waitForElementVisible(changeStatusSuccessMessage);
+		return isControlDisplayed(changeStatusSuccessMessage);
 	}
 	
 	public boolean verifyDeleteContentProviderSuccessMessage() {
-		return isControlDisplayed(ContentProviderUI.deleteContentProviderSuccessMessage);
+		waitForElementVisible(deleteContentProviderSuccessMessage);
+		return isControlDisplayed(deleteContentProviderSuccessMessage);
 	}
 
 }

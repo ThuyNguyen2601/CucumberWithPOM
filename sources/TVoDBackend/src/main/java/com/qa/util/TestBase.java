@@ -23,6 +23,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -35,12 +36,13 @@ public class TestBase {
 	public static WebElement element;
 	public static WebDriverWait wait;
 	public static Alert alert;
+	
+	
 
 	public TestBase() {
 		try {
 			prop = new Properties();
-			String pathconfigfolder = Paths.get(".").normalize().toAbsolutePath().toString()
-					+ "\\src\\main\\java\\com\\qa\\config";
+			String pathconfigfolder = Paths.get(".").normalize().toAbsolutePath().toString() + "\\src\\main\\java\\com\\qa\\config";
 			Path propPath = Paths.get(pathconfigfolder, "config.properties");
 			String propString = propPath.toAbsolutePath().toString();
 			FileInputStream fis = new FileInputStream(propString);
@@ -56,12 +58,14 @@ public class TestBase {
 			Path chromeDriverPath = Paths.get("libs", "selenium-drivers", "chromedriver.74.0.3729.6.exe");
 			System.setProperty("webdriver.chrome.driver", chromeDriverPath.toAbsolutePath().toString());
 			driver = new ChromeDriver();
+			wait = new WebDriverWait(driver, 30);
 		} else if (browserName.equals("FF")) {
 			Path geckoDriverPath = Paths.get("libs", "geckodriver", "geckodriver.exe");
 			System.setProperty("webdriver.gecko.driver", geckoDriverPath.toAbsolutePath().toString());
 			DesiredCapabilities capabilities = DesiredCapabilities.firefox();
 			capabilities.setCapability("marionette", true);
 			driver = new FirefoxDriver(capabilities);
+			wait = new WebDriverWait(driver, 30);
 		}
 
 		driver.manage().window().maximize();
@@ -72,10 +76,6 @@ public class TestBase {
 		driver.get(prop.getProperty("url"));
 	}
 	
-	public int randomData() {
-		Random random = new Random();
-		return random.nextInt(9999);
-	}
 
 	public void tearDown() {
 		driver.close();
@@ -94,24 +94,24 @@ public class TestBase {
 	}
 
 	public void acceptAlert() throws Throwable {
-		 try{
-			 //WebDriverWait wait = new WebDriverWait(driver, 60);
-			 //wait.ignoring(NoAlertPresentException.class).until(ExpectedConditions.alertIsPresent());
-             Alert alert = driver.switchTo().alert();
-             System.out.println("Alert box text" + alert.getText());
-             Thread.sleep(5000);
-             alert.accept();
+		try {
+			// WebDriverWait wait = new WebDriverWait(driver, 60);
+			// wait.ignoring(NoAlertPresentException.class).until(ExpectedConditions.alertIsPresent());
+			Alert alert = driver.switchTo().alert();
+			System.out.println("Alert box text" + alert.getText());
+			Thread.sleep(5000);
+			alert.accept();
 
-		 } catch (NoAlertPresentException noAlert) {
-			 noAlert.getMessage();
-		 }
+		} catch (NoAlertPresentException noAlert) {
+			noAlert.getMessage();
+		}
 	}
 
 	public void cancelAlert() {
 		alert = driver.switchTo().alert();
 		alert.dismiss();
 	}
-	
+
 	public void waitForAlertPresent() throws Throwable {
 		driver.switchTo().alert().wait();
 	}
@@ -123,7 +123,7 @@ public class TestBase {
 	public void sendKeyToElement(WebElement element, String value) {
 		element.sendKeys(value);
 	}
-	
+
 	public void clearToElement(WebElement element) {
 		element.clear();
 	}
@@ -162,7 +162,7 @@ public class TestBase {
 		action = new Actions(driver);
 		action.moveToElement(element).perform();
 	}
-	
+
 	public void moveToElementByJS(WebElement element) {
 		action = new Actions(driver);
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
@@ -208,8 +208,7 @@ public class TestBase {
 
 	public boolean verifyTextInInterText(String textExpected) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		String actualText = (String) js
-				.executeScript("return document.documentElement.innerText.match('" + textExpected + "')[0]");
+		String actualText = (String) js.executeScript("return document.documentElement.innerText.match('" + textExpected + "')[0]");
 		return actualText.equals(textExpected);
 	}
 
@@ -222,18 +221,16 @@ public class TestBase {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		return js.executeScript("arguments[0].scrollIntoView(true);", element);
 	}
-	
+
 	public Object scrollToIntoviewElement(WebElement element) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		return js.executeScript("arguments[0].scrollIntoView();", element);
 	}
-	
 
 	public void highlighElement(WebElement element) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		String originalStyle = element.getAttribute("style");
-		js.executeScript("arguments[0].setAttribute(arguments[1],arguments[2])", element, "style",
-				"border:5px solid red; border-style:dashed;");
+		js.executeScript("arguments[0].setAttribute(arguments[1],arguments[2])", element, "style", "border:5px solid red; border-style:dashed;");
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
@@ -246,8 +243,6 @@ public class TestBase {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		return js.executeScript("arguments[0].removeAttribute('" + attributeRemove + "');", element);
 	}
-	
-	
 
 	// window
 	public void switchToWindowByID(String parent) {
@@ -304,21 +299,20 @@ public class TestBase {
 		driver.findElement(By.name("send")).click();
 		Thread.sleep(10000);
 	}
-	
+
 	public void clickToElementByJavaScript(WebElement element) {
-		JavascriptExecutor executor = (JavascriptExecutor)driver;
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
 		executor.executeScript("arguments[0].click();", element);
 	}
-	
+
 	public boolean compareContainText(String text, String subText) {
 		return text.contains(subText);
 	}
-	
-	public void HandleJQueryDateTimePicker(String day, By locator)
-			throws InterruptedException {
+
+	public void HandleJQueryDateTimePicker(String day, By locator) throws InterruptedException {
 		wait = new WebDriverWait(driver, 5);
-		//wait.until(ExpectedConditions.presenceOfElementLocated(By
-				//.id("ui-datepicker-div")));
+		// wait.until(ExpectedConditions.presenceOfElementLocated(By
+		// .id("ui-datepicker-div")));
 		WebElement table = driver.findElement(locator);
 		System.out.println("JQuery Calendar Dates");
 
@@ -341,59 +335,60 @@ public class TestBase {
 		// Intentional pause for 2 seconds.
 		Thread.sleep(2000);
 	}
+
 	public void selectValueInDateTiemPicker(String date) throws Throwable {
-		//button to open the calendar
+		// button to open the calendar
 		WebElement selectDate = driver.findElement(By.xpath("//i[@class='glyphicon glyphicon-calendar']"));
 		selectDate.click();
-		
-		//button to move next in calendar
+
+		// button to move next in calendar
 		WebElement nextLink = driver.findElement(By.xpath("//div[@class='datepicker-days']//th[@class='next'][contains(text(),'»')]"));
-		
-		//button to click center of calendar header
+
+		// button to click center of calendar header
 		WebElement midLink = driver.findElement(By.xpath("//div[@class='datepicker-days']//th[@class='datepicker-switch']"));
-		
-		//button to click previous in calendar
+
+		// button to click previous in calendar
 		WebElement previousLink = driver.findElement(By.xpath("//div[@class='datepicker-days']//th[@class='prev'][contains(text(),'«')]"));
-		
-		//Split the date time to get only the date part
+
+		// Split the date time to get only the date part
 		String date_dd_MM_yyyy[] = (date.split(" ")[0]).split("/");
-		
-		//get the year difference between current year and year to set in calander
+
+		// get the year difference between current year and year to set in calander
 		int yearDiff = Integer.parseInt(date_dd_MM_yyyy[2]) - Calendar.getInstance().get(Calendar.YEAR);
-		
+
 		midLink.click();
-		if(yearDiff != 0) {
-			//if you have to move next year
-			if(yearDiff > 0) {
-				for(int i = 0; i < yearDiff; i++) {
-					System.out.println("Year Diff->"+i);
+		if (yearDiff != 0) {
+			// if you have to move next year
+			if (yearDiff > 0) {
+				for (int i = 0; i < yearDiff; i++) {
+					System.out.println("Year Diff->" + i);
 					nextLink.click();
 				}
 			}
-			
-			//if you have to move previous year
-			else if(yearDiff < 0) {
-				for(int i = 0; i < (yearDiff*(-1)); i++) {
-					System.out.println("Year Diff->"+i);
+
+			// if you have to move previous year
+			else if (yearDiff < 0) {
+				for (int i = 0; i < (yearDiff * (-1)); i++) {
+					System.out.println("Year Diff->" + i);
 					previousLink.click();
 				}
 			}
 		}
-		
+
 		Thread.sleep(1000);
-		
-		//Get all months from calendar to select correct one
+
+		// Get all months from calendar to select correct one
 		List<WebElement> listAllMonthToBook = driver.findElements(By.xpath("//div[@class='datepicker-months']//span"));
 		listAllMonthToBook.get(Integer.parseInt(date_dd_MM_yyyy[1]) - 1).click();
-		
+
 		Thread.sleep(1000);
-		
-		//get all dates from calendar to select correct one
+
+		// get all dates from calendar to select correct one
 		List<WebElement> listAllDateToBook = driver.findElements(By.xpath("//div[@class='datepicker-days']//td[@class = 'day']"));
 		listAllDateToBook.get(Integer.parseInt(date_dd_MM_yyyy[0]) - 1).click();
-			
+
 	}
-	
+
 	public void searchByName(List<WebElement> elements, WebElement nameCriteria, String value) throws Throwable {
 		sendKeyToElement(nameCriteria, value);
 		sendKeyboardToElement(nameCriteria, Keys.ENTER);
@@ -407,31 +402,31 @@ public class TestBase {
 			}
 		}
 	}
-	
+
 	public void viewDetailContent(WebElement element) throws Throwable {
 		String xpathValueOfName = "//th[contains(text(),'Name')]//following-sibling::td";
-			//click in view icon
-			clickToElementByJavaScript(element);
+		// click in view icon
+		clickToElementByJavaScript(element);
 
-			//get name of content
-			String nameOfElement = driver.findElement(By.xpath(xpathValueOfName)).getText();
-			
-			//get the title of detail content page
-			String titleOfDetailContentPage = getPageTitle();
-			
-			//assert the title of page with name of content
-			Assert.assertEquals(titleOfDetailContentPage, nameOfElement);
-			Thread.sleep(1000);
-			back();
-		
+		// get name of content
+		String nameOfElement = driver.findElement(By.xpath(xpathValueOfName)).getText();
+
+		// get the title of detail content page
+		String titleOfDetailContentPage = getPageTitle();
+
+		// assert the title of page with name of content
+		Assert.assertEquals(titleOfDetailContentPage, nameOfElement);
+		Thread.sleep(1000);
+		back();
+
 	}
 	
-//	public void waitForElementVisible(String locator) {
-//		WebDriverWait waitExplicit = new WebDriverWait(driver, 20);
-//		By byLocator = By.xpath(locator);
-//		waitExplicit.until(ExpectedConditions.visibilityOfElementLocated(byLocator));
-//	}
+	public void waitForElementVisible(WebElement element2) {
+		element =  wait.until(ExpectedConditions.visibilityOf(element2));
+	}
 	
+	public void waitForElementClickalbe(WebElement element2) {
+		element = wait.until(ExpectedConditions.elementToBeClickable(element2));
+	}
 	
-
 }

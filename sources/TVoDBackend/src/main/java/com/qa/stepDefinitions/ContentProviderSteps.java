@@ -3,9 +3,9 @@ package com.qa.stepDefinitions;
 import org.testng.Assert;
 
 import com.qa.pages.ContentProvider;
-import com.qa.pages.ContentProviderUI;
 import com.qa.pages.HomePage;
 import com.qa.pages.LoginPage;
+import com.qa.util.AbstractTest;
 import com.qa.util.PageGeneratorManager;
 import com.qa.util.TestBase;
 
@@ -14,10 +14,11 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class ContentProviderSteps extends TestBase{
+public class ContentProviderSteps extends AbstractTest{
 	HomePage homePage;
 	ContentProvider contentProvider;
 	LoginPage loginPage;
+	TestBase testBase;
 	
 	String name = "Thuy content provider auto " + randomData();
 	String email = "abc" + randomData() + "@gmail.com";
@@ -65,20 +66,17 @@ public class ContentProviderSteps extends TestBase{
 
 	@Then("^user checks the title of Content Provider page$")
 	public void user_checks_the_title_of_Content_Provider_page() throws Throwable {
-		Thread.sleep(1000);
 		String title = contentProvider.getContentProviderPageTitle();
 		Assert.assertEquals(title, "Manage Content Provider");
+		verifyEquals(title, "Manage Content Provider");
 	}
 
 	@Then("^user searches Content Provider by name$")
 	public void user_searches_Content_Provider_by_name() throws Throwable {
-		searchByName(ContentProviderUI.listRowResult, ContentProviderUI.nameCriteria, "Thuy");
+		searchByName(contentProvider.listRowResult, contentProvider.nameCriteria, "Thuy");
 	}
 	
-	//@After("@CP1")
-	public void closeBrowser1() {
-		tearDown();
-	}
+	
 	
 //	@Then("^user searches Content Provider by calendar$")
 //	public void user_searches_Content_Provider_by_calendar() throws Throwable {
@@ -86,15 +84,12 @@ public class ContentProviderSteps extends TestBase{
 //		System.out.print("Check searches Content Provider by calendar success!");
 //	}
 	
-	//@After("@CP2")
-	public void closeBrowser2() {
-		tearDown();
-	}
+	
 	
 	@Then("^user presses Create Content Provider button$")
 	public void user_presses_Create_Content_Provider_button() throws Throwable {
 		//clickToElement(contentProvider.createContentProviderButton);
-		clickToElementByJavaScript(ContentProviderUI.createContentProviderButton);
+		clickToElementByJavaScript(contentProvider.createContentProviderButton);
 	}
 
 	@Then("^user create Content Provider without name$")
@@ -109,10 +104,6 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check create CP without name is: " + flag + "\n");
 	}
 	
-	//@After("@CP3")
-	public void closeBrowser3() {
-		tearDown();
-	}
 
 	@Then("^user create Content Provider without account name$")
 	public void user_create_Content_Provider_without_account_name() throws Throwable {
@@ -126,10 +117,6 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check create CP without account name is: " + flag + "\n");
 	}
 	
-	//@After("@CP4")
-	public void closeBrowser4() {
-		tearDown();
-	}
 
 	@Then("^user create Content Provider with existed account name$")
 	public void user_create_Content_Provider_with_existed_account_name() throws Throwable {
@@ -141,12 +128,9 @@ public class ContentProviderSteps extends TestBase{
 		boolean flag = contentProvider.verifyAccountNameExistedMessage();
 		Assert.assertTrue(flag);
 		System.out.print("Check create CP with existed account name is: " + flag + "\n");
+		
 	}
 	
-	//@After("@CP5")
-	public void closeBrowser5() {
-		tearDown();
-	}
 
 	@Then("^user create Content Provider without email$")
 	public void user_create_Content_Provider_without_email() throws Throwable {
@@ -160,10 +144,6 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check create CP without email is: " + flag + "\n");
 	}
 	
-	//@After("@CP6")
-	public void closeBrowser6() {
-		tearDown();
-	}
 
 	@Then("^user create Content Provider with wrong email format$")
 	public void user_create_Content_Provider_with_wrong_email_format() throws Throwable {
@@ -177,10 +157,6 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check create CP wrong email format is: " + flag + "\n");
 	}
 	
-	//@After("@CP7")
-	public void closeBrowser7() {
-		tearDown();
-	}
 
 	@Then("^user create Content Provider without phone number$")
 	public void user_create_Content_Provider_without_phone_number() throws Throwable {
@@ -194,10 +170,6 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check create CP without phone number is: " + flag + "\n");
 	}
 	
-	//@After("@CP8")
-	public void closeBrowser8() {
-		tearDown();
-	}
 
 	@Then("^user create Content Provider with wrong phone number format$")
 	public void user_create_Content_Provider_with_wrong_phone_number_format() throws Throwable {
@@ -211,10 +183,6 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check create CP wrong phone number format is: " + flag + "\n");
 	}
 	
-	//@After("@CP9")
-	public void closeBrowser9() {
-		tearDown();
-	}
 
 	@Then("^user create Content Provider without password$")
 	public void user_create_Content_Provider_without_password() throws Throwable {
@@ -228,10 +196,6 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check create CP without password is: " + flag + "\n");
 	}
 	
-	//@After("@CP10")
-	public void closeBrowser10() {
-		tearDown();
-	}
 	
 	@Then("^user create Content Provider with wrong password format$")
 	public void user_create_Content_Provider_with_wrong_password_format() throws Throwable {
@@ -245,11 +209,6 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check create CP wrong password format is: " + flag + "\n");
 	}
 	
-	//@After("@CP11")
-	public void closeBrowser11() {
-		tearDown();
-	}
-
 	@Then("^user create Content Provider without confirm password$")
 	public void user_create_Content_Provider_without_confirm_password() throws Throwable {
 		contentProvider.createContentProvider(name, taxCode, address, status, accountName, email, phoneNumber, password, "", fullName, "CREATE");
@@ -260,11 +219,6 @@ public class ContentProviderSteps extends TestBase{
 		boolean flag = contentProvider.verifyConfirmPasswordBlankMessage();
 		Assert.assertTrue(flag);
 		System.out.print("Check create CP without confirm password is: " + flag + "\n");
-	}
-	
-	//@After("@CP12")
-	public void closeBrowser12() {
-		tearDown();
 	}
 
 	@Then("^user create Content Provider with wrong confirm password format$")
@@ -279,10 +233,6 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check create CP wrong confirm password format is: " + flag + "\n");
 	}
 	
-	//@After("@CP13")
-	public void closeBrowser13() {
-		tearDown();
-	}
 
 	@Then("^user create Content Provider with password and confirm password not matched$")
 	public void user_create_Content_Provider_with_password_and_confirm_password_not_matched() throws Throwable {
@@ -296,10 +246,6 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check create CP password and confirm password not matched is: " + flag + "\n");
 	}
 	
-	//@After("@CP14")
-	public void closeBrowser14() {
-		tearDown();
-	}
 
 	@Then("^user create Content Provider without full name$")
 	public void user_create_Content_Provider_without_full_name() throws Throwable {
@@ -313,10 +259,6 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check create CP without full name is: " + flag + "\n");
 	}
 	
-	//@After("@CP15")
-	public void closeBrowser15() {
-		tearDown();
-	}
 	
 	@Then("^user create Content Provider with valid value$")
 	public void user_create_Content_Provider_with_valid_value() throws Throwable {
@@ -330,10 +272,6 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check create Content Provider success is: " + flag + "\n");
 	}
 	
-	//@After("@CP16")
-	public void closeBrowser16() {
-		tearDown();
-	}
 	
 	@Then("^user create Content Provider but press Cancel button$")
 	public void user_create_Content_Provider_but_press_Cancel_button() throws Throwable {
@@ -347,16 +285,10 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check create CP but press Cancel is OK");
 	}
 	
-	//@After("@CP17")
-	public void closeBrowser17() {
-		tearDown();
-	}
-	
 	@Then("^user presses update Content Provider button$")
 	public void user_presses_update_Content_Provider_button() throws Throwable {
-		//clickToElementByJavaScript(contentProvider.nextPageIcon);
-		Thread.sleep(1000);
-		clickToElementByJavaScript(ContentProviderUI.updateContentProviderIcon);
+		testBase.waitForElementVisible(contentProvider.updateContentProviderIcon);
+		clickToElementByJavaScript(contentProvider.updateContentProviderIcon);
 	}
 
 	@Then("^user update Content Provider without name$")
@@ -371,10 +303,6 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check update Content Provider without name is: " + flag + "\n");
 	}
 	
-	//@After("@CP18")
-	public void closeBrowser18() {
-		tearDown();
-	}
 
 	@Then("^user update Content Provider without email$")
 	public void user_update_Content_Provider_without_email() throws Throwable {
@@ -388,10 +316,6 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check update Content Provider without email is: " + flag + "\n");
 	}
 	
-	//@After("@CP19")
-	public void closeBrowser19() {
-		tearDown();
-	}
 
 	@Then("^user update Content Provider with wrong email format$")
 	public void user_update_Content_Provider_with_wrong_email_format() throws Throwable {
@@ -403,11 +327,6 @@ public class ContentProviderSteps extends TestBase{
 		boolean flag = contentProvider.verifyWrongEmailFormatMessage();
 		Assert.assertTrue(flag);
 		System.out.print("Check update Content Provider with wrong email format is: " + flag + "\n");
-	}
-	
-	//@After("@CP20")
-	public void closeBrowser20() {
-		tearDown();
 	}
 
 	@Then("^user update Content Provider without phone number$")
@@ -422,10 +341,6 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check update Content Provider without phone number is: " + flag + "\n");
 	}
 	
-	//@After("@CP21")
-	public void closeBrowser21() {
-		tearDown();
-	}
 
 	@Then("^user update Content Provider with wrong phone number format$")
 	public void user_update_Content_Provider_with_wrong_phone_number_format() throws Throwable {
@@ -439,10 +354,6 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check update Content Provider with wrong phone number format is: " + flag + "\n");
 	}
 	
-	//@After("@CP22")
-	public void closeBrowser22() {
-		tearDown();
-	}
 
 	@Then("^user update Content Provider without password$")
 	public void user_update_Content_Provider_without_password() throws Throwable {
@@ -456,11 +367,6 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check update Content Provider without password is: " + flag + "\n");
 	}
 	
-	//@After("@CP23")
-	public void closeBrowser23() {
-		tearDown();
-	}
-
 	@Then("^user update Content Provider with wrong password format$")
 	public void user_update_Content_Provider_with_wrong_password_format() throws Throwable {
 		contentProvider.updateContentProvider(name, taxCode, address, status, email, phoneNumber, "11111", confirmPassword, fullName, "UPDATE");
@@ -473,10 +379,6 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check update Content Provider with wrong password format is: " + flag + "\n");
 	}
 	
-	//@After("@CP24")
-	public void closeBrowser24() {
-		tearDown();
-	}
 
 	@Then("^user update Content Provider without confirm password$")
 	public void user_update_Content_Provider_without_confirm_password() throws Throwable {
@@ -490,10 +392,6 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check update Content Provider without confirm password is: " + flag + "\n");
 	}
 	
-	//@After("@CP25")
-	public void closeBrowser25() {
-		tearDown();
-	}
 
 	@Then("^user update Content Provider with password and confirm password not matched$")
 	public void user_update_Content_Provider_with_password_and_confirm_password_not_matched() throws Throwable {
@@ -505,11 +403,6 @@ public class ContentProviderSteps extends TestBase{
 		boolean flag = contentProvider.verifyPasswordAndConfirmPasswordNotMatchedMessage();
 		Assert.assertTrue(flag);
 		System.out.print("Check update Content Provider with password and confirm password not matched is: " + flag + "\n");
-	}
-	
-	//@After("@CP26")
-	public void closeBrowser26() {
-		tearDown();
 	}
 
 	@Then("^user update Content Provider without full name$")
@@ -523,11 +416,6 @@ public class ContentProviderSteps extends TestBase{
 		Assert.assertTrue(flag);
 		System.out.print("Check update Content Provider without fullname is: " + flag + "\n");
 	}
-	
-	//@After("@CP27")
-	public void closeBrowser27() {
-		tearDown();
-	}
 
 	@Then("^user update Content Provider when press Cancel button$")
 	public void user_update_Content_Provider_when_press_Cancel_button() throws Throwable {
@@ -540,11 +428,6 @@ public class ContentProviderSteps extends TestBase{
 		Assert.assertEquals(pageTitle, "Manage Content Provider");
 	}
 	
-	//@After("@CP28")
-	public void closeBrowser28() {
-		tearDown();
-	}
-
 	@Then("^user update Content Provider with valid values$")
 	public void user_update_Content_Provider_with_valid_values() throws Throwable {
 		contentProvider.updateContentProvider(name, taxCode, address, status, email, phoneNumber, password, confirmPassword, fullName, "UPDATE");
@@ -557,81 +440,59 @@ public class ContentProviderSteps extends TestBase{
 		System.out.print("Check update Content Provider success is: " + flag + "\n");
 	}
 	
-	//@After("@CP29")
-	public void closeBrowser29() {
-		tearDown();
-	}
-	
 	@Then("^user clicks to Reset button$")
 	public void user_clicks_to_Reset_button() throws Throwable {
-		Thread.sleep(1000);
-		clickToElementByJavaScript(ContentProviderUI.changeStatusIcon);
+		testBase.waitForElementVisible(contentProvider.changeStatusIcon);
+		clickToElementByJavaScript(contentProvider.changeStatusIcon);
 	}
 
 	@Then("^user presses Cancel button on the confirmation reset status alert$")
 	public void user_presses_Cancel_button_on_the_confirmation_reset_status_alert() throws Throwable {
-		Thread.sleep(1000);
-		clickToElementByJavaScript(ContentProviderUI.cancelChangeStatusButton);
+		testBase.waitForElementVisible(contentProvider.cancelChangeStatusButton);
+		clickToElementByJavaScript(contentProvider.cancelChangeStatusButton);
 	}
 	
-	//@After("@CP30")
-	public void closeBrowser30() {
-		tearDown();
-	}
 
 	@Then("^user presses OK button on the confirmation reset status alert$")
 	public void user_presses_OK_button_on_the_confirmation_reset_status_alert() throws Throwable {
-		clickToElementByJavaScript(ContentProviderUI.okChangeStatusButton);
+		clickToElementByJavaScript(contentProvider.okChangeStatusButton);
 	}
 
 	@Then("^verify the change status successful message$")
 	public void verify_the_change_status_successful_message() throws Throwable {
-		Thread.sleep(1000);
+		testBase.waitForElementVisible(contentProvider.changeStatusSuccessMessage);
 		boolean flag = contentProvider.verifyChangeStatusSuccessMessage();
 		Assert.assertTrue(flag);
 		System.out.print("Check change status of Content Provider success is: " + flag + "\n");
 	}
 	
-	//@After("@CP31")
-	public void closeBrowser31() {
-		tearDown();
-	}
 	
 	@Then("^user clicks to Delete button$")
 	public void user_clicks_to_Delete_button() throws Throwable {
-		Thread.sleep(1000);
-		clickToElementByJavaScript(ContentProviderUI.deleteContentProviderIcon);
+		testBase.waitForElementVisible(contentProvider.deleteContentProviderIcon);
+		clickToElementByJavaScript(contentProvider.deleteContentProviderIcon);
 	}
 
 	@Then("^user presses Cancel button on the confirmation delete content provider alert$")
 	public void user_presses_Cancel_button_on_the_confirmation_delete_content_provider_alert() throws Throwable {
-		Thread.sleep(1000);
-		clickToElementByJavaScript(ContentProviderUI.cancelDeleteContentProviderButton);
+		testBase.waitForElementVisible(contentProvider.cancelDeleteContentProviderButton);
+		clickToElementByJavaScript(contentProvider.cancelDeleteContentProviderButton);
 	}
 	
-	//@After("@CP32")
-	public void closeBrowser32() {
-		tearDown();
-	}
-
 	@Then("^user presses OK button on the confirmation delete content provider alert$")
 	public void user_presses_OK_button_on_the_confirmation_delete_content_provider_alert() throws Throwable {
-		Thread.sleep(1000);
-		clickToElementByJavaScript(ContentProviderUI.okDeleteContentProviderButton);
+		testBase.waitForElementVisible(contentProvider.okDeleteContentProviderButton);
+		clickToElementByJavaScript(contentProvider.okDeleteContentProviderButton);
 	}
 
 	@Then("^verify the delete Content Provider success message$")
 	public void verify_the_delete_Content_Provider_success_message() throws Throwable {
-		Thread.sleep(1000);
+		testBase.waitForElementVisible(contentProvider.deleteContentProviderSuccessMessage);
 		boolean flag = contentProvider.verifyDeleteContentProviderSuccessMessage();
 		Assert.assertTrue(flag);
 		System.out.print("Check delete Content Provider success is: " + flag + "\n");
 	}
 
-	//@After("@CP33")
-	public void closeBrowser33() {
-		tearDown();
-	}
 	
 
 	
