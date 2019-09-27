@@ -5,10 +5,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.qa.util.AbstractTest;
 import com.qa.util.PageGeneratorManager;
 import com.qa.util.TestBase;
 
-public class LoginPage extends TestBase {
+public class LoginPage extends AbstractTest {
 
 	// Page Factory - OR
 	@FindBy(id = "loginform-username")

@@ -11,9 +11,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
+import com.qa.util.AbstractTest;
 import com.qa.util.TestBase;
 
-public class ServiceProvider extends TestBase {
+public class ServiceProvider extends AbstractTest {
 	
 	@FindBy(xpath = "//input[@name='SiteSearch[name]']")
 	@CacheLookup
@@ -233,8 +234,8 @@ public class ServiceProvider extends TestBase {
 	public void searchServiceProviderByName(String value) throws Throwable {
 		sendKeyToElement(nameCriteria, value);
 		sendKeyboardToElement(nameCriteria, Keys.ENTER);
-		Thread.sleep(3000);
-		for (int i = 1; i < rowResults.size() + 1; i++) {
+		Thread.sleep(1000);
+		for (int i = 1; i < rowResults.size(); i++) {
 			String resultText = driver.findElement(By.xpath("//tbody//tr[" + i + "]//td[1]")).getText();
 			if (compareContainText(resultText, value)) {
 				System.out.print("The result is true\n");

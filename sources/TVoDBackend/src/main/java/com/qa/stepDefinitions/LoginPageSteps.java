@@ -2,8 +2,8 @@ package com.qa.stepDefinitions;
 
 import com.qa.pages.HomePage;
 import com.qa.pages.LoginPage;
+import com.qa.util.AbstractTest;
 import com.qa.util.PageGeneratorManager;
-import com.qa.util.TestBase;
 
 import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
@@ -11,7 +11,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.Assert;
 
-public class LoginPageSteps extends TestBase{
+public class LoginPageSteps extends AbstractTest{
 	LoginPage loginPage;
 	HomePage homePage;
 	

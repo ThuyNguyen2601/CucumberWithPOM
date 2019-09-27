@@ -8,10 +8,10 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.qa.util.AbstractTest;
 import com.qa.util.PageGeneratorManager;
-import com.qa.util.TestBase;
 
-public class HomePage extends TestBase{
+public class HomePage extends AbstractTest{
 	
 	@FindBy(xpath = "//span[@class='username username-hide-on-mobile']")
 	public WebElement userNameLabel;

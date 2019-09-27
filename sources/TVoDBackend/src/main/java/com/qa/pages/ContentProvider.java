@@ -2,14 +2,17 @@ package com.qa.pages;
 
 import java.util.List;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.qa.util.AbstractTest;
 import com.qa.util.TestBase;
 
-public class ContentProvider extends TestBase{
+public class ContentProvider extends AbstractTest{
 	
 	@FindBy(xpath = "//input[@name='ContentProviderSearch[cp_name]']")
 	@CacheLookup
@@ -128,7 +131,7 @@ public class ContentProvider extends TestBase{
 	@CacheLookup
 	public List<WebElement> listRowResult;
 	
-	@FindBy(xpath = "//tr[15]//td[5]//a[2]//span[1]")
+	@FindBy(xpath = "//tr[13]//td[5]//a[2]//span[1]")
 	@CacheLookup
 	public WebElement updateContentProviderIcon;
 	
@@ -225,7 +228,7 @@ public class ContentProvider extends TestBase{
 	}
 	
 	public void createContentProvider(String name, String taxCode, String address, String status, String accountName, String email, String phoneNumber, String password, String confirmPassword, String fullName, String command) throws Throwable {
-		sendKeyToElement(accountNameAddTextbox, name);
+		sendKeyToElement(nameAddTextbox, name);
 		sendKeyToElement(taxCodeAddTextbox, taxCode);
 		sendKeyToElement(addressAddTextbox, address);
 		sendKeyToElement(statusAddDropdown, status);
@@ -274,6 +277,21 @@ public class ContentProvider extends TestBase{
 			clickToElementByJavaScript(cancelUpdateButton);
 		}
 			
+	}
+	
+	public void searchByName(List<WebElement> elements, WebElement nameCriteria, String value) throws Throwable {
+		sendKeyToElement(nameCriteria, value);
+		sendKeyboardToElement(nameCriteria, Keys.ENTER);
+		Thread.sleep(1000);
+		for (int i = 1; i < elements.size(); i++) {
+			scrollToBottomPage();
+			String resultText = driver.findElement(By.xpath("//tbody//tr[" + i + "]//td[1]")).getText();
+			if (compareContainText(resultText, value)) {
+				System.out.print("The result is true\n");
+			} else {
+				System.out.print("No results found!\n");
+			}
+		}
 	}
 	
 	public boolean verifyNameBlankMessage() {

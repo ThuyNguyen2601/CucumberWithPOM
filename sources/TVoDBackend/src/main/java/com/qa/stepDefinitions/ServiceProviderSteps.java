@@ -49,6 +49,7 @@ public class ServiceProviderSteps extends AbstractTest {
 		//homePage = new HomePage();
 		homePage = PageGeneratorManager.getHomePage();
 		serviceProvider = homePage.gotoServiceProviderPage();
+		waitForLoad();
 	}
 
 	@Then("^user check the title of page$")
@@ -69,7 +70,8 @@ public class ServiceProviderSteps extends AbstractTest {
 		//homePage = new HomePage();
 		homePage = PageGeneratorManager.getHomePage();
 		serviceProvider = homePage.gotoServiceProviderPage();
-		clickToElementByJavaScript(serviceProvider.createServiceProviderButton);
+		waitForElementClickalbe(serviceProvider.createServiceProviderButton);
+		clickElementByAction(serviceProvider.createServiceProviderButton);
 	}
 
 	@Then("^user creates Service Provider with Name blank$")
@@ -118,7 +120,7 @@ public class ServiceProviderSteps extends AbstractTest {
 
 	@Then("^verify notified phone number blank message$")
 	public void verify_notified_phone_number_blank_message() throws Throwable {
-		testBase.waitForElementVisible(serviceProvider.phoneNumberBlankMessage);
+		waitForElementVisible(serviceProvider.phoneNumberBlankMessage);
 		boolean flag = serviceProvider.verifyPhoneNumberBlankMessage();
 		Assert.assertTrue(flag);
 		System.out.println("Check Phone Number blank is: " + flag  + "\n");
@@ -250,7 +252,7 @@ public class ServiceProviderSteps extends AbstractTest {
 
 	@Then("^verify create Service Provider success message$")
 	public void verify_create_Service_Provider_success_message() throws Throwable {
-		testBase.waitForElementVisible(serviceProvider.createSuccessMessage);
+		waitForElementVisible(serviceProvider.createSuccessMessage);
 		boolean flag = serviceProvider.verifyCreateServiceProviderSuccessMessage();
 		Assert.assertTrue(flag);
 		System.out.print("Check Create Service Provider success is: " + flag + "\n");
@@ -263,7 +265,7 @@ public class ServiceProviderSteps extends AbstractTest {
 		//homePage =  new HomePage();
 		homePage = PageGeneratorManager.getHomePage();
 		serviceProvider = homePage.gotoServiceProviderPage();
-		testBase.waitForElementVisible(serviceProvider.updateServiceProviderIcon);
+		waitForElementVisible(serviceProvider.updateServiceProviderIcon);
 		clickToElementByJavaScript(serviceProvider.updateServiceProviderIcon);
 	}
 
@@ -305,27 +307,22 @@ public class ServiceProviderSteps extends AbstractTest {
 	}
 	
 	
-	@When("^user presses to Delete icon$")
+	@Then("^user presses to Delete icon$")
 	public void user_presses_to_Delete_icon() throws Throwable {
-		//homePage = new HomePage();
 		homePage = PageGeneratorManager.getHomePage();
 		serviceProvider = homePage.gotoServiceProviderPage();
-		testBase.waitForElementVisible(serviceProvider.deleteServiceProviderIcon);
-		clickToElementByJavaScript(serviceProvider.deleteServiceProviderIcon);
-		//clickToElement(serviceProvider.deleteServiceProviderIcon);
+		clickToElement(serviceProvider.deleteServiceProviderIcon);
 	}
 
 	@Then("^user presses to Cancel button in the alert$")
 	public void user_presses_to_Cancel_button_in_the_alert() throws Throwable {
-		testBase.waitForElementVisible(serviceProvider.CancelButtonInDeleteConfirmAlert);
-		clickToElementByJavaScript(serviceProvider.CancelButtonInDeleteConfirmAlert);
+		clickToElement(serviceProvider.CancelButtonInDeleteConfirmAlert);
 	}
 	
 
 	@Then("^user presses to OK button in the alert$")
 	public void user_presses_to_OK_button_in_the_alert() throws Throwable {
-		testBase.waitForElementVisible(serviceProvider.OKButtonInDeleteConfirmAlert);
-		clickToElementByJavaScript(serviceProvider.OKButtonInDeleteConfirmAlert);
+		clickToElement(serviceProvider.OKButtonInDeleteConfirmAlert);
 	}
 
 	@Then("^verify delete Service Provider success message$")

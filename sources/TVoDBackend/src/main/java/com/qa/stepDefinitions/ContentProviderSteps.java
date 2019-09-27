@@ -20,7 +20,7 @@ public class ContentProviderSteps extends AbstractTest{
 	LoginPage loginPage;
 	TestBase testBase;
 	
-	String name = "Thuy content provider auto " + randomData();
+	String name = "Thuy content provider " + randomData();
 	String email = "abc" + randomData() + "@gmail.com";
 	String address = "124 Hoang Quoc Viet";
 	String taxCode = "100";
@@ -58,25 +58,22 @@ public class ContentProviderSteps extends AbstractTest{
 
 	@Then("^user goes to the Content Provider page$")
 	public void user_goes_to_the_Content_Provider_page() throws Throwable {
-		//Thread.sleep(1000);
-		//homePage = new HomePage();
 		homePage = PageGeneratorManager.getHomePage();
 		contentProvider = homePage.gotoContentProviderPage();
+		waitForLoad();
 	}
 
 	@Then("^user checks the title of Content Provider page$")
 	public void user_checks_the_title_of_Content_Provider_page() throws Throwable {
 		String title = contentProvider.getContentProviderPageTitle();
-		Assert.assertEquals(title, "Manage Content Provider");
+		//Assert.assertEquals(title, "Manage Content Provider");
 		verifyEquals(title, "Manage Content Provider");
 	}
 
 	@Then("^user searches Content Provider by name$")
 	public void user_searches_Content_Provider_by_name() throws Throwable {
-		searchByName(contentProvider.listRowResult, contentProvider.nameCriteria, "Thuy");
+		contentProvider.searchByName(contentProvider.listRowResult, contentProvider.nameCriteria, "Thuy");
 	}
-	
-	
 	
 //	@Then("^user searches Content Provider by calendar$")
 //	public void user_searches_Content_Provider_by_calendar() throws Throwable {
@@ -280,6 +277,7 @@ public class ContentProviderSteps extends AbstractTest{
 
 	@Then("^verify the title of page after Cancel$")
 	public void verify_the_title_of_page_after_Cancel() throws Throwable {
+		waitForLoad();
 		String title = contentProvider.getContentProviderPageTitle();
 		Assert.assertEquals(title, "Manage Content Provider");
 		System.out.print("Check create CP but press Cancel is OK");
@@ -287,7 +285,7 @@ public class ContentProviderSteps extends AbstractTest{
 	
 	@Then("^user presses update Content Provider button$")
 	public void user_presses_update_Content_Provider_button() throws Throwable {
-		testBase.waitForElementVisible(contentProvider.updateContentProviderIcon);
+		waitForElementClickalbe(contentProvider.updateContentProviderIcon);
 		clickToElementByJavaScript(contentProvider.updateContentProviderIcon);
 	}
 
@@ -424,6 +422,7 @@ public class ContentProviderSteps extends AbstractTest{
 
 	@Then("^verify the page title after press Cancel update$")
 	public void verify_the_page_title_after_press_Cancel_update() throws Throwable {
+		waitForLoad();
 		String pageTitle = contentProvider.getContentProviderPageTitle();
 		Assert.assertEquals(pageTitle, "Manage Content Provider");
 	}
@@ -442,25 +441,26 @@ public class ContentProviderSteps extends AbstractTest{
 	
 	@Then("^user clicks to Reset button$")
 	public void user_clicks_to_Reset_button() throws Throwable {
-		testBase.waitForElementVisible(contentProvider.changeStatusIcon);
+		waitForElementVisible(contentProvider.changeStatusIcon);
 		clickToElementByJavaScript(contentProvider.changeStatusIcon);
 	}
 
 	@Then("^user presses Cancel button on the confirmation reset status alert$")
 	public void user_presses_Cancel_button_on_the_confirmation_reset_status_alert() throws Throwable {
-		testBase.waitForElementVisible(contentProvider.cancelChangeStatusButton);
+		waitForElementVisible(contentProvider.cancelChangeStatusButton);
 		clickToElementByJavaScript(contentProvider.cancelChangeStatusButton);
 	}
 	
 
 	@Then("^user presses OK button on the confirmation reset status alert$")
 	public void user_presses_OK_button_on_the_confirmation_reset_status_alert() throws Throwable {
+		waitForElementVisible(contentProvider.okChangeStatusButton);
 		clickToElementByJavaScript(contentProvider.okChangeStatusButton);
 	}
 
 	@Then("^verify the change status successful message$")
 	public void verify_the_change_status_successful_message() throws Throwable {
-		testBase.waitForElementVisible(contentProvider.changeStatusSuccessMessage);
+		waitForElementVisible(contentProvider.changeStatusSuccessMessage);
 		boolean flag = contentProvider.verifyChangeStatusSuccessMessage();
 		Assert.assertTrue(flag);
 		System.out.print("Check change status of Content Provider success is: " + flag + "\n");
@@ -469,25 +469,26 @@ public class ContentProviderSteps extends AbstractTest{
 	
 	@Then("^user clicks to Delete button$")
 	public void user_clicks_to_Delete_button() throws Throwable {
-		testBase.waitForElementVisible(contentProvider.deleteContentProviderIcon);
+		homePage = PageGeneratorManager.getHomePage();
+		contentProvider = homePage.gotoContentProviderPage();
 		clickToElementByJavaScript(contentProvider.deleteContentProviderIcon);
 	}
 
 	@Then("^user presses Cancel button on the confirmation delete content provider alert$")
 	public void user_presses_Cancel_button_on_the_confirmation_delete_content_provider_alert() throws Throwable {
-		testBase.waitForElementVisible(contentProvider.cancelDeleteContentProviderButton);
+		waitForElementClickalbe(contentProvider.cancelDeleteContentProviderButton);
 		clickToElementByJavaScript(contentProvider.cancelDeleteContentProviderButton);
 	}
 	
 	@Then("^user presses OK button on the confirmation delete content provider alert$")
 	public void user_presses_OK_button_on_the_confirmation_delete_content_provider_alert() throws Throwable {
-		testBase.waitForElementVisible(contentProvider.okDeleteContentProviderButton);
+		waitForElementClickalbe(contentProvider.okDeleteContentProviderButton);
 		clickToElementByJavaScript(contentProvider.okDeleteContentProviderButton);
 	}
 
 	@Then("^verify the delete Content Provider success message$")
 	public void verify_the_delete_Content_Provider_success_message() throws Throwable {
-		testBase.waitForElementVisible(contentProvider.deleteContentProviderSuccessMessage);
+		waitForElementVisible(contentProvider.deleteContentProviderSuccessMessage);
 		boolean flag = contentProvider.verifyDeleteContentProviderSuccessMessage();
 		Assert.assertTrue(flag);
 		System.out.print("Check delete Content Provider success is: " + flag + "\n");
