@@ -160,7 +160,7 @@ public class ServiceProvider extends AbstractTest {
 	@CacheLookup
 	public WebElement updateServiceProviderIcon;
 
-	@FindBy(xpath = "//tr[19]//td[6]//a[2]//span[1]")
+	@FindBy(xpath = "//tbody//tr[4]//td[6]//a[2]//span[1]")
 	@CacheLookup
 	public WebElement deleteServiceProviderIcon;
 

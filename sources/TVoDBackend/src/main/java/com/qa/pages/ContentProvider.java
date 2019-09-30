@@ -203,7 +203,7 @@ public class ContentProvider extends AbstractTest{
 	@CacheLookup
 	public WebElement okChangeStatusButton;
 	
-	@FindBy(xpath = "//tr[14]//td[5]//a[4]//span[1]")
+	@FindBy(xpath = "//tr[3]//td[5]//a[4]//span[1]")
 	@CacheLookup
 	public WebElement deleteContentProviderIcon;
 	

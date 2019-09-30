@@ -277,7 +277,7 @@ public class ContentProviderSteps extends AbstractTest{
 
 	@Then("^verify the title of page after Cancel$")
 	public void verify_the_title_of_page_after_Cancel() throws Throwable {
-		waitForLoad();
+		Thread.sleep(1000);
 		String title = contentProvider.getContentProviderPageTitle();
 		Assert.assertEquals(title, "Manage Content Provider");
 		System.out.print("Check create CP but press Cancel is OK");
@@ -422,7 +422,6 @@ public class ContentProviderSteps extends AbstractTest{
 
 	@Then("^verify the page title after press Cancel update$")
 	public void verify_the_page_title_after_press_Cancel_update() throws Throwable {
-		waitForLoad();
 		String pageTitle = contentProvider.getContentProviderPageTitle();
 		Assert.assertEquals(pageTitle, "Manage Content Provider");
 	}
@@ -441,26 +440,22 @@ public class ContentProviderSteps extends AbstractTest{
 	
 	@Then("^user clicks to Reset button$")
 	public void user_clicks_to_Reset_button() throws Throwable {
-		waitForElementVisible(contentProvider.changeStatusIcon);
-		clickToElementByJavaScript(contentProvider.changeStatusIcon);
+		clickToElement(contentProvider.changeStatusIcon);
 	}
 
 	@Then("^user presses Cancel button on the confirmation reset status alert$")
 	public void user_presses_Cancel_button_on_the_confirmation_reset_status_alert() throws Throwable {
-		waitForElementVisible(contentProvider.cancelChangeStatusButton);
-		clickToElementByJavaScript(contentProvider.cancelChangeStatusButton);
+		clickToElement(contentProvider.cancelChangeStatusButton);
 	}
 	
 
 	@Then("^user presses OK button on the confirmation reset status alert$")
 	public void user_presses_OK_button_on_the_confirmation_reset_status_alert() throws Throwable {
-		waitForElementVisible(contentProvider.okChangeStatusButton);
-		clickToElementByJavaScript(contentProvider.okChangeStatusButton);
+		clickToElement(contentProvider.okChangeStatusButton);
 	}
 
 	@Then("^verify the change status successful message$")
 	public void verify_the_change_status_successful_message() throws Throwable {
-		waitForElementVisible(contentProvider.changeStatusSuccessMessage);
 		boolean flag = contentProvider.verifyChangeStatusSuccessMessage();
 		Assert.assertTrue(flag);
 		System.out.print("Check change status of Content Provider success is: " + flag + "\n");
@@ -471,19 +466,17 @@ public class ContentProviderSteps extends AbstractTest{
 	public void user_clicks_to_Delete_button() throws Throwable {
 		homePage = PageGeneratorManager.getHomePage();
 		contentProvider = homePage.gotoContentProviderPage();
-		clickToElementByJavaScript(contentProvider.deleteContentProviderIcon);
+		clickToElement(contentProvider.deleteContentProviderIcon);
 	}
 
 	@Then("^user presses Cancel button on the confirmation delete content provider alert$")
 	public void user_presses_Cancel_button_on_the_confirmation_delete_content_provider_alert() throws Throwable {
-		waitForElementClickalbe(contentProvider.cancelDeleteContentProviderButton);
-		clickToElementByJavaScript(contentProvider.cancelDeleteContentProviderButton);
+		clickToElement(contentProvider.cancelDeleteContentProviderButton);
 	}
 	
 	@Then("^user presses OK button on the confirmation delete content provider alert$")
 	public void user_presses_OK_button_on_the_confirmation_delete_content_provider_alert() throws Throwable {
-		waitForElementClickalbe(contentProvider.okDeleteContentProviderButton);
-		clickToElementByJavaScript(contentProvider.okDeleteContentProviderButton);
+		clickToElement(contentProvider.okDeleteContentProviderButton);
 	}
 
 	@Then("^verify the delete Content Provider success message$")
