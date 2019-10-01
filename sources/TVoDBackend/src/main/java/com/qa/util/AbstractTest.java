@@ -175,7 +175,7 @@ public class AbstractTest extends TestBase {
 	}
 
 	public void clickToElement(WebElement element1) {
-		waitForElementClickalbe(element);
+		waitForElementClickalbe(element1);
 		element1.click();
 	}
 
@@ -452,17 +452,17 @@ public class AbstractTest extends TestBase {
 	}
 
 	public void waitForElementVisible(WebElement element2) {
-		wait = new WebDriverWait(driver, 20);
+		wait = new WebDriverWait(driver, 60);
 		element = wait.until(ExpectedConditions.visibilityOf(element2));
 	}
 
 	public void waitForElementClickalbe(WebElement element2) {
-		wait = new WebDriverWait(driver, 20);
+		wait = new WebDriverWait(driver, 60);
 		element = wait.until(ExpectedConditions.elementToBeClickable(element2));
 	}
 	
 	public void waitForAlertPresence() {
-		wait = new WebDriverWait(driver, 20);
+		wait = new WebDriverWait(driver, 60);
 		wait.until(ExpectedConditions.alertIsPresent());
 	}
 	

@@ -4,7 +4,7 @@ Feature: Service Provider functions
 #Scenario: Admin logs in to the TVoD page
 	#When Admin logins into the page
 	#Then verify the title of page
-
+@T1
 Scenario: Search Service Provider by name
 	When user go to Service Provider page
 	Then user check the title of page
@@ -111,13 +111,13 @@ Scenario: Update Service Provider success
 	Then user update Service Provider with values
 	And verify update Service Provider success
 
-
+@T2
 Scenario: Delete Service Provider but press Cancel button
 	Then user presses to Delete icon
 	Then user presses to Cancel button in the alert
 	And verify title of Service Provider page
 
-
+@T3
 Scenario: Delete Service Provider and press OK button
 	Then user presses to Delete icon
 	Then user presses to OK button in the alert

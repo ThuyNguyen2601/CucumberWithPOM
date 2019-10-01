@@ -191,11 +191,11 @@ public class ContentProvider extends AbstractTest{
 	@CacheLookup
 	public WebElement changeStatusSuccessMessage;
 	
-	@FindBy(xpath = "//tr[13]//td[5]//a[3]//span[1]")
+	@FindBy(xpath = "//tr[2]//td[5]//a[3]//span[1]")
 	@CacheLookup
 	public WebElement changeStatusIcon;
 	
-	@FindBy(xpath = "//button[@class='btn btn-default']")
+	@FindBy(xpath = "//div[@class='bootstrap-dialog-footer-buttons']//button[@class='btn btn-default']")
 	@CacheLookup
 	public WebElement cancelChangeStatusButton;
 	

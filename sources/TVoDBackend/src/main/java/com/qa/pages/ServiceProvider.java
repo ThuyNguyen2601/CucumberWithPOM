@@ -217,7 +217,7 @@ public class ServiceProvider extends AbstractTest {
 	@CacheLookup
 	public WebElement OKButtonInDeleteConfirmAlert;
 	
-	@FindBy(xpath = "//button[@class = 'btn btn-default']")
+	@FindBy(xpath = "//div[@class='bootstrap-dialog-footer-buttons']//button[@class = 'btn btn-default']")
 	@CacheLookup
 	public WebElement CancelButtonInDeleteConfirmAlert;
 

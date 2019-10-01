@@ -60,7 +60,7 @@ public class ContentProviderSteps extends AbstractTest{
 	public void user_goes_to_the_Content_Provider_page() throws Throwable {
 		homePage = PageGeneratorManager.getHomePage();
 		contentProvider = homePage.gotoContentProviderPage();
-		waitForLoad();
+		//waitForLoad();
 	}
 
 	@Then("^user checks the title of Content Provider page$")
