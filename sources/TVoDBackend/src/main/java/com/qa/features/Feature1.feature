@@ -1,9 +1,5 @@
 Feature: Login to the system
 
-#Background:
-	#Given open the browser
-  #When user in the login page
- 
   
   @A1
   Scenario: Login to system when do not enter username

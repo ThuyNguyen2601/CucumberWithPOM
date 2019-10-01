@@ -213,7 +213,7 @@ public class ServiceProvider extends AbstractTest {
 	@CacheLookup
 	public WebElement deleteSuccessMessage;
 	
-	@FindBy(xpath = "//button[@class = 'btn btn-warning']")
+	@FindBy(xpath = "//div[@class='bootstrap-dialog-footer-buttons']//button[@class = 'btn btn-warning']")
 	@CacheLookup
 	public WebElement OKButtonInDeleteConfirmAlert;
 	
@@ -234,7 +234,7 @@ public class ServiceProvider extends AbstractTest {
 	public void searchServiceProviderByName(String value) throws Throwable {
 		sendKeyToElement(nameCriteria, value);
 		sendKeyboardToElement(nameCriteria, Keys.ENTER);
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		for (int i = 1; i < rowResults.size(); i++) {
 			String resultText = driver.findElement(By.xpath("//tbody//tr[" + i + "]//td[1]")).getText();
 			if (compareContainText(resultText, value)) {

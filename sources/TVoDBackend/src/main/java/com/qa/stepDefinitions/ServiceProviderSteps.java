@@ -56,7 +56,8 @@ public class ServiceProviderSteps extends AbstractTest {
 	public void user_check_the_title_of_page() throws Throwable {
 		Thread.sleep(1000);
 		String spTitle = serviceProvider.getServiceProviderTitle();
-		Assert.assertEquals(spTitle, "Manage Service Provider");
+		//Assert.assertEquals(spTitle, "Manage Service Provider");
+		verifyEquals(spTitle, "Manage Service Provider");
 	}
 
 	@Then("^user search service provider by name$")
@@ -82,8 +83,10 @@ public class ServiceProviderSteps extends AbstractTest {
 	@And("^verify notified name blank message$")
 	public void verify_notified_name_blank_message() throws Throwable {
 		boolean flag = serviceProvider.verifyNameBlankMessage();
-		Assert.assertTrue(flag);
-		System.out.print("Check Name blank is : "+ flag + "\n");
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.print("Check Name blank is : "+ flag + "\n");
+		log.info("Check Name blank is : "+ flag + "\n");
 	}
 	
 	
@@ -95,8 +98,10 @@ public class ServiceProviderSteps extends AbstractTest {
 	@Then("^verify notified account name blank message$")
 	public void verify_notified_account_name_blank_message() throws Throwable {
 		boolean flag = serviceProvider.verifyAccountNameBlankMessage();
-		Assert.assertTrue(flag);
-		System.out.print("Check Account Name blank is: " + flag + "\n");
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.print("Check Account Name blank is: " + flag + "\n");
+		log.info("Check Account Name blank is: " + flag + "\n");
 	}
 
 	
@@ -108,8 +113,10 @@ public class ServiceProviderSteps extends AbstractTest {
 	@Then("^verify notified email blank message$")
 	public void verify_notified_email_blank_message() throws Throwable {
 		boolean flag = serviceProvider.verifyEmailBlankMessage();
-		Assert.assertTrue(flag);
-		System.out.println("Check Email blank is: " + flag + "\n");
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.println("Check Email blank is: " + flag + "\n");
+		log.info("Check Email blank is: " + flag + "\n");
 	}
 	
 	
@@ -122,8 +129,10 @@ public class ServiceProviderSteps extends AbstractTest {
 	public void verify_notified_phone_number_blank_message() throws Throwable {
 		waitForElementVisible(serviceProvider.phoneNumberBlankMessage);
 		boolean flag = serviceProvider.verifyPhoneNumberBlankMessage();
-		Assert.assertTrue(flag);
-		System.out.println("Check Phone Number blank is: " + flag  + "\n");
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.println("Check Phone Number blank is: " + flag  + "\n");
+		log.info("Check Phone Number blank is: " + flag  + "\n");
 	}
 	
 	
@@ -135,8 +144,10 @@ public class ServiceProviderSteps extends AbstractTest {
 	@Then("^verify notified password blank message$")
 	public void verify_notified_password_blank_message() throws Throwable {
 		boolean flag = serviceProvider.verifyPasswordBlankMessage();
-		Assert.assertTrue(flag);
-		System.out.println("Check Password blank is: " + flag + "\n");
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.println("Check Password blank is: " + flag + "\n");
+		log.info("Check Password blank is: " + flag + "\n");
 	}
 	
 	
@@ -148,8 +159,10 @@ public class ServiceProviderSteps extends AbstractTest {
 	@Then("^verify notified confirm password blank message$")
 	public void verify_notified_confirm_password_blank_message() throws Throwable {
 		boolean flag = serviceProvider.verifyConfirmPasswordBlankMessage();
-		Assert.assertTrue(flag);
-		System.out.print("Check Confirm Password blank is: " + flag + "\n");
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.print("Check Confirm Password blank is: " + flag + "\n");
+		log.info("Check Confirm Password blank is: " + flag + "\n");
 	}
 	
 	
@@ -161,8 +174,10 @@ public class ServiceProviderSteps extends AbstractTest {
 	@Then("^verify notified Service Provider Name existed message$")
 	public void verify_notified_Service_Provider_Name_existed_message() throws Throwable {
 		boolean flag = serviceProvider.verifyServiceProviderExistedMessage();
-		Assert.assertTrue(flag);
-		System.out.println("Check Existed Service Provider Name is: " + flag + "\n");
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.println("Check Existed Service Provider Name is: " + flag + "\n");
+		log.info("Check Existed Service Provider Name is: " + flag + "\n");
 	}
 
 	
@@ -174,8 +189,10 @@ public class ServiceProviderSteps extends AbstractTest {
 	@Then("^verify notified Account Name existed message$")
 	public void verify_notified_Account_Name_existed_message() throws Throwable {
 		boolean flag = serviceProvider.verifyAccountNameExistedMessage();
-		Assert.assertTrue(flag);
-		System.out.println("Check Account Name existed is: " + flag  + "\n");
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.println("Check Account Name existed is: " + flag  + "\n");
+		log.info("Check Account Name existed is: " + flag  + "\n");
 	}
 	
 	
@@ -187,8 +204,10 @@ public class ServiceProviderSteps extends AbstractTest {
 	@Then("^verify notified Invalid Email message$")
 	public void verify_notified_Invalid_Email_message() throws Throwable {
 		boolean flag = serviceProvider.verifyEmailInvalidMessage();
-		Assert.assertTrue(flag);
-		System.out.print("Check Invalid Email is: " + flag + "\n");
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.print("Check Invalid Email is: " + flag + "\n");
+		log.info("Check Invalid Email is: " + flag + "\n");
 	}
 	
 	
@@ -200,8 +219,10 @@ public class ServiceProviderSteps extends AbstractTest {
 	@Then("^verify notified Invalid Password$")
 	public void verify_notified_Invalid_Password() throws Throwable {
 		boolean flag = serviceProvider.verifyPasswordInvalidMessage();
-		Assert.assertTrue(flag);
-		System.out.println("Check Invalid Password is: " + flag + "\n");
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.println("Check Invalid Password is: " + flag + "\n");
+		log.info("Check Invalid Password is: " + flag + "\n");
 	}
 	
 
@@ -214,8 +235,10 @@ public class ServiceProviderSteps extends AbstractTest {
 	@Then("^verify notified Invalid Confirm Password$")
 	public void verify_notified_Invalid_Confirm_Password() throws Throwable {
 		boolean flag = serviceProvider.verifyConfirmPasswordInvalidMessage();
-		Assert.assertTrue(flag);
-		System.out.print("Check Invalid Confirm Password is: " + flag + "\n");
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.print("Check Invalid Confirm Password is: " + flag + "\n");
+		log.info("Check Invalid Confirm Password is: " + flag + "\n");
 	}
 	
 
@@ -228,8 +251,10 @@ public class ServiceProviderSteps extends AbstractTest {
 	@Then("^verify notified Invalid Phone Number message$")
 	public void verify_notified_Invalid_Phone_Number_message() throws Throwable {
 		boolean flag = serviceProvider.verifyPhoneNumberWrongFormat();
-		Assert.assertTrue(flag);
-		System.out.print("Check Wrong Format Phone Number is: " + flag + "\n");
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.print("Check Wrong Format Phone Number is: " + flag + "\n");
+		log.info("Check Wrong Format Phone Number is: " + flag + "\n");
 	}
 	
 	@Then("^user creates Service Provider with not matched password and confirm password$")
@@ -240,8 +265,10 @@ public class ServiceProviderSteps extends AbstractTest {
 	@Then("^verify notified not matched password and confirm password message$")
 	public void verify_notified_not_matched_password_and_confirm_password_message() throws Throwable {
 		boolean flag = serviceProvider.verifyConfirmPasswordInvalidMessage();
-		Assert.assertTrue(flag);
-		System.out.println("Check not matched password and confirm password is: " + flag + "\n");
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.println("Check not matched password and confirm password is: " + flag + "\n");
+		log.info("Check not matched password and confirm password is: " + flag + "\n");
 	}
 	
 	
@@ -254,15 +281,15 @@ public class ServiceProviderSteps extends AbstractTest {
 	public void verify_create_Service_Provider_success_message() throws Throwable {
 		waitForElementVisible(serviceProvider.createSuccessMessage);
 		boolean flag = serviceProvider.verifyCreateServiceProviderSuccessMessage();
-		Assert.assertTrue(flag);
-		System.out.print("Check Create Service Provider success is: " + flag + "\n");
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.print("Check Create Service Provider success is: " + flag + "\n");
+		log.info("Check Create Service Provider success is: " + flag + "\n");
 	}
 	
 	
 	@When("^user presses to Update icon$")
 	public void user_presses_to_Update_icon() throws Throwable {
-		//Thread.sleep(10000);
-		//homePage =  new HomePage();
 		homePage = PageGeneratorManager.getHomePage();
 		serviceProvider = homePage.gotoServiceProviderPage();
 		waitForElementVisible(serviceProvider.updateServiceProviderIcon);
@@ -277,8 +304,10 @@ public class ServiceProviderSteps extends AbstractTest {
 	@Then("^verify update Service Provider name blank message$")
 	public void verify_update_Service_Provider_name_blank_message() throws Throwable {
 		boolean flag = serviceProvider.verifyNameUpdateBlankMessage();
-		Assert.assertTrue(flag);
-		System.out.print("Check update Service Provider with name blank is: " + flag);
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.print("Check update Service Provider with name blank is: " + flag);
+		log.info("Check update Service Provider with name blank is: " + flag);
 	}
 	
 	
@@ -290,8 +319,10 @@ public class ServiceProviderSteps extends AbstractTest {
 	@Then("^verify title of Service Provider page$")
 	public void verify_title_of_Service_Provider_page() throws Throwable {
 		String serviceProviderTitle = serviceProvider.getServiceProviderTitle();
-		Assert.assertEquals(serviceProviderTitle, "Manage Service Provider");
-		System.out.println("The title of page after press Cancel is: " + serviceProviderTitle);
+		//Assert.assertEquals(serviceProviderTitle, "Manage Service Provider");
+		verifyEquals(serviceProviderTitle, "Manage Service Provider");
+		//System.out.println("The title of page after press Cancel is: " + serviceProviderTitle);
+		log.info("The title of page after press Cancel is: " + serviceProviderTitle);
 	}
 	
 	@Then("^user update Service Provider with values$")
@@ -302,8 +333,10 @@ public class ServiceProviderSteps extends AbstractTest {
 	@Then("^verify update Service Provider success$")
 	public void verify_update_Service_Provider_success() throws Throwable {
 		boolean flag = serviceProvider.verifyUpdateServiceProviderSuccessMessage();
-		Assert.assertTrue(flag);
-		System.out.print("Check update Service Provider success is: " + flag);
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.print("Check update Service Provider success is: " + flag);
+		log.info("Check update Service Provider success is: " + flag);
 	}
 	
 	
@@ -311,25 +344,32 @@ public class ServiceProviderSteps extends AbstractTest {
 	public void user_presses_to_Delete_icon() throws Throwable {
 		homePage = PageGeneratorManager.getHomePage();
 		serviceProvider = homePage.gotoServiceProviderPage();
+		Thread.sleep(1000);
 		clickToElement(serviceProvider.deleteServiceProviderIcon);
 	}
 
 	@Then("^user presses to Cancel button in the alert$")
 	public void user_presses_to_Cancel_button_in_the_alert() throws Throwable {
+		Thread.sleep(1000);
 		clickToElement(serviceProvider.CancelButtonInDeleteConfirmAlert);
+		//System.out.print("Canceling Delete the Service Provider \n");
+		log.info("Canceling Delete the Service Provider \n");
 	}
 	
 
 	@Then("^user presses to OK button in the alert$")
 	public void user_presses_to_OK_button_in_the_alert() throws Throwable {
+		Thread.sleep(1000);
 		clickToElement(serviceProvider.OKButtonInDeleteConfirmAlert);
 	}
 
 	@Then("^verify delete Service Provider success message$")
 	public void verify_delete_Service_Provider_success_message() throws Throwable {
 		boolean flag = serviceProvider.verifyDeleteSuccessMessage();
-		Assert.assertTrue(flag);
-		System.out.print("Delete the Service Provider is: " + flag);
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.print("Delete the Service Provider is: " + flag);
+		log.info("Delete the Service Provider is: " + flag);
 	}
 	
 	
@@ -340,7 +380,8 @@ public class ServiceProviderSteps extends AbstractTest {
 
 	@Then("^user prints the result$")
 	public void user_prints_the_result() throws Throwable {
-		System.out.print("Check view the Service Provider in list is done!");
+		//System.out.print("Check view the Service Provider in list is done!");
+		log.info("Check view the Service Provider in list is done!");
 	}
 
 

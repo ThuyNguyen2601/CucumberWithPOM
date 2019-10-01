@@ -60,7 +60,7 @@ public class ContentProviderSteps extends AbstractTest{
 	public void user_goes_to_the_Content_Provider_page() throws Throwable {
 		homePage = PageGeneratorManager.getHomePage();
 		contentProvider = homePage.gotoContentProviderPage();
-		//waitForLoad();
+		waitForLoad();
 	}
 
 	@Then("^user checks the title of Content Provider page$")
@@ -97,8 +97,10 @@ public class ContentProviderSteps extends AbstractTest{
 	@Then("^verify the name blank message$")
 	public void verify_the_name_blank_message() throws Throwable {
 		boolean flag = contentProvider.verifyNameBlankMessage();
-		Assert.assertTrue(flag);
-		System.out.print("Check create CP without name is: " + flag + "\n");
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.print("Check create CP without name is: " + flag + "\n");
+		log.info("Check create CP without name is: " + flag + "\n");
 	}
 	
 
@@ -110,8 +112,10 @@ public class ContentProviderSteps extends AbstractTest{
 	@Then("^verify the account name blank message$")
 	public void verify_the_account_name_blank_message() throws Throwable {
 		boolean flag = contentProvider.verifyAccountNameBlankMessage();
-		Assert.assertTrue(flag);
-		System.out.print("Check create CP without account name is: " + flag + "\n");
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.print("Check create CP without account name is: " + flag + "\n");
+		log.info("Check create CP without account name is: " + flag + "\n");
 	}
 	
 
@@ -123,9 +127,10 @@ public class ContentProviderSteps extends AbstractTest{
 	@Then("^verify the existed account name message$")
 	public void verify_the_existed_account_name_message() throws Throwable {
 		boolean flag = contentProvider.verifyAccountNameExistedMessage();
-		Assert.assertTrue(flag);
-		System.out.print("Check create CP with existed account name is: " + flag + "\n");
-		
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.print("Check create CP with existed account name is: " + flag + "\n");
+		log.info("Check create CP with existed account name is: " + flag + "\n");
 	}
 	
 
@@ -137,8 +142,10 @@ public class ContentProviderSteps extends AbstractTest{
 	@Then("^verify the email blank message$")
 	public void verify_the_email_blank_message() throws Throwable {
 		boolean flag = contentProvider.verifyEmailBlankMessage();
-		Assert.assertTrue(flag);
-		System.out.print("Check create CP without email is: " + flag + "\n");
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.print("Check create CP without email is: " + flag + "\n");
+		log.info("Check create CP without email is: " + flag + "\n");
 	}
 	
 
@@ -150,8 +157,10 @@ public class ContentProviderSteps extends AbstractTest{
 	@Then("^verify the wrong email format message$")
 	public void verify_the_wrong_email_format_message() throws Throwable {
 		boolean flag = contentProvider.verifyWrongEmailFormatMessage();
-		Assert.assertTrue(flag);
-		System.out.print("Check create CP wrong email format is: " + flag + "\n");
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.print("Check create CP wrong email format is: " + flag + "\n");
+		log.info("Check create CP wrong email format is: " + flag + "\n");
 	}
 	
 
@@ -163,8 +172,10 @@ public class ContentProviderSteps extends AbstractTest{
 	@Then("^verify the phone number blank message$")
 	public void verify_the_phone_number_blank_message() throws Throwable {
 		boolean flag = contentProvider.verifyPhoneNumberBlankMessage();
-		Assert.assertTrue(flag);
-		System.out.print("Check create CP without phone number is: " + flag + "\n");
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.print("Check create CP without phone number is: " + flag + "\n");
+		log.info("Check create CP without phone number is: " + flag + "\n");
 	}
 	
 
@@ -176,8 +187,10 @@ public class ContentProviderSteps extends AbstractTest{
 	@Then("^verify the wrong phone number format message$")
 	public void verify_the_wrong_phone_number_format_message() throws Throwable {
 		boolean flag = contentProvider.verifyWrongPhoneNumberFormatMessage();
-		Assert.assertTrue(flag);
-		System.out.print("Check create CP wrong phone number format is: " + flag + "\n");
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.print("Check create CP wrong phone number format is: " + flag + "\n");
+		log.info("Check create CP wrong phone number format is: " + flag + "\n");
 	}
 	
 
@@ -189,8 +202,10 @@ public class ContentProviderSteps extends AbstractTest{
 	@Then("^verify the password blank message$")
 	public void verify_the_password_blank_message() throws Throwable {
 		boolean flag = contentProvider.verifyPasswordBlankMessage();
-		Assert.assertTrue(flag);
-		System.out.print("Check create CP without password is: " + flag + "\n");
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.print("Check create CP without password is: " + flag + "\n");
+		log.info("Check create CP without password is: " + flag + "\n");
 	}
 	
 	
@@ -202,8 +217,10 @@ public class ContentProviderSteps extends AbstractTest{
 	@Then("^verify the wrong password format message$")
 	public void verify_the_wrong_password_format_message() throws Throwable {
 		boolean flag = contentProvider.verifyWrongPasswordFormatMessage();
-		Assert.assertTrue(flag);
-		System.out.print("Check create CP wrong password format is: " + flag + "\n");
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.print("Check create CP wrong password format is: " + flag + "\n");
+		log.info("Check create CP wrong password format is: " + flag + "\n");
 	}
 	
 	@Then("^user create Content Provider without confirm password$")
@@ -214,8 +231,10 @@ public class ContentProviderSteps extends AbstractTest{
 	@Then("^verify the confirm password blank message$")
 	public void verify_the_confirm_password_blank_message() throws Throwable {
 		boolean flag = contentProvider.verifyConfirmPasswordBlankMessage();
-		Assert.assertTrue(flag);
-		System.out.print("Check create CP without confirm password is: " + flag + "\n");
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.print("Check create CP without confirm password is: " + flag + "\n");
+		log.info("Check create CP without confirm password is: " + flag + "\n");
 	}
 
 	@Then("^user create Content Provider with wrong confirm password format$")
@@ -226,8 +245,10 @@ public class ContentProviderSteps extends AbstractTest{
 	@Then("^verify the wrong confirm password format message$")
 	public void verify_the_wrong_confirm_password_format_message() throws Throwable {
 		boolean flag = contentProvider.verifyWrongConfirmPasswordFormat();
-		Assert.assertTrue(flag);
-		System.out.print("Check create CP wrong confirm password format is: " + flag + "\n");
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.print("Check create CP wrong confirm password format is: " + flag + "\n");
+		log.info("Check create CP wrong confirm password format is: " + flag + "\n");
 	}
 	
 
@@ -239,8 +260,10 @@ public class ContentProviderSteps extends AbstractTest{
 	@Then("^verify the password and confirm password not matched message$")
 	public void verify_the_password_and_confirm_password_not_matched_message() throws Throwable {
 		boolean flag = contentProvider.verifyPasswordAndConfirmPasswordNotMatchedMessage();
-		Assert.assertTrue(flag);
-		System.out.print("Check create CP password and confirm password not matched is: " + flag + "\n");
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.print("Check create CP password and confirm password not matched is: " + flag + "\n");
+		log.info("Check create CP password and confirm password not matched is: " + flag + "\n");
 	}
 	
 
@@ -252,8 +275,10 @@ public class ContentProviderSteps extends AbstractTest{
 	@Then("^verify the full name blank message$")
 	public void verify_the_full_name_blank_message() throws Throwable {
 		boolean flag = contentProvider.verifyFullNameBlankMessage();
-		Assert.assertTrue(flag);
-		System.out.print("Check create CP without full name is: " + flag + "\n");
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.print("Check create CP without full name is: " + flag + "\n");
+		log.info("Check create CP without full name is: " + flag + "\n");
 	}
 	
 	
@@ -265,8 +290,10 @@ public class ContentProviderSteps extends AbstractTest{
 	@Then("^verify the create content provider success message$")
 	public void verify_the_create_content_provider_success_message() throws Throwable {
 		boolean flag = contentProvider.verifyCreateContentProviderSuccessMessage();
-		Assert.assertTrue(flag);
-		System.out.print("Check create Content Provider success is: " + flag + "\n");
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.print("Check create Content Provider success is: " + flag + "\n");
+		log.info("Check create Content Provider success is: " + flag + "\n");
 	}
 	
 	
@@ -279,8 +306,10 @@ public class ContentProviderSteps extends AbstractTest{
 	public void verify_the_title_of_page_after_Cancel() throws Throwable {
 		Thread.sleep(1000);
 		String title = contentProvider.getContentProviderPageTitle();
-		Assert.assertEquals(title, "Manage Content Provider");
-		System.out.print("Check create CP but press Cancel is OK");
+		//Assert.assertEquals(title, "Manage Content Provider");
+		verifyEquals(title, "Manage Content Provider");
+		//System.out.print("Check create CP but press Cancel is OK");
+		log.info("Check create CP but press Cancel is OK");
 	}
 	
 	@Then("^user presses update Content Provider button$")
@@ -297,8 +326,10 @@ public class ContentProviderSteps extends AbstractTest{
 	@Then("^verify the name update blank message$")
 	public void verify_the_name_update_blank_message() throws Throwable {
 		boolean flag = contentProvider.verifyNameBlankMessage();
-		Assert.assertTrue(flag);
-		System.out.print("Check update Content Provider without name is: " + flag + "\n");
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.print("Check update Content Provider without name is: " + flag + "\n");
+		log.info("Check update Content Provider without name is: " + flag + "\n");
 	}
 	
 
@@ -310,8 +341,10 @@ public class ContentProviderSteps extends AbstractTest{
 	@Then("^verify the email update blank message$")
 	public void verify_the_email_update_blank_message() throws Throwable {
 		boolean flag = contentProvider.verifyEmailBlankMessage();
-		Assert.assertTrue(flag);
-		System.out.print("Check update Content Provider without email is: " + flag + "\n");
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.print("Check update Content Provider without email is: " + flag + "\n");
+		log.info("Check update Content Provider without email is: " + flag + "\n");
 	}
 	
 
@@ -323,8 +356,10 @@ public class ContentProviderSteps extends AbstractTest{
 	@Then("^verify the wrong email format update blank message$")
 	public void verify_the_wrong_email_format_update_blank_message() throws Throwable {
 		boolean flag = contentProvider.verifyWrongEmailFormatMessage();
-		Assert.assertTrue(flag);
-		System.out.print("Check update Content Provider with wrong email format is: " + flag + "\n");
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.print("Check update Content Provider with wrong email format is: " + flag + "\n");
+		log.info("Check update Content Provider with wrong email format is: " + flag + "\n");
 	}
 
 	@Then("^user update Content Provider without phone number$")
@@ -335,8 +370,10 @@ public class ContentProviderSteps extends AbstractTest{
 	@Then("^verify the phone number update blank message$")
 	public void verify_the_phone_number_update_blank_message() throws Throwable {
 		boolean flag = contentProvider.verifyPhoneNumberBlankMessage();
-		Assert.assertTrue(flag);
-		System.out.print("Check update Content Provider without phone number is: " + flag + "\n");
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.print("Check update Content Provider without phone number is: " + flag + "\n");
+		log.info("Check update Content Provider without phone number is: " + flag + "\n");
 	}
 	
 
@@ -348,8 +385,10 @@ public class ContentProviderSteps extends AbstractTest{
 	@Then("^verify the wrong phone number format update blank message$")
 	public void verify_the_wrong_phone_number_format_update_blank_message() throws Throwable {
 		boolean flag = contentProvider.verifyWrongPhoneNumberFormatMessage();
-		Assert.assertTrue(flag);
-		System.out.print("Check update Content Provider with wrong phone number format is: " + flag + "\n");
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.print("Check update Content Provider with wrong phone number format is: " + flag + "\n");
+		log.info("Check update Content Provider with wrong phone number format is: " + flag + "\n");
 	}
 	
 
@@ -361,8 +400,10 @@ public class ContentProviderSteps extends AbstractTest{
 	@Then("^verify the password update blank message$")
 	public void verify_the_password_update_blank_message() throws Throwable {
 		boolean flag = contentProvider.verifyPasswordBlankMessage();
-		Assert.assertTrue(flag);
-		System.out.print("Check update Content Provider without password is: " + flag + "\n");
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.print("Check update Content Provider without password is: " + flag + "\n");
+		log.info("Check update Content Provider without password is: " + flag + "\n");
 	}
 	
 	@Then("^user update Content Provider with wrong password format$")
@@ -373,8 +414,10 @@ public class ContentProviderSteps extends AbstractTest{
 	@Then("^verify the wrong password format update blank message$")
 	public void verify_the_wrong_password_format_update_blank_message() throws Throwable {
 		boolean flag = contentProvider.verifyWrongPasswordFormatMessage();
-		Assert.assertTrue(flag);
-		System.out.print("Check update Content Provider with wrong password format is: " + flag + "\n");
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.print("Check update Content Provider with wrong password format is: " + flag + "\n");
+		log.info("Check update Content Provider with wrong password format is: " + flag + "\n");
 	}
 	
 
@@ -386,8 +429,10 @@ public class ContentProviderSteps extends AbstractTest{
 	@Then("^verify the confirm password update blank message$")
 	public void verify_the_confirm_password_update_blank_message() throws Throwable {
 		boolean flag = contentProvider.verifyConfirmPasswordBlankMessage();
-		Assert.assertTrue(flag);
-		System.out.print("Check update Content Provider without confirm password is: " + flag + "\n");
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.print("Check update Content Provider without confirm password is: " + flag + "\n");
+		log.info("Check update Content Provider without confirm password is: " + flag + "\n");
 	}
 	
 
@@ -399,8 +444,10 @@ public class ContentProviderSteps extends AbstractTest{
 	@Then("^verify the password and confirm password update not matched message$")
 	public void verify_the_password_and_confirm_password_update_not_matched_message() throws Throwable {
 		boolean flag = contentProvider.verifyPasswordAndConfirmPasswordNotMatchedMessage();
-		Assert.assertTrue(flag);
-		System.out.print("Check update Content Provider with password and confirm password not matched is: " + flag + "\n");
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.print("Check update Content Provider with password and confirm password not matched is: " + flag + "\n");
+		log.info("Check update Content Provider with password and confirm password not matched is: " + flag + "\n");
 	}
 
 	@Then("^user update Content Provider without full name$")
@@ -411,8 +458,10 @@ public class ContentProviderSteps extends AbstractTest{
 	@Then("^verify the full name update blank message$")
 	public void verify_the_full_name_update_blank_message() throws Throwable {
 		boolean flag = contentProvider.verifyFullNameBlankMessage();
-		Assert.assertTrue(flag);
-		System.out.print("Check update Content Provider without fullname is: " + flag + "\n");
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.print("Check update Content Provider without fullname is: " + flag + "\n");
+		log.info("Check update Content Provider without fullname is: " + flag + "\n");
 	}
 
 	@Then("^user update Content Provider when press Cancel button$")
@@ -423,7 +472,8 @@ public class ContentProviderSteps extends AbstractTest{
 	@Then("^verify the page title after press Cancel update$")
 	public void verify_the_page_title_after_press_Cancel_update() throws Throwable {
 		String pageTitle = contentProvider.getContentProviderPageTitle();
-		Assert.assertEquals(pageTitle, "Manage Content Provider");
+		//Assert.assertEquals(pageTitle, "Manage Content Provider");
+		verifyEquals(pageTitle, "Manage Content Provider");
 	}
 	
 	@Then("^user update Content Provider with valid values$")
@@ -434,31 +484,38 @@ public class ContentProviderSteps extends AbstractTest{
 	@Then("^verify the update Content Provider success message$")
 	public void verify_the_update_Content_Provider_success_message() throws Throwable {
 		boolean flag = contentProvider.verifyUpdateContentProviderSuccessMessage();
-		Assert.assertTrue(flag);
-		System.out.print("Check update Content Provider success is: " + flag + "\n");
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.print("Check update Content Provider success is: " + flag + "\n");
+		log.info("Check update Content Provider success is: " + flag + "\n");
 	}
 	
 	@Then("^user clicks to Reset button$")
 	public void user_clicks_to_Reset_button() throws Throwable {
+		Thread.sleep(1000);
 		clickToElement(contentProvider.changeStatusIcon);
 	}
 
 	@Then("^user presses Cancel button on the confirmation reset status alert$")
 	public void user_presses_Cancel_button_on_the_confirmation_reset_status_alert() throws Throwable {
+		Thread.sleep(1000);
 		clickToElement(contentProvider.cancelChangeStatusButton);
 	}
 	
 
 	@Then("^user presses OK button on the confirmation reset status alert$")
 	public void user_presses_OK_button_on_the_confirmation_reset_status_alert() throws Throwable {
+		Thread.sleep(1000);
 		clickToElement(contentProvider.okChangeStatusButton);
 	}
 
 	@Then("^verify the change status successful message$")
 	public void verify_the_change_status_successful_message() throws Throwable {
 		boolean flag = contentProvider.verifyChangeStatusSuccessMessage();
-		Assert.assertTrue(flag);
-		System.out.print("Check change status of Content Provider success is: " + flag + "\n");
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.print("Check change status of Content Provider success is: " + flag + "\n");
+		log.info("Check change status of Content Provider success is: " + flag + "\n");
 	}
 	
 	
@@ -466,16 +523,19 @@ public class ContentProviderSteps extends AbstractTest{
 	public void user_clicks_to_Delete_button() throws Throwable {
 		homePage = PageGeneratorManager.getHomePage();
 		contentProvider = homePage.gotoContentProviderPage();
+		Thread.sleep(1000);
 		clickToElement(contentProvider.deleteContentProviderIcon);
 	}
 
 	@Then("^user presses Cancel button on the confirmation delete content provider alert$")
 	public void user_presses_Cancel_button_on_the_confirmation_delete_content_provider_alert() throws Throwable {
+		Thread.sleep(1000);
 		clickToElement(contentProvider.cancelDeleteContentProviderButton);
 	}
 	
 	@Then("^user presses OK button on the confirmation delete content provider alert$")
 	public void user_presses_OK_button_on_the_confirmation_delete_content_provider_alert() throws Throwable {
+		Thread.sleep(1000);
 		clickToElement(contentProvider.okDeleteContentProviderButton);
 	}
 
@@ -483,8 +543,10 @@ public class ContentProviderSteps extends AbstractTest{
 	public void verify_the_delete_Content_Provider_success_message() throws Throwable {
 		waitForElementVisible(contentProvider.deleteContentProviderSuccessMessage);
 		boolean flag = contentProvider.verifyDeleteContentProviderSuccessMessage();
-		Assert.assertTrue(flag);
-		System.out.print("Check delete Content Provider success is: " + flag + "\n");
+		//Assert.assertTrue(flag);
+		verifyTrue(flag);
+		//System.out.print("Check delete Content Provider success is: " + flag + "\n");
+		log.info("Check delete Content Provider success is: " + flag + "\n");
 	}
 
 	

@@ -199,7 +199,7 @@ public class ContentProvider extends AbstractTest{
 	@CacheLookup
 	public WebElement cancelChangeStatusButton;
 	
-	@FindBy(xpath = "//button[@class='btn btn-warning']")
+	@FindBy(xpath = "//div[@class='bootstrap-dialog-footer-buttons']//button[@class='btn btn-warning']")
 	@CacheLookup
 	public WebElement okChangeStatusButton;
 	
@@ -228,15 +228,34 @@ public class ContentProvider extends AbstractTest{
 	}
 	
 	public void createContentProvider(String name, String taxCode, String address, String status, String accountName, String email, String phoneNumber, String password, String confirmPassword, String fullName, String command) throws Throwable {
+		waitForElementVisible(nameAddTextbox);
 		sendKeyToElement(nameAddTextbox, name);
+		
+		waitForElementVisible(taxCodeAddTextbox);
 		sendKeyToElement(taxCodeAddTextbox, taxCode);
+		
+		waitForElementVisible(addressAddTextbox);
 		sendKeyToElement(addressAddTextbox, address);
+		
+		waitForElementVisible(statusAddDropdown);
 		sendKeyToElement(statusAddDropdown, status);
+		
+		waitForElementVisible(accountNameAddTextbox);
 		sendKeyToElement(accountNameAddTextbox, accountName);
+		
+		waitForElementVisible(emailAddTextbox);
 		sendKeyToElement(emailAddTextbox, email);
+		
+		waitForElementVisible(phoneNumberAddTextbox);
 		sendKeyToElement(phoneNumberAddTextbox, phoneNumber);
+		
+		waitForElementVisible(passwordAddTextbox);
 		sendKeyToElement(passwordAddTextbox, password);
+		
+		waitForElementVisible(confirmPasswordAddTextbox);
 		sendKeyToElement(confirmPasswordAddTextbox, confirmPassword);
+		
+		waitForElementVisible(fullNameAddTextbox);
 		sendKeyToElement(fullNameAddTextbox, fullName);
 		if(command == "CREATE") {
 			clickToElementByJavaScript(createButton);
@@ -247,33 +266,43 @@ public class ContentProvider extends AbstractTest{
 	}
 	
 	public void updateContentProvider(String name, String taxCode, String address, String status, String email, String phoneNumber, String password, String confirmPassword, String fullname, String command) {
+		waitForElementVisible(nameUpdateTextbox);
 		clearToElement(nameUpdateTextbox);
 		sendKeyToElement(nameUpdateTextbox, name);
 		
+		waitForElementVisible(taxCodeUpdateTextbox);
 		clearToElement(taxCodeUpdateTextbox);
 		sendKeyToElement(taxCodeUpdateTextbox, taxCode);
 		
+		waitForElementVisible(addressUpdateTextbox);
 		clearToElement(addressUpdateTextbox);
 		sendKeyToElement(statusUpdateDropdown, status);
 		
+		waitForElementVisible(emailUpdateTextbox);
 		clearToElement(emailUpdateTextbox);
 		sendKeyToElement(emailUpdateTextbox, email);
 		
+		waitForElementVisible(phoneNumberUpdateTextbox);
 		clearToElement(phoneNumberUpdateTextbox);
 		sendKeyToElement(phoneNumberUpdateTextbox, phoneNumber);
 		
+		waitForElementVisible(passwordUpdateTextbox);
 		clearToElement(passwordUpdateTextbox);
 		sendKeyToElement(passwordUpdateTextbox, password);
 		
+		waitForElementVisible(confirmPasswordUpdateTextbox);
 		clearToElement(confirmPasswordUpdateTextbox);
 		sendKeyToElement(confirmPasswordUpdateTextbox, confirmPassword);
 		
+		waitForElementVisible(fullNameUpdateTextbox);
 		clearToElement(fullNameUpdateTextbox);
 		sendKeyToElement(fullNameUpdateTextbox, fullname);
 		if(command == "UPDATE") {
+			waitForElementClickalbe(updateButton);
 			clickToElementByJavaScript(updateButton);
 		}
 		else if(command == "CANCEL") {
+			waitForElementClickalbe(cancelUpdateButton);
 			clickToElementByJavaScript(cancelUpdateButton);
 		}
 			
@@ -282,7 +311,7 @@ public class ContentProvider extends AbstractTest{
 	public void searchByName(List<WebElement> elements, WebElement nameCriteria, String value) throws Throwable {
 		sendKeyToElement(nameCriteria, value);
 		sendKeyboardToElement(nameCriteria, Keys.ENTER);
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		for (int i = 1; i < elements.size(); i++) {
 			scrollToBottomPage();
 			String resultText = driver.findElement(By.xpath("//tbody//tr[" + i + "]//td[1]")).getText();

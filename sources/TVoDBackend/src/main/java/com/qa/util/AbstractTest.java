@@ -345,7 +345,7 @@ public class AbstractTest extends TestBase {
 
 		// click the upload button
 		driver.findElement(By.name("send")).click();
-		Thread.sleep(10000);
+		Thread.sleep(1000);
 	}
 
 	public boolean compareContainText(String text, String subText) {
@@ -452,22 +452,23 @@ public class AbstractTest extends TestBase {
 	}
 
 	public void waitForElementVisible(WebElement element2) {
-		wait = new WebDriverWait(driver, 60);
+		wait = new WebDriverWait(driver, 30);
 		element = wait.until(ExpectedConditions.visibilityOf(element2));
 	}
 
 	public void waitForElementClickalbe(WebElement element2) {
-		wait = new WebDriverWait(driver, 60);
+		wait = new WebDriverWait(driver, 30);
 		element = wait.until(ExpectedConditions.elementToBeClickable(element2));
 	}
 	
 	public void waitForAlertPresence() {
-		wait = new WebDriverWait(driver, 60);
+		wait = new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.alertIsPresent());
 	}
 	
 	public void clickElementByAction(WebElement element1) {
 		action = new Actions(driver);
+		waitForElementClickalbe(element1);
 		action.moveToElement(element1).click().build().perform();
 	}
 
@@ -477,7 +478,7 @@ public class AbstractTest extends TestBase {
 				return ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
 			}
 		};
-		wait = new WebDriverWait(driver, 20);
+		wait = new WebDriverWait(driver, 30);
 		wait.until(pageLoadCondition);
 	}
 

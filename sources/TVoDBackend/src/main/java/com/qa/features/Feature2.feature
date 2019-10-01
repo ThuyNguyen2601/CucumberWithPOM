@@ -1,9 +1,5 @@
 Feature: Service Provider functions
 
-#@SP
-#Scenario: Admin logs in to the TVoD page
-	#When Admin logins into the page
-	#Then verify the title of page
 @T1
 Scenario: Search Service Provider by name
 	When user go to Service Provider page
