@@ -1,31 +1,40 @@
 package com.qa.stepDefinitions;
 
-import cucumber.api.java.en.Then;
+import com.qa.pages.CategoryFilm;
+import com.qa.pages.HomePage;
+import com.qa.util.AbstractTest;
+import com.qa.util.PageGeneratorManager;
 
-public class CategoryFilmSteps {
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
+public class CategoryFilmSteps extends AbstractTest{
 	
-	@Then("^user goes to the Manage Category Film page$")
+	HomePage homePage;
+	CategoryFilm categoryFilm;
+	
+	@When("^user goes to the Manage Category Film page$")
 	public void user_goes_to_the_Manage_Category_Film_page() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    
+		homePage = PageGeneratorManager.getHomePage();
+		categoryFilm = homePage.gotoCategoryFilmPage();
+		waitForLoad();
 	}
 
 	@Then("^user chooses status in status collumn$")
 	public void user_chooses_status_in_status_collumn() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    
+		//selectItemHtmlDropdownByValue(categoryFilm.statusCollumn,"0");
+		categoryFilm.selectItemInStatusDropdownSearch(categoryFilm.parentDropdown, categoryFilm.selectedItem);
 	}
 
 	@Then("^user check the status of displayed records$")
 	public void user_check_the_status_of_displayed_records() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
 	    
 	}
 
 	@Then("^user clicks to the Create Category Film button$")
 	public void user_clicks_to_the_Create_Category_Film_button() throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
-	    
+	    clickToElement(categoryFilm.createCategoryFilmButton);
 	}
 
 	@Then("^user creates the category film without Category name$")

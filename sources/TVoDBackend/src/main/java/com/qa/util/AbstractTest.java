@@ -122,6 +122,7 @@ public class AbstractTest extends TestBase {
 
 	public void clickToElementByJavaScript(WebElement element1) {
 		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		waitForElementVisible(element1);
 		executor.executeScript("arguments[0].click();", element1);
 	}
 
@@ -178,6 +179,12 @@ public class AbstractTest extends TestBase {
 		waitForElementClickalbe(element1);
 		element1.click();
 	}
+	
+	public void clickToElementByAction(WebElement element1) {
+		action = new Actions(driver);
+		waitForElementVisible(element1);
+		action.moveToElement(element1).click().perform();
+	}
 
 	public boolean isControlDisplayed(WebElement element1) {
 		return element1.isDisplayed();
@@ -205,7 +212,7 @@ public class AbstractTest extends TestBase {
 	public void moveToElement(WebElement element1) {
 		action = new Actions(driver);
 		waitForElementVisible(element1);
-		action.moveToElement(element1).perform();
+		action.moveToElement(element1).build().perform();
 	}
 
 	public void moveToElementByJS(WebElement element1) {
@@ -231,9 +238,47 @@ public class AbstractTest extends TestBase {
 		action.sendKeys(element1, key).perform();
 	}
 
-	public void selectItemHtmlDropdown(WebElement element1, String itemText) {
+	public void selectItemHtmlDropdownByVisibleText(WebElement element1, String itemText) {
 		select = new Select(element1);
 		select.selectByVisibleText(itemText);
+	}
+	
+	public void selectItemHtmlDropdownByValue(WebElement element1, String value) {
+		waitForElementVisible(element1);
+		select = new Select(element1);
+		select.selectByValue(value);
+	}
+	
+	public void selectItemDropdow(WebElement parentdropdown, List<WebElement> allItemDropdown, String ExpectedText) throws Exception {
+    	// Click con dropdown
+		//WebElement parentdropdownelement = driver.findElement(By.xpath(parentdropdownlocator));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", parentdropdown);
+		Thread.sleep(1000);
+
+		// Wait all element is display
+		WebDriverWait driverwait = new WebDriverWait(driver, 3000);
+		driverwait.until(ExpectedConditions.visibilityOfAllElements(allItemDropdown));
+
+		// Get all iteam in dropdown
+		//List<WebElement> allItem = driver.findElements(By.xpath(allItemDropdown));
+
+		// Use FOR to gettext elements
+		for (int i = 0; i < allItemDropdown.size(); i++) {
+			String ItemText = allItemDropdown.get(i).getText();
+			if (ItemText.equals(ExpectedText)) {
+				((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", allItemDropdown.get(i));
+				Thread.sleep(1000);
+				if(allItemDropdown.get(i).isDisplayed()){
+					//selenium click
+					allItemDropdown.get(i).click();
+				}
+				else {
+					//javascrip click
+					((JavascriptExecutor) driver).executeScript("arguments[0].click();", allItemDropdown.get(i));
+				}
+				break;
+			}
+		}
 	}
 
 	public String getSelectedItemInHtmlDropdown(WebElement element1, String itemText) {
@@ -335,17 +380,17 @@ public class AbstractTest extends TestBase {
 	}
 
 	public void uploadFile(WebElement uploadElement) throws InterruptedException {
-		Path fileUpload = Paths.get("src", "tem/selenium/core", "DemoWebAlert.html");
+		Path fileUpload = Paths.get("src", "main/java/datatest", "DemoWebAlert.html");
 		String fileUploadPathString = fileUpload.toAbsolutePath().toString();
 		// enter file path onto the file-selection input field
 		uploadElement.sendKeys(fileUploadPathString);
 		waitForElementVisible(uploadElement);
 		// check the "I accept the terms of service" checkbox
-		driver.findElement(By.id("terms")).click();
+		//driver.findElement(By.id("terms")).click();
 
 		// click the upload button
-		driver.findElement(By.name("send")).click();
-		Thread.sleep(1000);
+		//driver.findElement(By.name("send")).click();
+		//Thread.sleep(1000);
 	}
 
 	public boolean compareContainText(String text, String subText) {

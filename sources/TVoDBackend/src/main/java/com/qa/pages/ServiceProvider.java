@@ -277,9 +277,9 @@ public class ServiceProvider extends AbstractTest {
 		sendKeyToElement(nameAddTextbox, name);
 		sendKeyToElement(descriptionAddTextbox, description);
 		sendKeyToElement(websiteAddTextbox, website);
-		selectItemHtmlDropdown(currenciesAddDropdown, currencies);
+		selectItemHtmlDropdownByVisibleText(currenciesAddDropdown, currencies);
 		sendKeyToElement(dealerRevueSharingAddTextbox, dealer);
-		selectItemHtmlDropdown(statusAddDropdown, status);
+		selectItemHtmlDropdownByVisibleText(statusAddDropdown, status);
 		sendKeyToElement(accountNameAddTextbox, accountName);
 		sendKeyToElement(emailAddTextbox, email);
 		sendKeyToElement(phoneNumberAddTextbox, password);

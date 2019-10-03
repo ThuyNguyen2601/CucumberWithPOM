@@ -19,4 +19,8 @@ public class PageGeneratorManager {
 		return new ServiceProvider();
 	}
 	
+	public static CategoryFilm getCategoryFilm() {
+		return new CategoryFilm();
+	}
+	
 }

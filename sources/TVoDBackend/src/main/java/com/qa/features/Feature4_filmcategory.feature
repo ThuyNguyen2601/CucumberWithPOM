@@ -1,13 +1,13 @@
 
 Feature: Manage Category Film
-
-  Scenario: Check filter by status of category film
-  Then user goes to the Manage Category Film page
-  Then user chooses status in status collumn
-  Then user check the status of displayed records
+	
+  #Scenario: Check filter by status of category film
+  #When user goes to the Manage Category Film page
+  #Then user chooses status in status collumn
+  #Then user check the status of displayed records
   
   Scenario: Check create category film without Category name
-  Then user goes to the Manage Category Film page
+  When user goes to the Manage Category Film page
   Then user clicks to the Create Category Film button
   And user creates the category film without Category name
   And user checks the Category name blank message

@@ -28,6 +28,15 @@ public class HomePage extends AbstractTest{
 	@FindBy(xpath = "//a[contains(text(),'Manage content provider')]")
 	public WebElement manageContentProviderMenu;
 	
+	@FindBy(xpath = "//a[text() = 'Content ']")
+	public WebElement contentMenu;
+	
+	@FindBy(xpath = "//ul[@id='w7']/li[1]/a[1]")
+	public WebElement filmSubMenu;
+	
+	@FindBy(xpath = "//a[contains(text(),'Category Films')]")
+	public WebElement categoryFilmSubSubMenu;
+	
 	//Initializing the Page Objects:
 	public HomePage() {
 		PageFactory.initElements(driver, this);
@@ -59,5 +68,13 @@ public class HomePage extends AbstractTest{
 		clickToElementByJavaScript(manageContentProviderMenu);
 		return PageGeneratorManager.getContentProvider();
 	}
+	
+	public CategoryFilm gotoCategoryFilmPage() throws Throwable {
+		moveToElement(contentMenu);
+		moveToElement(filmSubMenu);
+		clickToElementByAction(categoryFilmSubSubMenu);
+		return PageGeneratorManager.getCategoryFilm();
+	}
+	
 
 }
