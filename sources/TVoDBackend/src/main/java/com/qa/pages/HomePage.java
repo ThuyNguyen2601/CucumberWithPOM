@@ -31,7 +31,7 @@ public class HomePage extends AbstractTest{
 	@FindBy(xpath = "//a[text() = 'Content ']")
 	public WebElement contentMenu;
 	
-	@FindBy(xpath = "//ul[@id='w7']/li[1]/a[1]")
+	@FindBy(xpath = "//ul[contains(@id, 'w')]/li[1]/a[text() = 'Film']")
 	public WebElement filmSubMenu;
 	
 	@FindBy(xpath = "//a[contains(text(),'Category Films')]")

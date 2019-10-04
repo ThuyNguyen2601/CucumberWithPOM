@@ -19,7 +19,7 @@ public class CategoryFilm extends AbstractTest{
 	@CacheLookup
 	public WebElement selectedItem;
 	
-	@FindBy(xpath = "//a[text() = 'Create Category Film']")
+	@FindBy(xpath = "//a[@class='btn btn-success']")
 	@CacheLookup
 	public WebElement createCategoryFilmButton;
 	
@@ -51,15 +51,19 @@ public class CategoryFilm extends AbstractTest{
 	@CacheLookup
 	public WebElement categoryIsSeriesCheckbox;
 	
+	@FindBy(xpath = "//select[@id='category-parent_id']")
+	@CacheLookup
+	public WebElement categoryParentDropdown;
+	
 	@FindBy(xpath = "//div[@id = 'category-assignment_sites']//div[@class = 'checkbox']//input")
 	@CacheLookup
 	public List<WebElement> serviceProviderCheckboxList;
 	
-	@FindBy(xpath = "//button[@class = 'btn btn-success' and text() = 'Create Category']")
+	@FindBy(xpath = "//button[@class='btn btn-success']")
 	@CacheLookup
 	public WebElement createCategoryAddButton;
 	
-	@FindBy(xpath = "//a[text() = 'Cancel']")
+	@FindBy(xpath = "//a[@class='btn btn-default']")
 	@CacheLookup
 	public WebElement cancelButton;
 	
@@ -83,6 +87,18 @@ public class CategoryFilm extends AbstractTest{
 	@CacheLookup
 	public WebElement cancelInConfirmAlertButton;
 	
+	@FindBy(xpath = "//div[contains(text(),'Category name cannot be blank')]")
+	@CacheLookup
+	public WebElement categoryNameBlankMessage;
+	
+	@FindBy(xpath = "//div[contains(text(),'Service Provider cannot be blank')]")
+	@CacheLookup
+	public WebElement serviceProviderBlankMessage;
+	
+	@FindBy(xpath = "//div[@id='w15-success']")
+	@CacheLookup
+	public WebElement addNewSuccessMessage;
+	
 	public CategoryFilm() {
 		PageFactory.initElements(driver, this);
 	}
@@ -95,6 +111,62 @@ public class CategoryFilm extends AbstractTest{
 		clickToElementByJavaScript(statusDropdown);
 		clickToElementByJavaScript(selectedItemInDropdown);
 		waitForLoad();
+	}
+	
+	public void createCategoryFilm(String categoryFilmName, String description, WebElement browserButton, String status, String categoryParent, String buttonName) throws Exception {
+		waitForElementVisible(categoryNameTextbox);
+		sendKeyToElement(categoryNameTextbox, categoryFilmName);
+		
+		waitForElementVisible(descriptionTextbox);
+		sendKeyToElement(descriptionTextbox, description);
+		
+		uploadFile(browserButton);
+		
+		waitForElementVisible(statusCategoryDropdown);
+		selectItemHtmlDropdownByVisibleText(statusCategoryDropdown, status);
+		
+		waitForElementVisible(categoryIsSeriesCheckbox);
+		checkTheCheckbox(categoryIsSeriesCheckbox);
+		
+		selectItemHtmlDropdownByValue(categoryParentDropdown, categoryParent);
+		
+		for(int i = 3; i < serviceProviderCheckboxList.size(); i = i + 4) {
+			checkTheCheckbox(serviceProviderCheckboxList.get(i));
+		}
+		
+		if(buttonName == "Create Category") {
+			clickToElementByJavaScript(createCategoryAddButton);
+		}
+		else {
+			clickToElementByJavaScript(cancelButton);
+		}
+	}
+	
+	public void createCategoryFilmWithoutServiceProvider(String categoryFilmName, String buttonName) throws Exception {
+		waitForElementVisible(categoryNameTextbox);
+		sendKeyToElement(categoryNameTextbox, categoryFilmName);
+		
+		if(buttonName == "Create Category") {
+			clickToElementByJavaScript(createCategoryAddButton);
+		}
+		else {
+			clickToElementByJavaScript(cancelButton);
+		}
+	}
+	
+	public boolean verifyCategoryNameBlank() {
+		waitForElementVisible(categoryNameBlankMessage);
+		return isControlDisplayed(categoryNameBlankMessage);
+	}
+	
+	public boolean verifyServiceProviderBlank() {
+		waitForElementVisible(serviceProviderBlankMessage);
+		return isControlDisplayed(serviceProviderBlankMessage);
+	}
+	
+	public boolean verifyAddNewSuccessMessage() {
+		waitForElementVisible(addNewSuccessMessage);
+		return isControlDisplayed(addNewSuccessMessage);
 	}
 
 }

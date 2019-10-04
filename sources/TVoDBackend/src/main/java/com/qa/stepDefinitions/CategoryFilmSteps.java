@@ -13,7 +13,10 @@ public class CategoryFilmSteps extends AbstractTest{
 	HomePage homePage;
 	CategoryFilm categoryFilm;
 	
-	@When("^user goes to the Manage Category Film page$")
+	String categoryName = "Thuy category " + randomData();
+	String description = "Thuy describe the Category Film " + randomData();
+	
+	@Then("^user goes to the Manage Category Film page$")
 	public void user_goes_to_the_Manage_Category_Film_page() throws Throwable {
 		homePage = PageGeneratorManager.getHomePage();
 		categoryFilm = homePage.gotoCategoryFilmPage();
@@ -22,7 +25,6 @@ public class CategoryFilmSteps extends AbstractTest{
 
 	@Then("^user chooses status in status collumn$")
 	public void user_chooses_status_in_status_collumn() throws Throwable {
-		//selectItemHtmlDropdownByValue(categoryFilm.statusCollumn,"0");
 		categoryFilm.selectItemInStatusDropdownSearch(categoryFilm.parentDropdown, categoryFilm.selectedItem);
 	}
 
@@ -33,56 +35,59 @@ public class CategoryFilmSteps extends AbstractTest{
 
 	@Then("^user clicks to the Create Category Film button$")
 	public void user_clicks_to_the_Create_Category_Film_button() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    clickToElement(categoryFilm.createCategoryFilmButton);
+		clickToElementByAction(categoryFilm.createCategoryFilmButton);
 	}
 
 	@Then("^user creates the category film without Category name$")
 	public void user_creates_the_category_film_without_Category_name() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    
+	    categoryFilm.createCategoryFilm(" ", description, categoryFilm.browserButton, "Active", "43", "Create Category");
 	}
 
 	@Then("^user checks the Category name blank message$")
 	public void user_checks_the_Category_name_blank_message() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    
+	    boolean flag = categoryFilm.verifyCategoryNameBlank();
+	    verifyTrue(flag);
+	    log.info("Check create Catefory Film without name is: " + flag);
+	    waitForLoad();
 	}
 
 	@Then("^user creates the category film without Service Provider$")
 	public void user_creates_the_category_film_without_Service_Provider() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    
+	    categoryFilm.createCategoryFilmWithoutServiceProvider(categoryName, "Create Category");
 	}
 
 	@Then("^user checks the Service Provider blank message$")
 	public void user_checks_the_Service_Provider_blank_message() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    
+	    boolean flag = categoryFilm.verifyServiceProviderBlank();
+	    verifyTrue(flag);
+	    log.info("Check create Category Film without service provider is: " + flag);
+	    waitForLoad();
 	}
 
 	@Then("^user creates the category film with valid values but press Cancel button$")
 	public void user_creates_the_category_film_with_valid_values_but_press_Cancel_button() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    
+	    categoryFilm.createCategoryFilm(categoryName, description, categoryFilm.browserButton, "Active", "43", "Cancel");
 	}
 
 	@Then("^user checks the title of page after pressing cancel button$")
 	public void user_checks_the_title_of_page_after_pressing_cancel_button() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    
+		waitForLoad();
+	    String titlePage = categoryFilm.getCategoryFilmPageTitle();
+	    verifyEquals(titlePage, "Manage category Film");
+	    log.info("Check create Category Film but press Cancel button done!");
 	}
 
 	@Then("^user creates the category film with valid values$")
 	public void user_creates_the_category_film_with_valid_values() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    
+	    categoryFilm.createCategoryFilm(categoryName, description, categoryFilm.browserButton, "Active", "43", "Create Category");
 	}
 
 	@Then("^user check the create category film successful message$")
 	public void user_check_the_create_category_film_successful_message() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    
+	    boolean flag = categoryFilm.verifyAddNewSuccessMessage();
+	    verifyTrue(flag);
+	    log.info("Check create Category Film success is: " + flag);
+	    waitForLoad();
 	}
 
 	@Then("^user clicks to the view category film icon$")

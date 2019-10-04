@@ -5,25 +5,28 @@ Feature: Manage Category Film
   #When user goes to the Manage Category Film page
   #Then user chooses status in status collumn
   #Then user check the status of displayed records
-  
+  @C1
   Scenario: Check create category film without Category name
-  When user goes to the Manage Category Film page
+  Then user goes to the Manage Category Film page
   Then user clicks to the Create Category Film button
   And user creates the category film without Category name
   And user checks the Category name blank message
   
+  @C1
   Scenario: Check create category film without Service Provider
   Then user goes to the Manage Category Film page
   Then user clicks to the Create Category Film button
   And user creates the category film without Service Provider
   And user checks the Service Provider blank message
   
+  @C1
   Scenario: Check create category film when pressing cancel button
   Then user goes to the Manage Category Film page
   Then user clicks to the Create Category Film button
   And user creates the category film with valid values but press Cancel button
   And user checks the title of page after pressing cancel button
   
+  @C1
   Scenario: Check create category film successful
   Then user goes to the Manage Category Film page
   Then user clicks to the Create Category Film button
