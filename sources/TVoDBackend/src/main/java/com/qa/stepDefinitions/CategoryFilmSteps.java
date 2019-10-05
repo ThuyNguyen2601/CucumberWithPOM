@@ -47,8 +47,8 @@ public class CategoryFilmSteps extends AbstractTest{
 	public void user_checks_the_Category_name_blank_message() throws Throwable {
 	    boolean flag = categoryFilm.verifyCategoryNameBlank();
 	    verifyTrue(flag);
-	    log.info("Check create Catefory Film without name is: " + flag);
 	    waitForLoad();
+	    log.info("Check create Catefory Film without name is: " + flag);
 	}
 
 	@Then("^user creates the category film without Service Provider$")
@@ -60,18 +60,18 @@ public class CategoryFilmSteps extends AbstractTest{
 	public void user_checks_the_Service_Provider_blank_message() throws Throwable {
 	    boolean flag = categoryFilm.verifyServiceProviderBlank();
 	    verifyTrue(flag);
-	    log.info("Check create Category Film without service provider is: " + flag);
 	    waitForLoad();
+	    log.info("Check create Category Film without service provider is: " + flag);
 	}
 
 	@Then("^user creates the category film with valid values but press Cancel button$")
 	public void user_creates_the_category_film_with_valid_values_but_press_Cancel_button() throws Throwable {
 	    categoryFilm.createCategoryFilm(categoryName, description, categoryFilm.browserButton, "Active", "43", "Cancel");
+	    waitForLoad();
 	}
 
 	@Then("^user checks the title of page after pressing cancel button$")
 	public void user_checks_the_title_of_page_after_pressing_cancel_button() throws Throwable {
-		waitForLoad();
 	    String titlePage = categoryFilm.getCategoryFilmPageTitle();
 	    verifyEquals(titlePage, "Manage category Film");
 	    log.info("Check create Category Film but press Cancel button done!");
@@ -86,20 +86,22 @@ public class CategoryFilmSteps extends AbstractTest{
 	public void user_check_the_create_category_film_successful_message() throws Throwable {
 	    boolean flag = categoryFilm.verifyAddNewSuccessMessage();
 	    verifyTrue(flag);
-	    log.info("Check create Category Film success is: " + flag);
 	    waitForLoad();
+	    log.info("Check create Category Film success is: " + flag);
 	}
 
 	@Then("^user clicks to the view category film icon$")
 	public void user_clicks_to_the_view_category_film_icon() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    
+	    clickToElement(categoryFilm.viewCategoryFilmIcon);
 	}
 
 	@Then("^user check the title of page when viewing category film$")
 	public void user_check_the_title_of_page_when_viewing_category_film() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    
+	    waitForElementVisible(categoryFilm.nameOfCategoryFilmView);
+	    String nameCategoryFilm = categoryFilm.nameOfCategoryFilmView.getAttribute("value");
+	    String titleOfPage = categoryFilm.getPageTitle();
+	    verifyEquals(nameCategoryFilm, titleOfPage);
+	    waitForLoad();
 	}
 
 	@Then("^user clicks to the edit category icon$")

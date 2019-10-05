@@ -71,6 +71,10 @@ public class CategoryFilm extends AbstractTest{
 	@CacheLookup
 	public WebElement viewCategoryFilmIcon;
 	
+	@FindBy(xpath = "//div[@class = 'category-view']//h1")
+	@CacheLookup
+	public WebElement nameOfCategoryFilmView;
+	
 	@FindBy(xpath = "//tr[1]//td[5]//a[2]//span[1]")
 	@CacheLookup
 	public WebElement updateCategoryFilmIcon;
@@ -130,7 +134,7 @@ public class CategoryFilm extends AbstractTest{
 		
 		selectItemHtmlDropdownByValue(categoryParentDropdown, categoryParent);
 		
-		for(int i = 3; i < serviceProviderCheckboxList.size(); i = i + 4) {
+		for(int i = 3; i < serviceProviderCheckboxList.size(); i = i + 8) {
 			checkTheCheckbox(serviceProviderCheckboxList.get(i));
 		}
 		

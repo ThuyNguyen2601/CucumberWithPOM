@@ -33,6 +33,7 @@ Feature: Manage Category Film
   And user creates the category film with valid values
   And user check the create category film successful message
   
+  @C1
   Scenario: Check view category film
   Then user goes to the Manage Category Film page
   Then user clicks to the view category film icon
