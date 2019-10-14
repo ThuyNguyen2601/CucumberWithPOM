@@ -23,4 +23,8 @@ public class PageGeneratorManager {
 		return new CategoryFilm();
 	}
 	
+	public static ListFilm getListFilm() {
+		return new ListFilm();
+	}
+	
 }

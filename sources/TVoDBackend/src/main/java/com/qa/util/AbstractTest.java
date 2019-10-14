@@ -193,6 +193,7 @@ public class AbstractTest extends TestBase {
 
 	public void clickToElementByAction(WebElement element1) {
 		action = new Actions(driver);
+		waitForElementVisible(element1);
 		waitForElementClickalbe(element1);
 		action.moveToElement(element1).click().perform();
 	}
@@ -394,6 +395,8 @@ public class AbstractTest extends TestBase {
 		Path fileUpload = Paths.get("src", "main/java/datatest", "animal1.jpg");
 		String fileUploadPathString = fileUpload.toAbsolutePath().toString();
 		// enter file path onto the file-selection input field
+		//waitForElementVisible(uploadElement);
+		Thread.sleep(2000);
 		uploadElement.sendKeys(fileUploadPathString);
 		//waitForElementVisible(uploadElement);
 		// check the "I accept the terms of service" checkbox
@@ -539,7 +542,7 @@ public class AbstractTest extends TestBase {
 	}
 
 	public void waitForElementVisible(WebElement element2) {
-		wait = new WebDriverWait(driver, 50);
+		wait = new WebDriverWait(driver, 40);
 		element = wait.until(ExpectedConditions.visibilityOf(element2));
 	}
 
@@ -568,5 +571,6 @@ public class AbstractTest extends TestBase {
 		wait = new WebDriverWait(driver, 50);
 		wait.until(pageLoadCondition);
 	}
+	
 
 }
