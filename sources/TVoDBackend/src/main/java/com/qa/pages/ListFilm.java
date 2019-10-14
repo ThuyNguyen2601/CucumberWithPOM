@@ -85,7 +85,7 @@ public class ListFilm extends AbstractTest{
 	@CacheLookup
 	public WebElement browserSlideShowImageButton;
 	
-	@FindBy(xpath = "//div[@class ='file-actions']//div[@class = 'file-footer-buttons']//button[@class = 'kv-file-upload btn btn-kv btn-default btn-outline-secondary']")
+	@FindBy(xpath = "//div[contains(@class, 'field-content-screenshoot')]//div[@class ='file-actions']//div[@class = 'file-footer-buttons']//button[contains(@class, 'kv-file-upload') and not(contains(@style,'display:none'))]")
 	@CacheLookup
 	public WebElement uploadSlideShowImageIcon;
 	
@@ -152,7 +152,7 @@ public class ListFilm extends AbstractTest{
 	public void searchFilmByName(String value) throws Throwable {
 		sendKeyToElement(displayedNameTextbox, value);
 		sendKeyboardToElement(displayedNameTextbox, Keys.ENTER);
-		Thread.sleep(1000);
+		Thread.sleep(5000);
 		for(int i = 1; i < resultSearchCollumn.size(); i ++) {
 			String resultText = driver.findElement(By.xpath("//tbody//tr[" + i +"]//td[2]")).getText();
 			if(compareContainText(resultText, value)) {
@@ -205,6 +205,7 @@ public class ListFilm extends AbstractTest{
 		scrollToIntoviewElement(browserSlideShowImageButton);
 		uploadFile(browserSlideShowImageButton);
 		waitForElementClickalbe(uploadSlideShowImageIcon);
+		Thread.sleep(2000);
 		clickToElementByJavaScript(uploadSlideShowImageIcon);
 		
 		for(int i = 3; i < serviceProviderCheckboxList.size(); i = i + 12) {

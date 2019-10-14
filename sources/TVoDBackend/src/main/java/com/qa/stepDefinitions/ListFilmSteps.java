@@ -32,6 +32,7 @@ public class ListFilmSteps extends AbstractTest{
 	@Then("^user search Film by displayed name$")
 	public void user_search_Film_by_displayed_name() throws Throwable {
 	    listFilm.searchFilmByName("a");
+	    Thread.sleep(5000);
 	}
 	
 	@Then("^user clicks to Create Film button$")
