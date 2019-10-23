@@ -542,7 +542,7 @@ public class AbstractTest extends TestBase {
 	}
 
 	public void waitForElementVisible(WebElement element2) {
-		wait = new WebDriverWait(driver, 40);
+		wait = new WebDriverWait(driver, 50);
 		element = wait.until(ExpectedConditions.visibilityOf(element2));
 	}
 

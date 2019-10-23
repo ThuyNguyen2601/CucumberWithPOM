@@ -145,11 +145,62 @@ public class ListFilm extends AbstractTest{
 	@CacheLookup
 	public WebElement createSuccessfulMessage;
 	
+	@FindBy(xpath = "//button[@id='content-0-status-targ']")
+	@CacheLookup
+	public WebElement changeStatusButton;
+	
+	@FindBy(xpath ="//select[@id='content-0-status']")
+	@CacheLookup
+	public WebElement statusDropdown;
+	
+	@FindBy(xpath = "//div[@id='content-0-status-popover']//i[@class='glyphicon glyphicon-save']")
+	@CacheLookup
+	public WebElement applyChangeStatusButton;
+	
+	@FindBy(xpath = "//tr[1]//td[7]//a[1]//span[1]")
+	@CacheLookup
+	public WebElement viewFilmIcon;
+	
+	@FindBy(xpath = "//th[contains(text(),'Display name')]//following-sibling::td")
+	@CacheLookup
+	public WebElement nameOfViewedFilm;
+	
+	@FindBy(xpath = "//tr[1]//td[7]//a[2]//span[1]")
+	@CacheLookup
+	public WebElement updateFilmIcon;
+	
+	@FindBy(xpath = "//button[@class='btn btn-primary']")
+	@CacheLookup
+	public WebElement updateFilmButton;
+	
+	@FindBy(xpath = "//input[@id='content-is_top']")
+	@CacheLookup
+	public WebElement contentIsTopCheckbox;
+	
+	@FindBy(xpath = "//div[@class = 'form-group field-content-thumbnail']//div[@class = 'file-footer-buttons']//button[@class = 'kv-file-remove btn btn-kv btn-default btn-outline-secondary']")
+	@CacheLookup
+	public WebElement deletePosterImageIcon;
+	
+	@FindBy(xpath = "//div[@class = 'form-group field-content-screenshoot']//div[@class = 'file-footer-buttons']//button[@class = 'kv-file-remove btn btn-kv btn-default btn-outline-secondary']")
+	@CacheLookup
+	public WebElement deleteSlideShowImageIcon;
+	
+	@FindBy(xpath = "div[@id = 'w24-success']")
+	@CacheLookup
+	public WebElement updateFilmSuccessMessage;
+	
+	
+	
 	public ListFilm() {
 		PageFactory.initElements(driver, this);
 	}
 	
+	public String getTitleOfFilmPage() {
+		return getPageTitle();
+	}
+	
 	public void searchFilmByName(String value) throws Throwable {
+		waitForElementVisible(displayedNameTextbox);
 		sendKeyToElement(displayedNameTextbox, value);
 		sendKeyboardToElement(displayedNameTextbox, Keys.ENTER);
 		Thread.sleep(5000);
@@ -191,21 +242,15 @@ public class ListFilm extends AbstractTest{
 		waitForElementVisible(contentTickTextbox);
 		sendKeyToElement(contentTickTextbox, tick);
 		
-		//switchToIframe(descriptionIframe);
-		//sendKeyToElement(descriptionIframe, description);
-		
-		//switchToIframe(shortDescriptionIframe);
-		//sendKeyToElement(shortDescriptionIframe, shortDescription);
 		scrollToIntoviewElement(browserPosterImageButton);
 		uploadFile(browserPosterImageButton);
 		waitForElementVisible(uploadPosterImageIcon);
 		clickToElement(uploadPosterImageIcon);
 		
-		//Thread.sleep(2000);
 		scrollToIntoviewElement(browserSlideShowImageButton);
 		uploadFile(browserSlideShowImageButton);
 		waitForElementClickalbe(uploadSlideShowImageIcon);
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		clickToElementByJavaScript(uploadSlideShowImageIcon);
 		
 		for(int i = 3; i < serviceProviderCheckboxList.size(); i = i + 12) {
@@ -216,12 +261,380 @@ public class ListFilm extends AbstractTest{
 		waitForElementVisible(originServiceProviderDropdown);
 		selectItemHtmlDropdownByValue(originServiceProviderDropdown, "15");
 		
-		for(int i = 1; i < categoryCheckboxList.size(); i = i + 2) {
+		for(int i = 1; i < categoryCheckboxList.size(); i = i + 1) {
+			waitForElementVisible(categoryCheckboxList.get(i));
 			checkTheCheckbox(categoryCheckboxList.get(i));
 		}
 		
 		waitForElementVisible(createButton);
 		clickToElementByJavaScript(createButton);
+	}
+	
+	public void createFilmWithoutPosterImage(String displayedName, String activatedDate, String expiredDate, String featureTitle, String tick) throws Throwable {
+		waitForElementVisible(contentDisplayNameTextbox);
+		sendKeyToElement(contentDisplayNameTextbox, displayedName);
+		
+		waitForElementVisible(contentIsSeriesCheckbox);
+		checkTheCheckbox(contentIsSeriesCheckbox);
+		
+		waitForElementVisible(contentProviderDropdown);
+		selectItemHtmlDropdownByValue(contentProviderDropdown, "2");
+		
+		waitForElementVisible(activatedDateTextbox);
+		sendKeyToElement(activatedDateTextbox, activatedDate);
+		
+		waitForElementVisible(expiredDateTextbox);
+		sendKeyToElement(expiredDateTextbox, expiredDate);
+		
+		waitForElementVisible(contentStatusDropdown);
+		selectItemHtmlDropdownByValue(contentStatusDropdown, "10");
+		
+		waitForElementVisible(contentHonorDropdown);
+		selectItemHtmlDropdownByValue(contentHonorDropdown, "2");
+		
+		waitForElementVisible(contentFeatureTitleTextbox);
+		sendKeyToElement(contentFeatureTitleTextbox, featureTitle);
+		
+		waitForElementVisible(contentTickTextbox);
+		sendKeyToElement(contentTickTextbox, tick);
+		
+		scrollToIntoviewElement(browserSlideShowImageButton);
+		uploadFile(browserSlideShowImageButton);
+		waitForElementClickalbe(uploadSlideShowImageIcon);
+		Thread.sleep(1000);
+		clickToElementByJavaScript(uploadSlideShowImageIcon);
+		
+		for(int i = 3; i < serviceProviderCheckboxList.size(); i = i + 12) {
+			waitForElementVisible(serviceProviderCheckboxList.get(i));
+			checkTheCheckbox(serviceProviderCheckboxList.get(i));
+		}
+		
+		waitForElementVisible(originServiceProviderDropdown);
+		selectItemHtmlDropdownByValue(originServiceProviderDropdown, "15");
+		
+		for(int i = 1; i < categoryCheckboxList.size(); i = i + 1) {
+			waitForElementVisible(categoryCheckboxList.get(i));
+			checkTheCheckbox(categoryCheckboxList.get(i));
+		}
+		
+		waitForElementVisible(createButton);
+		clickToElementByJavaScript(createButton);
+	}
+	
+	public void createFilmWithoutSlideShowImage(String displayedName, String activatedDate, String expiredDate, String featureTitle, String tick) throws Throwable {
+		waitForElementVisible(contentDisplayNameTextbox);
+		sendKeyToElement(contentDisplayNameTextbox, displayedName);
+		
+		waitForElementVisible(contentIsSeriesCheckbox);
+		checkTheCheckbox(contentIsSeriesCheckbox);
+		
+		waitForElementVisible(contentProviderDropdown);
+		selectItemHtmlDropdownByValue(contentProviderDropdown, "2");
+		
+		waitForElementVisible(activatedDateTextbox);
+		sendKeyToElement(activatedDateTextbox, activatedDate);
+		
+		waitForElementVisible(expiredDateTextbox);
+		sendKeyToElement(expiredDateTextbox, expiredDate);
+		
+		waitForElementVisible(contentStatusDropdown);
+		selectItemHtmlDropdownByValue(contentStatusDropdown, "10");
+		
+		waitForElementVisible(contentHonorDropdown);
+		selectItemHtmlDropdownByValue(contentHonorDropdown, "2");
+		
+		waitForElementVisible(contentFeatureTitleTextbox);
+		sendKeyToElement(contentFeatureTitleTextbox, featureTitle);
+		
+		waitForElementVisible(contentTickTextbox);
+		sendKeyToElement(contentTickTextbox, tick);
+		
+		scrollToIntoviewElement(browserPosterImageButton);
+		uploadFile(browserPosterImageButton);
+		waitForElementVisible(uploadPosterImageIcon);
+		clickToElement(uploadPosterImageIcon);
+		for(int i = 3; i < serviceProviderCheckboxList.size(); i = i + 12) {
+			waitForElementVisible(serviceProviderCheckboxList.get(i));
+			checkTheCheckbox(serviceProviderCheckboxList.get(i));
+		}
+		
+		waitForElementVisible(originServiceProviderDropdown);
+		selectItemHtmlDropdownByValue(originServiceProviderDropdown, "15");
+		
+		for(int i = 1; i < categoryCheckboxList.size(); i = i + 1) {
+			waitForElementVisible(categoryCheckboxList.get(i));
+			checkTheCheckbox(categoryCheckboxList.get(i));
+		}
+		
+		waitForElementVisible(createButton);
+		clickToElementByJavaScript(createButton);
+	}
+	
+	public void createFilmWithoutServiceProvider(String displayedName, String activatedDate, String expiredDate, String featureTitle, String tick) throws Throwable {
+		waitForElementVisible(contentDisplayNameTextbox);
+		sendKeyToElement(contentDisplayNameTextbox, displayedName);
+		
+		waitForElementVisible(contentIsSeriesCheckbox);
+		checkTheCheckbox(contentIsSeriesCheckbox);
+		
+		waitForElementVisible(contentProviderDropdown);
+		selectItemHtmlDropdownByValue(contentProviderDropdown, "2");
+		
+		waitForElementVisible(activatedDateTextbox);
+		sendKeyToElement(activatedDateTextbox, activatedDate);
+		
+		waitForElementVisible(expiredDateTextbox);
+		sendKeyToElement(expiredDateTextbox, expiredDate);
+		
+		waitForElementVisible(contentStatusDropdown);
+		selectItemHtmlDropdownByValue(contentStatusDropdown, "10");
+		
+		waitForElementVisible(contentHonorDropdown);
+		selectItemHtmlDropdownByValue(contentHonorDropdown, "2");
+		
+		waitForElementVisible(contentFeatureTitleTextbox);
+		sendKeyToElement(contentFeatureTitleTextbox, featureTitle);
+		
+		waitForElementVisible(contentTickTextbox);
+		sendKeyToElement(contentTickTextbox, tick);
+		
+		scrollToIntoviewElement(browserPosterImageButton);
+		uploadFile(browserPosterImageButton);
+		waitForElementVisible(uploadPosterImageIcon);
+		clickToElement(uploadPosterImageIcon);
+		
+		scrollToIntoviewElement(browserSlideShowImageButton);
+		uploadFile(browserSlideShowImageButton);
+		waitForElementClickalbe(uploadSlideShowImageIcon);
+		Thread.sleep(1000);
+		clickToElementByJavaScript(uploadSlideShowImageIcon);
+
+		
+		waitForElementVisible(originServiceProviderDropdown);
+		selectItemHtmlDropdownByValue(originServiceProviderDropdown, "15");
+		
+		for(int i = 1; i < categoryCheckboxList.size(); i = i + 1) {
+			waitForElementVisible(categoryCheckboxList.get(i));
+			checkTheCheckbox(categoryCheckboxList.get(i));
+		}
+		
+		waitForElementVisible(createButton);
+		clickToElementByJavaScript(createButton);
+	}
+	
+	public void createFilmWithoutCategory(String displayedName, String activatedDate, String expiredDate, String featureTitle, String tick) throws Throwable {
+		waitForElementVisible(contentDisplayNameTextbox);
+		sendKeyToElement(contentDisplayNameTextbox, displayedName);
+		
+		waitForElementVisible(contentIsSeriesCheckbox);
+		checkTheCheckbox(contentIsSeriesCheckbox);
+		
+		waitForElementVisible(contentProviderDropdown);
+		selectItemHtmlDropdownByValue(contentProviderDropdown, "2");
+		
+		waitForElementVisible(activatedDateTextbox);
+		sendKeyToElement(activatedDateTextbox, activatedDate);
+		
+		waitForElementVisible(expiredDateTextbox);
+		sendKeyToElement(expiredDateTextbox, expiredDate);
+		
+		waitForElementVisible(contentStatusDropdown);
+		selectItemHtmlDropdownByValue(contentStatusDropdown, "10");
+		
+		waitForElementVisible(contentHonorDropdown);
+		selectItemHtmlDropdownByValue(contentHonorDropdown, "2");
+		
+		waitForElementVisible(contentFeatureTitleTextbox);
+		sendKeyToElement(contentFeatureTitleTextbox, featureTitle);
+		
+		waitForElementVisible(contentTickTextbox);
+		sendKeyToElement(contentTickTextbox, tick);
+		
+		scrollToIntoviewElement(browserPosterImageButton);
+		uploadFile(browserPosterImageButton);
+		waitForElementVisible(uploadPosterImageIcon);
+		clickToElement(uploadPosterImageIcon);
+		
+		scrollToIntoviewElement(browserSlideShowImageButton);
+		uploadFile(browserSlideShowImageButton);
+		waitForElementClickalbe(uploadSlideShowImageIcon);
+		Thread.sleep(1000);
+		clickToElementByJavaScript(uploadSlideShowImageIcon);
+		
+		for(int i = 3; i < serviceProviderCheckboxList.size(); i = i + 12) {
+			waitForElementVisible(serviceProviderCheckboxList.get(i));
+			checkTheCheckbox(serviceProviderCheckboxList.get(i));
+		}
+		
+		waitForElementVisible(originServiceProviderDropdown);
+		selectItemHtmlDropdownByValue(originServiceProviderDropdown, "15");
+		
+		waitForElementVisible(createButton);
+		clickToElementByJavaScript(createButton);
+	}
+	
+	public void updateFilm(String displayedName, String activationDate, String expirationDate, String honor, String featureTitle, String tick) {
+		waitForElementVisible(contentDisplayNameTextbox);
+		clearToElement(contentDisplayNameTextbox);
+		sendKeyToElement(contentDisplayNameTextbox, displayedName);
+		
+		waitForElementVisible(activatedDateTextbox);
+		clearToElement(activatedDateTextbox);
+		sendKeyToElement(activatedDateTextbox, activationDate);
+		
+		waitForElementVisible(expiredDateTextbox);
+		clearToElement(expiredDateTextbox);
+		sendKeyToElement(expiredDateTextbox, expirationDate);
+		
+		waitForElementVisible(contentHonorDropdown);
+		selectItemHtmlDropdownByValue(contentHonorDropdown, honor);
+		
+		waitForElementVisible(contentFeatureTitleTextbox);
+		clearToElement(contentFeatureTitleTextbox);
+		sendKeyToElement(contentFeatureTitleTextbox, featureTitle);
+		
+		waitForElementVisible(contentTickTextbox);
+		clearToElement(contentTickTextbox);
+		sendKeyToElement(contentTickTextbox, tick);
+		
+		waitForElementClickalbe(updateFilmButton);
+		clickToElement(updateFilmButton);
+	}
+	
+	public void updateFilmWithoutPosterImage(String displayedName, String activationDate, String expirationDate, String honor, String featureTitle, String tick) throws Exception {
+		waitForElementVisible(contentDisplayNameTextbox);
+		clearToElement(contentDisplayNameTextbox);
+		sendKeyToElement(contentDisplayNameTextbox, displayedName);
+		
+		waitForElementVisible(activatedDateTextbox);
+		clearToElement(activatedDateTextbox);
+		sendKeyToElement(activatedDateTextbox, activationDate);
+		
+		waitForElementVisible(expiredDateTextbox);
+		clearToElement(expiredDateTextbox);
+		sendKeyToElement(expiredDateTextbox, expirationDate);
+		
+		waitForElementVisible(contentHonorDropdown);
+		selectItemHtmlDropdownByValue(contentHonorDropdown, honor);
+		
+		waitForElementVisible(contentFeatureTitleTextbox);
+		clearToElement(contentFeatureTitleTextbox);
+		sendKeyToElement(contentFeatureTitleTextbox, featureTitle);
+		
+		waitForElementVisible(contentTickTextbox);
+		clearToElement(contentTickTextbox);
+		sendKeyToElement(contentTickTextbox, tick);
+		Thread.sleep(1000);
+		
+		waitForElementClickalbe(deletePosterImageIcon);
+		clickToElementByJavaScript(deletePosterImageIcon);
+		Thread.sleep(1000);
+		
+		waitForElementClickalbe(updateFilmButton);
+		clickToElement(updateFilmButton);
+	}
+	
+	public void updateFilmWithoutSlideShowImage(String displayedName, String activationDate, String expirationDate, String honor, String featureTitle, String tick) throws Exception {
+		waitForElementVisible(contentDisplayNameTextbox);
+		clearToElement(contentDisplayNameTextbox);
+		sendKeyToElement(contentDisplayNameTextbox, displayedName);
+		
+		waitForElementVisible(activatedDateTextbox);
+		clearToElement(activatedDateTextbox);
+		sendKeyToElement(activatedDateTextbox, activationDate);
+		
+		waitForElementVisible(expiredDateTextbox);
+		clearToElement(expiredDateTextbox);
+		sendKeyToElement(expiredDateTextbox, expirationDate);
+		
+		waitForElementVisible(contentHonorDropdown);
+		selectItemHtmlDropdownByValue(contentHonorDropdown, honor);
+		
+		waitForElementVisible(contentFeatureTitleTextbox);
+		clearToElement(contentFeatureTitleTextbox);
+		sendKeyToElement(contentFeatureTitleTextbox, featureTitle);
+		
+		waitForElementVisible(contentTickTextbox);
+		clearToElement(contentTickTextbox);
+		sendKeyToElement(contentTickTextbox, tick);
+		Thread.sleep(1000);
+		
+		waitForElementClickalbe(deleteSlideShowImageIcon);
+		clickToElementByJavaScript(deleteSlideShowImageIcon);
+		Thread.sleep(1000);
+		
+		waitForElementClickalbe(updateFilmButton);
+		clickToElement(updateFilmButton);
+	}
+	
+	public void updateFilmWithoutServiceProvider(String displayedName, String activationDate, String expirationDate, String honor, String featureTitle, String tick) {
+		waitForElementVisible(contentDisplayNameTextbox);
+		clearToElement(contentDisplayNameTextbox);
+		sendKeyToElement(contentDisplayNameTextbox, displayedName);
+		
+		waitForElementVisible(activatedDateTextbox);
+		clearToElement(activatedDateTextbox);
+		sendKeyToElement(activatedDateTextbox, activationDate);
+		
+		waitForElementVisible(expiredDateTextbox);
+		clearToElement(expiredDateTextbox);
+		sendKeyToElement(expiredDateTextbox, expirationDate);
+		
+		waitForElementVisible(contentHonorDropdown);
+		selectItemHtmlDropdownByValue(contentHonorDropdown, honor);
+		
+		waitForElementVisible(contentFeatureTitleTextbox);
+		clearToElement(contentFeatureTitleTextbox);
+		sendKeyToElement(contentFeatureTitleTextbox, featureTitle);
+		
+		waitForElementVisible(contentTickTextbox);
+		clearToElement(contentTickTextbox);
+		sendKeyToElement(contentTickTextbox, tick);
+		
+		for(int i = 0; i < serviceProviderCheckboxList.size(); i++) {
+			if(serviceProviderCheckboxList.get(i).isSelected()) {
+				checkTheCheckbox(serviceProviderCheckboxList.get(i));
+				waitForElementVisible(serviceProviderCheckboxList.get(i));
+			}
+		}
+		
+		waitForElementClickalbe(updateFilmButton);
+		clickToElement(updateFilmButton);
+	}
+	
+	public void updateFilmWithoutCategory(String displayedName, String activationDate, String expirationDate, String honor, String featureTitle, String tick) {
+		waitForElementVisible(contentDisplayNameTextbox);
+		clearToElement(contentDisplayNameTextbox);
+		sendKeyToElement(contentDisplayNameTextbox, displayedName);
+		
+		waitForElementVisible(activatedDateTextbox);
+		clearToElement(activatedDateTextbox);
+		sendKeyToElement(activatedDateTextbox, activationDate);
+		
+		waitForElementVisible(expiredDateTextbox);
+		clearToElement(expiredDateTextbox);
+		sendKeyToElement(expiredDateTextbox, expirationDate);
+		
+		waitForElementVisible(contentHonorDropdown);
+		selectItemHtmlDropdownByValue(contentHonorDropdown, honor);
+		
+		waitForElementVisible(contentFeatureTitleTextbox);
+		clearToElement(contentFeatureTitleTextbox);
+		sendKeyToElement(contentFeatureTitleTextbox, featureTitle);
+		
+		waitForElementVisible(contentTickTextbox);
+		clearToElement(contentTickTextbox);
+		sendKeyToElement(contentTickTextbox, tick);
+		
+		for(int i = 1; i < categoryCheckboxList.size(); i++) {
+			if(categoryCheckboxList.get(i).isSelected()) {
+				checkTheCheckbox(categoryCheckboxList.get(i));
+				waitForElementVisible(categoryCheckboxList.get(i));
+			}
+		}
+		
+		waitForElementClickalbe(updateFilmButton);
+		clickToElement(updateFilmButton);
 	}
 	
 	public boolean verifyDisplayNameBlank() {
@@ -252,6 +665,16 @@ public class ListFilm extends AbstractTest{
 	public boolean verifyCreateFailedMessage() {
 		waitForElementVisible(createFailedMessage);
 		return isControlDisplayed(createFailedMessage);
+	}
+	
+	public boolean verifyCreateSuccessMessage() {
+		waitForElementVisible(createSuccessfulMessage);
+		return isControlDisplayed(createSuccessfulMessage);
+	}
+	
+	public boolean verifyUpdateFilmSuccessMessage() {
+		waitForElementVisible(updateFilmSuccessMessage);
+		return isControlDisplayed(updateFilmSuccessMessage);
 	}
 	
 }
