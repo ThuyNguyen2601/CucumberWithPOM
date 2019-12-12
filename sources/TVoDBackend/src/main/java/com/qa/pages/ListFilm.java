@@ -89,7 +89,7 @@ public class ListFilm extends AbstractTest{
 	@CacheLookup
 	public WebElement uploadSlideShowImageIcon;
 	
-	@FindBy(xpath = "//div[@id = 'list-site']//div[@class = 'checkbox']//input")
+	@FindBy(xpath = "//div[@id = 'list-site']//div[@class = 'checkbox']//input[@type = 'checkbox']")
 	@CacheLookup
 	public List<WebElement> serviceProviderCheckboxList;
 	
@@ -121,7 +121,7 @@ public class ListFilm extends AbstractTest{
 	@CacheLookup
 	public WebElement displayedNameBlankMessage;
 	
-	@FindBy(xpath = "//div[contains(text(),'Poster cannot be blank')]")
+	@FindBy(xpath = "//div[contains(text(),'Image Poster vertical cannot be blank')]")
 	@CacheLookup
 	public WebElement posterImageBlankMessage;
 	
@@ -185,10 +185,63 @@ public class ListFilm extends AbstractTest{
 	@CacheLookup
 	public WebElement deleteSlideShowImageIcon;
 	
-	@FindBy(xpath = "div[@id = 'w24-success']")
+	@FindBy(xpath = "//div[@id = 'w24-success']")
 	@CacheLookup
 	public WebElement updateFilmSuccessMessage;
 	
+	@FindBy(xpath = "//div[@id = 'content-index-grid-container']//tbody//tr[1]//td[8]//input")
+	@CacheLookup
+	public WebElement selectedItem;
+	
+	@FindBy(xpath = "//select[@id='approveSite']")
+	@CacheLookup
+	public WebElement SPToAssignContent;
+	
+	@FindBy(xpath = "//button[@class='btn btn-success' and @title = 'Publish']")
+	@CacheLookup
+	public WebElement publishButton;
+	
+	@FindBy(xpath = "//button[contains(text(),'Unpublish')]")
+	@CacheLookup
+	public WebElement unPublishButton;
+	
+	@FindBy(xpath = "//button[contains(text(),'Delete')]")
+	@CacheLookup
+	public WebElement deleteButton;
+	
+	@FindBy(xpath = "//div[@id='jstree0']//li[@id='108']//i[@class='jstree-icon jstree-checkbox']")
+	@CacheLookup
+	public WebElement categoryListAssigned;
+	
+	@FindBy(xpath = "//button[@id='setSpAllContent']")
+	@CacheLookup
+	public WebElement assignCategoryToSPButton;
+	
+	@FindBy(xpath = "//select[@id='list-site']")
+	public WebElement SPToAssignList;
+	
+	@FindBy(xpath = "//button[@id='runSetSpAllContent']")
+	public WebElement assignButton;
+	
+	@FindBy(xpath = "//button[@id='runCancelContent']")
+	public WebElement cancelAssignButton;
+	
+	@FindBy(xpath = "//div[@id='w39-success']")
+	public WebElement assignContentSuccessMessage;
+	
+	@FindBy(xpath = "//tr[1]//td[8]//input[1]")
+	public WebElement deleteFilmcheckbox;
+	
+	@FindBy(xpath = "//tr[1]//td[2]//a")
+	public WebElement nameOfDeletedFilm;
+	
+	String nameOfDeletedFilmTxt = "";
+	
+	@FindBy(xpath = "//tr//td[2]//a")
+	public List<WebElement> listNameFilm;
+	
+	@FindBy(xpath = "//div[@id='w16-success']")
+	public WebElement assignCategorySuccessMessage;
 	
 	
 	public ListFilm() {
@@ -222,7 +275,7 @@ public class ListFilm extends AbstractTest{
 		checkTheCheckbox(contentIsSeriesCheckbox);
 		
 		waitForElementVisible(contentProviderDropdown);
-		selectItemHtmlDropdownByValue(contentProviderDropdown, "2");
+		selectItemHtmlDropdownByValue(contentProviderDropdown, "1");
 		
 		waitForElementVisible(activatedDateTextbox);
 		sendKeyToElement(activatedDateTextbox, activatedDate);
@@ -278,7 +331,7 @@ public class ListFilm extends AbstractTest{
 		checkTheCheckbox(contentIsSeriesCheckbox);
 		
 		waitForElementVisible(contentProviderDropdown);
-		selectItemHtmlDropdownByValue(contentProviderDropdown, "2");
+		selectItemHtmlDropdownByValue(contentProviderDropdown, "1");
 		
 		waitForElementVisible(activatedDateTextbox);
 		sendKeyToElement(activatedDateTextbox, activatedDate);
@@ -430,7 +483,7 @@ public class ListFilm extends AbstractTest{
 		checkTheCheckbox(contentIsSeriesCheckbox);
 		
 		waitForElementVisible(contentProviderDropdown);
-		selectItemHtmlDropdownByValue(contentProviderDropdown, "2");
+		selectItemHtmlDropdownByValue(contentProviderDropdown, "1");
 		
 		waitForElementVisible(activatedDateTextbox);
 		sendKeyToElement(activatedDateTextbox, activatedDate);
@@ -467,7 +520,7 @@ public class ListFilm extends AbstractTest{
 		}
 		
 		waitForElementVisible(originServiceProviderDropdown);
-		selectItemHtmlDropdownByValue(originServiceProviderDropdown, "15");
+		selectItemHtmlDropdownByValue(originServiceProviderDropdown, "5");
 		
 		waitForElementVisible(createButton);
 		clickToElementByJavaScript(createButton);
@@ -591,10 +644,11 @@ public class ListFilm extends AbstractTest{
 		clearToElement(contentTickTextbox);
 		sendKeyToElement(contentTickTextbox, tick);
 		
-		for(int i = 0; i < serviceProviderCheckboxList.size(); i++) {
+		for(int i = 0; i < serviceProviderCheckboxList.size(); i ++) {
 			if(serviceProviderCheckboxList.get(i).isSelected()) {
-				checkTheCheckbox(serviceProviderCheckboxList.get(i));
 				waitForElementVisible(serviceProviderCheckboxList.get(i));
+				serviceProviderCheckboxList.get(i).click();
+				
 			}
 		}
 		
@@ -602,7 +656,7 @@ public class ListFilm extends AbstractTest{
 		clickToElement(updateFilmButton);
 	}
 	
-	public void updateFilmWithoutCategory(String displayedName, String activationDate, String expirationDate, String honor, String featureTitle, String tick) {
+	public void updateFilmWithoutCategory(String displayedName, String activationDate, String expirationDate, String honor, String featureTitle, String tick) throws Exception {
 		waitForElementVisible(contentDisplayNameTextbox);
 		clearToElement(contentDisplayNameTextbox);
 		sendKeyToElement(contentDisplayNameTextbox, displayedName);
@@ -626,15 +680,53 @@ public class ListFilm extends AbstractTest{
 		clearToElement(contentTickTextbox);
 		sendKeyToElement(contentTickTextbox, tick);
 		
-		for(int i = 1; i < categoryCheckboxList.size(); i++) {
+		for(int i = 0; i < categoryCheckboxList.size(); i ++) {
 			if(categoryCheckboxList.get(i).isSelected()) {
-				checkTheCheckbox(categoryCheckboxList.get(i));
-				waitForElementVisible(categoryCheckboxList.get(i));
+				waitForElementClickalbe(categoryCheckboxList.get(i));
+				categoryCheckboxList.get(i).click();
+				//waitForElementVisible(categoryCheckboxList.get(i));
 			}
 		}
-		
+		//Thread.sleep(2000);
 		waitForElementClickalbe(updateFilmButton);
 		clickToElement(updateFilmButton);
+	}
+	
+	public void selectContent() {
+		waitForElementVisible(selectedItem);
+		clickToElementByJavaScript(selectedItem);
+	}
+	
+	public void deleteAFilm(String buttonAlert) throws Throwable {
+		nameOfDeletedFilmTxt = nameOfDeletedFilm.getAttribute("value");
+		waitForElementClickalbe(deleteButton);
+		clickToElementByJavaScript(deleteButton);
+		if(buttonAlert == "Cancel") {
+			Thread.sleep(1000);
+			cancelAlert();
+		}
+		else{
+			Thread.sleep(1000);
+			acceptAlert();
+		}
+	}
+	
+	public boolean checkContainsElement() {
+		for(int i = 0; i < listNameFilm.size(); i ++) {
+			System.out.println(listNameFilm.get(i).getAttribute("value"));
+			if(listNameFilm.get(i).getAttribute("value").contains(nameOfDeletedFilmTxt)) {
+				return false;
+			}
+			else {
+				return true;
+			}
+		}
+		return true;
+	}
+	
+	public void selectCategoryToAssign() {
+			waitForElementVisible(categoryListAssigned);
+			categoryListAssigned.click();
 	}
 	
 	public boolean verifyDisplayNameBlank() {
@@ -675,6 +767,16 @@ public class ListFilm extends AbstractTest{
 	public boolean verifyUpdateFilmSuccessMessage() {
 		waitForElementVisible(updateFilmSuccessMessage);
 		return isControlDisplayed(updateFilmSuccessMessage);
+	}
+	
+	public boolean verifyAssignContentSuccesMessage() {
+		waitForElementVisible(assignContentSuccessMessage);
+		return isControlDisplayed(assignContentSuccessMessage);
+	}
+	
+	public boolean verifyAssignCategorySuccessMessage() {
+		waitForElementVisible(assignCategorySuccessMessage);
+		return isControlDisplayed(assignCategorySuccessMessage);
 	}
 	
 }

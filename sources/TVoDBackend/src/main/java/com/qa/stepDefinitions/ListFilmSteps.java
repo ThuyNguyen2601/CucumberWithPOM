@@ -18,10 +18,11 @@ public class ListFilmSteps extends AbstractTest{
 	String shortDescription = "Thuy short describe the Film " + randomData();
 	String featureTitle = "Feature title is: "+ randomData();
 	String tick = "Tick is: " + randomData();
-	String activatedDate = "10-10-2019 10:35";
-	String expiredDate = "20-10-2019 10:35";
-	String expiredDateUpdate = "30-10-2019 10:35";
+	String activatedDate = "31-10-2019 10:35";
+	String expiredDate = "20-11-2019 10:35";
+	String expiredDateUpdate = "20-11-2019 10:35";
 	String honor = "3";
+	String valueOfSP = "15";
 	
 	@Then("^user goes to the List Film page$")
 	public void user_goes_to_the_List_Film_page() throws Throwable {
@@ -35,7 +36,7 @@ public class ListFilmSteps extends AbstractTest{
 	@Then("^user search Film by displayed name$")
 	public void user_search_Film_by_displayed_name() throws Throwable {
 	    listFilm.searchFilmByName("Thuy");
-	    //Thread.sleep(1000);
+	    Thread.sleep(1000);
 	}
 	
 	@Then("^user clicks to Create Film button$")
@@ -209,6 +210,132 @@ public class ListFilmSteps extends AbstractTest{
 		log.info("Check update the Film without Service Provider is: " + flag);
 		waitForLoad();
 	}
+	
+	@Then("^user update the Film without Category$")
+	public void user_update_the_Film_without_Category() throws Throwable {
+		listFilm.updateFilmWithoutCategory(displayName, activatedDate, expiredDateUpdate, honor, featureTitle, tick);
+	}
+
+	@Then("^user check the update Category blank message$")
+	public void user_check_the_update_Category_blank_message() throws Throwable {
+		boolean flag = listFilm.verifyCategoryBlank();
+		verifyTrue(flag);
+		log.info("Check update the Film without Category is: " + flag);
+		waitForLoad();
+	}
+	
+	@Then("^user update the Film with valid$")
+	public void user_update_the_Film_with_valid() throws Throwable {
+		listFilm.updateFilm(displayName, activatedDate, expiredDateUpdate, honor, featureTitle, tick);
+	}
+
+	@Then("^user check the update Film success message$")
+	public void user_check_the_update_Film_success_message() throws Throwable {
+		boolean flag = listFilm.verifyUpdateFilmSuccessMessage();
+		verifyTrue(flag);
+		log.info("Check update the Film successful is: " + flag);
+		waitForLoad();
+	}
+	
+	@Then("^user selects content$")
+	public void user_selects_content() throws Throwable {
+		listFilm.selectContent();
+	}
+
+	@Then("^user selects SP to assign$")
+	public void user_selects_SP_to_assign() throws Throwable {
+		//Thread.sleep(2000);
+		selectItemHtmlDropdownByValue(listFilm.SPToAssignContent, valueOfSP);
+	}
+
+	@Then("^user clicks to Publish button$")
+	public void user_clicks_to_Publish_button() throws Throwable {
+		clickToElement(listFilm.publishButton);
+	}
+	
+	@Then("^user checks the assign content success message$")
+	public void user_checks_the_assign_content_success_message() throws Throwable {
+		boolean flag = listFilm.verifyAssignContentSuccesMessage();
+		verifyTrue(flag);
+		log.info("Check assign many Content to SP is: " + flag);
+		waitForLoad();
+	}
+	
+	@Then("^user selects a film to delete$")
+	public void user_selects_a_film_to_delete() throws Throwable {
+		//checkTheCheckbox(listFilm.deleteFilmcheckbox);
+		clickToElementByJavaScript(listFilm.deleteFilmcheckbox);
+		Thread.sleep(1000);
+	}
+
+	@Then("^user deletes a film when press Cancel button in alert$")
+	public void user_deletes_a_film_when_press_Cancel_button_in_alert() throws Throwable {
+		listFilm.deleteAFilm("Cancel");
+	}
+
+	@Then("^user checks delete the film$")
+	public void user_checks_delete_the_film() throws Throwable {
+		System.out.println("Delete cancel");
+		//boolean flag = listFilm.checkContainsElement();
+		//verifyTrue(flag);
+		//log.info("Check delete a film but press Cancel button is: " + flag);
+		//waitForLoad();
+	}
+	
+	@Then("^user deletes a film when press OK button in alert$")
+	public void user_deletes_a_film_when_press_OK_button_in_alert() throws Throwable {
+		listFilm.deleteAFilm("OK");
+	}
+
+	@Then("^user checks delete the film success$")
+	public void user_checks_delete_the_film_success() throws Throwable {
+		System.out.println("Delete OK");
+		//boolean flag = listFilm.checkContainsElement();
+		//verifyFalse(flag);
+		//log.info("Check delete a film success is: " + flag);
+		//waitForLoad();
+	}
+	
+	@Then("^user selects category to assign$")
+	public void user_selects_category_to_assign() throws Throwable {
+		listFilm.selectCategoryToAssign();
+	}
+
+	@Then("^user presses Assign button$")
+	public void user_presses_Assign_button() throws Throwable {
+		clickToElement(listFilm.assignCategoryToSPButton);
+	}
+
+	@Then("^user selects service provider in list$")
+	public void user_selects_service_provider_in_list() throws Throwable {
+		selectItemHtmlDropdownByValue(listFilm.SPToAssignList, valueOfSP);
+	}
+
+	@Then("^user clicks to Cancel button$")
+	public void user_clicks_to_Cancel_button() throws Throwable {
+		clickToElement(listFilm.cancelAssignButton);
+	}
+
+	@Then("^user check message when press Cancel$")
+	public void user_check_message_when_press_Cancel() throws Throwable {
+		System.out.println("Cancel assign category success");
+	}
+	
+	@Then("^user clicks to OK button$")
+	public void user_clicks_to_OK_button() throws Throwable {
+		clickToElement(listFilm.assignButton);
+	}
+
+	@Then("^user check message when press OK$")
+	public void user_check_message_when_press_OK() throws Throwable {
+		boolean flag = listFilm.verifyAssignCategorySuccessMessage();
+		verifyTrue(flag);
+		log.info("Check assign category success is: " + flag);
+		waitForLoad();
+	}
+
+
+
 
 
 }

@@ -156,7 +156,7 @@ public class AbstractTest extends TestBase {
 	public void acceptAlert() throws Throwable {
 		waitForAlertPresence();
 		Alert alert = driver.switchTo().alert();
-		System.out.println("Alert box text" + alert.getText());
+		System.out.println("Alert box text " + alert.getText());
 		alert.accept();
 	}
 

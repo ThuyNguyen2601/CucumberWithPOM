@@ -24,10 +24,10 @@ public class LoginPage extends AbstractTest {
 	@FindBy(xpath = "//p[@class='lead']")
 	public WebElement successMessage;
 
-	@FindBy(xpath = "//div[contains(text(),'Account name not allowed to be blank')]")
+	@FindBy(xpath = "//div[contains(text(),'Account namenot allowed to be blank')]")
 	public WebElement usernameBlankText;
 
-	@FindBy(xpath = "//div[contains(text(),'Password not allowed to be blank')]")
+	@FindBy(xpath = "//div[contains(text(),'Passwordnot allowed to be blank')]")
 	public WebElement passwordBlankText;
 
 	@FindBy(xpath = "//div[contains(text(),'Account name or password is incorrect. Please try')]")
