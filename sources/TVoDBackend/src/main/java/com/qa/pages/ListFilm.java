@@ -141,7 +141,7 @@ public class ListFilm extends AbstractTest{
 	@CacheLookup
 	public WebElement createFailedMessage;
 	
-	@FindBy(xpath = "//div[@id='w24-success']")
+	@FindBy(xpath = "//div[@id='w28-success']")
 	@CacheLookup
 	public WebElement createSuccessfulMessage;
 	
@@ -185,7 +185,7 @@ public class ListFilm extends AbstractTest{
 	@CacheLookup
 	public WebElement deleteSlideShowImageIcon;
 	
-	@FindBy(xpath = "//div[@id = 'w24-success']")
+	@FindBy(xpath = "//div[@id = 'w52-success']")
 	@CacheLookup
 	public WebElement updateFilmSuccessMessage;
 	
@@ -209,7 +209,7 @@ public class ListFilm extends AbstractTest{
 	@CacheLookup
 	public WebElement deleteButton;
 	
-	@FindBy(xpath = "//div[@id='jstree0']//li[@id='108']//i[@class='jstree-icon jstree-checkbox']")
+	@FindBy(xpath = "//div[@id='jstree0']//li//i[@class='jstree-icon jstree-checkbox']")
 	@CacheLookup
 	public WebElement categoryListAssigned;
 	
@@ -226,7 +226,7 @@ public class ListFilm extends AbstractTest{
 	@FindBy(xpath = "//button[@id='runCancelContent']")
 	public WebElement cancelAssignButton;
 	
-	@FindBy(xpath = "//div[@id='w39-success']")
+	@FindBy(xpath = "//div[@id='w17-success']")
 	public WebElement assignContentSuccessMessage;
 	
 	@FindBy(xpath = "//tr[1]//td[8]//input[1]")
@@ -312,7 +312,7 @@ public class ListFilm extends AbstractTest{
 		}
 		
 		waitForElementVisible(originServiceProviderDropdown);
-		selectItemHtmlDropdownByValue(originServiceProviderDropdown, "15");
+		selectItemHtmlDropdownByValue(originServiceProviderDropdown, "5");
 		
 		for(int i = 1; i < categoryCheckboxList.size(); i = i + 1) {
 			waitForElementVisible(categoryCheckboxList.get(i));
@@ -363,7 +363,7 @@ public class ListFilm extends AbstractTest{
 		}
 		
 		waitForElementVisible(originServiceProviderDropdown);
-		selectItemHtmlDropdownByValue(originServiceProviderDropdown, "15");
+		selectItemHtmlDropdownByValue(originServiceProviderDropdown, "5");
 		
 		for(int i = 1; i < categoryCheckboxList.size(); i = i + 1) {
 			waitForElementVisible(categoryCheckboxList.get(i));
@@ -382,7 +382,7 @@ public class ListFilm extends AbstractTest{
 		checkTheCheckbox(contentIsSeriesCheckbox);
 		
 		waitForElementVisible(contentProviderDropdown);
-		selectItemHtmlDropdownByValue(contentProviderDropdown, "2");
+		selectItemHtmlDropdownByValue(contentProviderDropdown, "1");
 		
 		waitForElementVisible(activatedDateTextbox);
 		sendKeyToElement(activatedDateTextbox, activatedDate);
@@ -412,7 +412,7 @@ public class ListFilm extends AbstractTest{
 		}
 		
 		waitForElementVisible(originServiceProviderDropdown);
-		selectItemHtmlDropdownByValue(originServiceProviderDropdown, "15");
+		selectItemHtmlDropdownByValue(originServiceProviderDropdown, "5");
 		
 		for(int i = 1; i < categoryCheckboxList.size(); i = i + 1) {
 			waitForElementVisible(categoryCheckboxList.get(i));
@@ -431,7 +431,7 @@ public class ListFilm extends AbstractTest{
 		checkTheCheckbox(contentIsSeriesCheckbox);
 		
 		waitForElementVisible(contentProviderDropdown);
-		selectItemHtmlDropdownByValue(contentProviderDropdown, "2");
+		selectItemHtmlDropdownByValue(contentProviderDropdown, "1");
 		
 		waitForElementVisible(activatedDateTextbox);
 		sendKeyToElement(activatedDateTextbox, activatedDate);
@@ -464,7 +464,7 @@ public class ListFilm extends AbstractTest{
 
 		
 		waitForElementVisible(originServiceProviderDropdown);
-		selectItemHtmlDropdownByValue(originServiceProviderDropdown, "15");
+		selectItemHtmlDropdownByValue(originServiceProviderDropdown, "5");
 		
 		for(int i = 1; i < categoryCheckboxList.size(); i = i + 1) {
 			waitForElementVisible(categoryCheckboxList.get(i));
@@ -644,7 +644,7 @@ public class ListFilm extends AbstractTest{
 		clearToElement(contentTickTextbox);
 		sendKeyToElement(contentTickTextbox, tick);
 		
-		for(int i = 0; i < serviceProviderCheckboxList.size(); i ++) {
+		for(int i = 1; i < serviceProviderCheckboxList.size() + 1; i ++) {
 			if(serviceProviderCheckboxList.get(i).isSelected()) {
 				waitForElementVisible(serviceProviderCheckboxList.get(i));
 				serviceProviderCheckboxList.get(i).click();
@@ -679,15 +679,14 @@ public class ListFilm extends AbstractTest{
 		waitForElementVisible(contentTickTextbox);
 		clearToElement(contentTickTextbox);
 		sendKeyToElement(contentTickTextbox, tick);
-		
+		//Thread.sleep(2000);
 		for(int i = 0; i < categoryCheckboxList.size(); i ++) {
 			if(categoryCheckboxList.get(i).isSelected()) {
 				waitForElementClickalbe(categoryCheckboxList.get(i));
+				Thread.sleep(1000);
 				categoryCheckboxList.get(i).click();
-				//waitForElementVisible(categoryCheckboxList.get(i));
 			}
 		}
-		//Thread.sleep(2000);
 		waitForElementClickalbe(updateFilmButton);
 		clickToElement(updateFilmButton);
 	}

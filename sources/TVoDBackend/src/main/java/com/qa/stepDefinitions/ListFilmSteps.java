@@ -22,7 +22,7 @@ public class ListFilmSteps extends AbstractTest{
 	String expiredDate = "20-11-2019 10:35";
 	String expiredDateUpdate = "20-11-2019 10:35";
 	String honor = "3";
-	String valueOfSP = "15";
+	String valueOfSP = "5";
 	
 	@Then("^user goes to the List Film page$")
 	public void user_goes_to_the_List_Film_page() throws Throwable {

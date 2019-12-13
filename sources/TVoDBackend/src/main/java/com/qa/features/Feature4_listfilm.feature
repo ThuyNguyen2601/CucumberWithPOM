@@ -1,6 +1,6 @@
 Feature: Manage List Film
 
-@D1
+#@D1
 Scenario: Search film by display name
 Then user goes to the List Film page
 Then user search Film by displayed name
@@ -19,7 +19,7 @@ Then user clicks to Create Film button
 Then user creates film without poster image
 Then user checks the poster image blank message
 
-@D1
+#@D1
 Scenario: Create film without slideshow image
 Then user goes to the List Film page
 Then user clicks to Create Film button
@@ -60,7 +60,7 @@ Then user goes to the List Film page
 Then user clicks to the view film icon
 Then user check the name of viewed film with title page
 
-@D1
+#@D1
 Scenario: Update the Film without Display name
 Then user goes to the List Film page
 Then user clicks to the update film icon
@@ -74,7 +74,7 @@ Then user clicks to the update film icon
 Then user update the Film without Poster image
 Then user check the update Poster image blank message
 
-@D1
+#@D1
 Scenario: Update the Film without Slideshow image
 Then user goes to the List Film page
 Then user clicks to the update film icon
@@ -82,14 +82,14 @@ Then user update the Film without Slideshow image
 Then user check the update Slideshow image blank message
 
 
-
+@D1
 Scenario: Update the Film without Service Provider
 Then user goes to the List Film page
 Then user clicks to the update film icon
 Then user update the Film without Service Provider
 Then user check the update Service Provider blank message
 
-@D1
+#@D1
 Scenario: Update the Film without Category
 Then user goes to the List Film page
 Then user clicks to the update film icon
@@ -112,14 +112,14 @@ Then user selects SP to assign
 Then user clicks to Publish button
 Then user checks the assign content success message
 
-#@D1
+@D1
 Scenario: Delete a film but press Cancel button
 Then user goes to the List Film page
 Then user selects a film to delete
 Then user deletes a film when press Cancel button in alert
 Then user checks delete the film
 
-#@D1
+@D1
 Scenario: Delete a film successful
 Then user goes to the List Film page
 Then user selects a film to delete

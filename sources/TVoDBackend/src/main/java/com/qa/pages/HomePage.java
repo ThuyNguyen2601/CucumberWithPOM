@@ -50,6 +50,10 @@ public class HomePage extends AbstractTest{
 	@CacheLookup
 	public WebElement filmSubSubMenu;
 	
+	@FindBy(xpath = "//a[contains(text(),'Management Actor / Director')]")
+	@CacheLookup
+	public WebElement actorAndDirectorSubMenu;
+	
 	//Initializing the Page Objects:
 	public HomePage() {
 		PageFactory.initElements(driver, this);
@@ -94,6 +98,13 @@ public class HomePage extends AbstractTest{
 		moveToElement(filmSubMenu);
 		clickToElementByAction(filmSubSubMenu);
 		return PageGeneratorManager.getListFilm();
+	}
+	
+	public ActorAndDirector gotoActorAndDirectorPage() throws Throwable {
+		moveToElement(contentMenu);
+		moveToElement(filmSubMenu);
+		clickToElementByAction(actorAndDirectorSubMenu);
+		return PageGeneratorManager.getActorAndDirector();
 	}
 
 }

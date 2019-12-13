@@ -27,4 +27,8 @@ public class PageGeneratorManager {
 		return new ListFilm();
 	}
 	
+	public static ActorAndDirector getActorAndDirector() {
+		return new ActorAndDirector();
+	}
+	
 }
