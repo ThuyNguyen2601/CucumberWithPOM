@@ -50,7 +50,7 @@ public class HomePage extends AbstractTest{
 	@CacheLookup
 	public WebElement filmSubSubMenu;
 	
-	@FindBy(xpath = "//a[contains(text(),'Management Actor / Director')]")
+	@FindBy(xpath = "//ul[@class='dropdown-menu dropdown-menu-default']//a[contains(text(),'Management Actor / Director')]")
 	@CacheLookup
 	public WebElement actorAndDirectorSubMenu;
 	
@@ -103,7 +103,9 @@ public class HomePage extends AbstractTest{
 	public ActorAndDirector gotoActorAndDirectorPage() throws Throwable {
 		moveToElement(contentMenu);
 		moveToElement(filmSubMenu);
-		clickToElementByAction(actorAndDirectorSubMenu);
+		//Thread.sleep(1000);
+		clickToElementByJavaScript(actorAndDirectorSubMenu);
+		//clickToElementByAction(actorAndDirectorSubMenu);
 		return PageGeneratorManager.getActorAndDirector();
 	}
 
