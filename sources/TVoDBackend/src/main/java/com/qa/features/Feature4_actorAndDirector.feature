@@ -49,13 +49,13 @@ Then user clicks to update icon
 Then user updates Actor or Director when press Update button
 Then user checks the update actor or director successful message
 
-@E1 
+
 Scenario: Delete actor or director when press Cancel
 Then user goes to the Manage Actor Director page
 Then user clicks to delete icon but press Cancel
 Then user checks the page title after press Cancel button deleting
 
-@E1
+
 Scenario: Delete actor or director successful
 Then user goes to the Manage Actor Director page
 Then user clicks to delete icon and press OK button

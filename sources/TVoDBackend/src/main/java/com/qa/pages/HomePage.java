@@ -54,6 +54,14 @@ public class HomePage extends AbstractTest{
 	@CacheLookup
 	public WebElement actorAndDirectorSubMenu;
 	
+	@FindBy(xpath = "//a[text() = 'Clip']")
+	@CacheLookup
+	public WebElement clipMenu;
+	
+	@FindBy(xpath = "//ul[@class='dropdown-menu dropdown-menu-default']//a[contains(text(),'Category Clip')]")
+	@CacheLookup
+	public WebElement categoryClipSubMenu;
+	
 	//Initializing the Page Objects:
 	public HomePage() {
 		PageFactory.initElements(driver, this);
@@ -107,6 +115,13 @@ public class HomePage extends AbstractTest{
 		clickToElementByJavaScript(actorAndDirectorSubMenu);
 		//clickToElementByAction(actorAndDirectorSubMenu);
 		return PageGeneratorManager.getActorAndDirector();
+	}
+	
+	public CategoryClip gotoCategoryClipPage() throws Throwable {
+		moveToElement(contentMenu);
+		moveToElement(clipMenu);
+		clickToElementByJavaScript(categoryClipSubMenu);
+		return PageGeneratorManager.getCategoryClip();
 	}
 
 }

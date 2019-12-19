@@ -31,4 +31,8 @@ public class PageGeneratorManager {
 		return new ActorAndDirector();
 	}
 	
+	public static CategoryClip getCategoryClip() {
+		return new CategoryClip();
+	}
+	
 }

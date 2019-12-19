@@ -149,12 +149,13 @@ public class ActorAndDirector extends AbstractTest {
 
 	public void deleteActorOrDirector(String searchValue, String button) throws Exception {
 		waitForElementVisible(nameSearchBox);
+		clearToElement(nameSearchBox);
 		sendKeyToElement(nameSearchBox, searchValue);
 		sendKeyboardToElement(nameSearchBox, Keys.ENTER);
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		waitForElementClickalbe(resultSearchList.get(0));
 		clickToElementByAction(resultSearchList.get(0));
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		if (button == " Ok") {
 			waitForElementClickalbe(okDeleteButton);
 			clickToElement(okDeleteButton);
