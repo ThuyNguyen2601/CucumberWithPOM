@@ -16,7 +16,7 @@ public class CategoryClipSteps extends AbstractTest{
 	String nameCategory = "Category " + randomData();
 	String description = "Thuy create category " + randomData();
 	String status = "10";
-	String parentCategory = "26";
+	String parentCategory = "3";
 	
 	
 	@Then("^user goes to the Category Clip page$")
@@ -82,5 +82,72 @@ public class CategoryClipSteps extends AbstractTest{
 		log.info("Check create category clip success is: " + flag);
 		waitForLoad();
 	}
+	
+	@Then("^user clicks to the update Category Clip icon$")
+	public void user_clicks_to_the_update_Category_Clip_icon() throws Throwable {
+		waitForElementClickalbe(categoryClip.updateCategoryClipIcon);
+		clickToElement(categoryClip.updateCategoryClipIcon);
+	}
+
+	@Then("^user updates Category Clip without name$")
+	public void user_updates_Category_Clip_without_name() throws Throwable {
+		categoryClip.updateCategoryClip("", "Update");
+	}
+
+	@Then("^user check the update Category Clip without name message$")
+	public void user_check_the_update_Category_Clip_without_name_message() throws Throwable {
+	    boolean flag = categoryClip.verifyNameOfCategoryBlankMessage();
+	    verifyTrue(flag);
+	    log.info("Check update category clip without name Category is: " + flag);
+		waitForLoad();
+	}
+	
+	@Then("^user updates Category Clip without service provider$")
+	public void user_updates_Category_Clip_without_service_provider() throws Throwable {
+	    categoryClip.updateCategoryClipWithoutServiceProvider(nameCategory, serviceProvider, "Update");
+	}
+
+	@Then("^user check the update Category Clip without service provider message$")
+	public void user_check_the_update_Category_Clip_without_service_provider_message() throws Throwable {
+	    boolean flag = categoryClip.verifyServiceProviderBlankMessage();
+	    verifyTrue(flag);
+	    log.info("Check update category clip without name Service Provider is: " + flag);
+	    waitForLoad();
+	}
+	
+	@Then("^user updates Category Clip with valid values$")
+	public void user_updates_Category_Clip_with_valid_values() throws Throwable {
+	    categoryClip.updateCategoryClip(nameCategory, "Update");
+	}
+
+	@Then("^user check the update Category Clip successful message$")
+	public void user_check_the_update_Category_Clip_successful_message() throws Throwable {
+	    boolean flag = categoryClip.verifyUpdateCategoryClipSuccessMessage();
+	    verifyTrue(flag);
+	    log.info("Check update Category Clip is: " + flag);
+	    waitForLoad();
+	}
+
+	@Then("^user clicks to the delete Category Clip icon$")
+	public void user_clicks_to_the_delete_Category_Clip_icon() throws Throwable {
+		clickToElementByJavaScript(categoryClip.deleteCategoryClipIcon);
+		Thread.sleep(2000);
+	    //clickToElement(categoryClip.deleteCategoryClipIcon);
+	}
+
+	@Then("^user presses cancel button in the confirm alert$")
+	public void user_presses_cancel_button_in_the_confirm_alert() throws Throwable {
+		//clickToElementByAction(categoryClip.cancelDeleteCategoryClipButton);
+		clickToElementByJavaScript(categoryClip.cancelDeleteCategoryClipButton);
+	}
+
+	@Then("^user check the delete Category Clip but press cancel button$")
+	public void user_check_the_delete_Category_Clip_but_press_cancel_button() throws Throwable {
+	    String titlePage = categoryClip.getPageTitle();
+	    verifyEquals(titlePage, "Manage category Film");
+	    log.info("check delete Category Clip but press Cancel button is done!");
+	    waitForLoad();
+	}
+
 
 }

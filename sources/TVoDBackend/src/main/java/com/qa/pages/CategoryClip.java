@@ -63,7 +63,7 @@ public class CategoryClip extends AbstractTest{
 	@CacheLookup
 	public WebElement createSuccessMessage;
 	
-	@FindBy(xpath = "//tr[1]//td[5]//a[1]//span[1]")
+	@FindBy(xpath = "//tr[2]//td[5]//a[1]//span[1]")
 	public WebElement updateCategoryClipIcon;
 	
 	@FindBy(xpath = "//button[@class='btn btn-primary']")
@@ -71,6 +71,22 @@ public class CategoryClip extends AbstractTest{
 	
 	@FindBy(xpath = "//a[@class='btn btn-default']")
 	public WebElement cancelUpdateCategoryClipButton;
+	
+	@FindBy(xpath = "//div[@class = 'alert-success alert fade in']")
+	public WebElement updateCategorySuccessMessage;
+	
+	@FindBy(xpath = "//tr[1]//td[5]//a[2]//span[1]")
+	public WebElement deleteCategoryClipIcon;
+	
+	@FindBy(xpath = "//div[@class = 'bootstrap-dialog-footer-buttons']//button[@class = 'btn btn-default']")
+	public WebElement cancelDeleteCategoryClipButton;
+	
+	@FindBy(xpath = "//div[@class = 'bootstrap-dialog-footer-buttons']//button[@class = 'btn btn-warning']")
+	public WebElement okDeleteCategoryClipButton;
+	
+	@FindBy(xpath = "//div[@class = 'alert-success alert fade in']")
+	public WebElement deleteCategoryClipSuccessMessage;
+	
 	
 	
 	public CategoryClip() {
@@ -146,6 +162,56 @@ public class CategoryClip extends AbstractTest{
 		}
 	}
 	
+	public void updateCategoryClip(String nameCategory, String button) {
+		waitForElementVisible(categoryNameTxt);
+		clearToElement(categoryNameTxt);
+		sendKeyToElement(categoryNameTxt, nameCategory);
+		
+		if(button == "Update") {
+			waitForElementClickalbe(updateButton);
+			clickToElement(updateButton);
+		}
+		else {
+			waitForElementClickalbe(cancelUpdateCategoryClipButton);
+			clickToElement(cancelUpdateCategoryClipButton);
+		}
+	}
+	
+	public void updateCategoryClipWithoutServiceProvider(String nameCategory, int serviceProvider, String button) {
+		waitForElementVisible(categoryNameTxt);
+		clearToElement(categoryNameTxt);
+		sendKeyToElement(categoryNameTxt, nameCategory);
+		
+		scrollToElement(serviceProviderCheckboxList.get(serviceProvider));
+		waitForElementVisible(serviceProviderCheckboxList.get(serviceProvider));
+		if(serviceProviderCheckboxList.get(serviceProvider).isSelected() == true) {
+			checkTheCheckbox(serviceProviderCheckboxList.get(serviceProvider));
+		}
+		
+		if(button == "Update") {
+			waitForElementClickalbe(updateButton);
+			clickToElement(updateButton);
+		}
+		else {
+			waitForElementClickalbe(cancelUpdateCategoryClipButton);
+			clickToElement(cancelUpdateCategoryClipButton);
+		}
+	}
+	
+	public void deleteCategoryClip(String button) {
+		waitForElementClickalbe(deleteCategoryClipIcon);
+		clickToElement(deleteCategoryClipIcon);
+		
+		if(button == " Cancel") {
+			waitForElementClickalbe(cancelDeleteCategoryClipButton);
+			clickToElement(cancelDeleteCategoryClipButton);
+		}
+		else {
+			waitForElementClickalbe(okDeleteCategoryClipButton);
+			clickToElement(okDeleteCategoryClipButton);
+		}
+	}
+	
 	public boolean verifyNameOfCategoryBlankMessage() {
 		waitForElementVisible(nameOfCategoryBlankMessage);
 		return isControlDisplayed(nameOfCategoryBlankMessage);
@@ -159,5 +225,15 @@ public class CategoryClip extends AbstractTest{
 	public boolean verifyCreateCategoryClipSuccessMessage() {
 		waitForElementVisible(createSuccessMessage);
 		return isControlDisplayed(createSuccessMessage);
+	}
+	
+	public boolean verifyUpdateCategoryClipSuccessMessage() {
+		waitForElementVisible(updateCategorySuccessMessage);
+		return isControlDisplayed(updateCategorySuccessMessage);
+	}
+	
+	public boolean verifyDeleteCategoryClipSuccessMessage() {
+		waitForElementVisible(deleteCategoryClipSuccessMessage);
+		return isControlDisplayed(deleteCategoryClipSuccessMessage);
 	}
 }

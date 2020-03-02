@@ -62,6 +62,31 @@ public class HomePage extends AbstractTest{
 	@CacheLookup
 	public WebElement categoryClipSubMenu;
 	
+	@FindBy(xpath = "//ul[@id='w12']//li[2]//ul[1]//li[2]//a[1]")
+	@CacheLookup
+	public WebElement clipSubMenu;
+	
+	@FindBy(xpath = "//body[@class='page-header-menu-fixed']/div[@class='page-header']/div[@id='w3']/div[@class='container-fluid']/div[@class='hor-menu']/ul[@id='w4']/li[@class='menu-dropdown mega-menu-dropdown open']/ul[@id='w7']/li[3]/a[1]")
+	@CacheLookup
+	public WebElement liveMenu;
+	
+	@FindBy(xpath = "//a[contains(text(),'Category Live')]")
+	@CacheLookup
+	public WebElement categoryLiveSubMenu;
+	
+	@FindBy(xpath = "//a[contains(text(),'Lives')]")
+	@CacheLookup
+	public WebElement livesSubMenu;
+	
+	@FindBy(xpath = "//ul[@id = 'w7']//a[text() = 'Catchup']")
+	@CacheLookup
+	public WebElement catchupMenu;
+	
+	@FindBy(xpath = "//a[contains(text(),'Catchup Content')]")
+	@CacheLookup
+	public WebElement catchupContentSubMenu;
+	
+	
 	//Initializing the Page Objects:
 	public HomePage() {
 		PageFactory.initElements(driver, this);
@@ -122,6 +147,31 @@ public class HomePage extends AbstractTest{
 		moveToElement(clipMenu);
 		clickToElementByJavaScript(categoryClipSubMenu);
 		return PageGeneratorManager.getCategoryClip();
+	}
+	
+	public Clip gotoClipPage() throws Throwable{
+		moveToElement(contentMenu);
+		moveToElement(clipMenu);
+		clickToElementByJavaScript(clipSubMenu);
+		return PageGeneratorManager.getClip();
+	}
+	
+	public CategoryLive gotoCategoryLive() throws Throwable{
+		moveToElement(liveMenu);
+		clickToElementByJavaScript(categoryLiveSubMenu);
+		return PageGeneratorManager.getCategoryLive();
+	}
+	
+	public Lives gotoLivesPage() throws Throwable{
+		moveToElement(liveMenu);
+		clickToElementByAction(livesSubMenu);
+		return PageGeneratorManager.getLives();
+	}
+	
+	public CatchupContent gotoCatchupContent() {
+		moveToElement(catchupMenu);
+		clickToElement(catchupContentSubMenu);
+		return PageGeneratorManager.getCatchupContent();
 	}
 
 }

@@ -35,4 +35,20 @@ public class PageGeneratorManager {
 		return new CategoryClip();
 	}
 	
+	public static Clip getClip() {
+		return new Clip();
+	}
+	
+	public static CategoryLive getCategoryLive() {
+		return new CategoryLive();
+	}
+	
+	public static Lives getLives() {
+		return new Lives();
+	}
+	
+	public static CatchupContent getCatchupContent() {
+		return new CatchupContent();
+	}
+	
 }

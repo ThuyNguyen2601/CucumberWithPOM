@@ -27,3 +27,32 @@ Then user goes to the Category Clip page
 Then user clicks to the Create Category Clip button
 Then user creates new category clip
 Then user checks the create category clip successful message
+
+@F1
+Scenario: Update a Category Clip without name
+Then user goes to the Category Clip page
+Then user clicks to the update Category Clip icon
+Then user updates Category Clip without name
+Then user check the update Category Clip without name message
+
+#@F1
+Scenario: Update Category Clip without service provider
+Then user goes to the Category Clip page
+Then user clicks to the update Category Clip icon
+Then user updates Category Clip without service provider
+Then user check the update Category Clip without service provider message
+
+@F1
+Scenario: Update Category Clip successful
+Then user goes to the Category Clip page
+Then user clicks to the update Category Clip icon
+Then user updates Category Clip with valid values
+Then user check the update Category Clip successful message
+
+@F1
+Scenario: Delete Category Clip but press Cancel button
+Then user goes to the Category Clip page
+Then user clicks to the delete Category Clip icon
+Then user presses cancel button in the confirm alert
+Then user check the delete Category Clip but press cancel button
+
